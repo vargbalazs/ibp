@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-family: "Inter", sans-serif;
+  --color: #252a31;
+  --normal: 400;
+  --medium: 500;
+  --semi-bold: 600;
+  --bold: 700;
+
+  /* headline 1 */
+  --font-headline-1-font-style: normal;
+  --font-headline-1-font-weight: 400;
+  --font-headline-1-font-size: 7.2rem;
+  --font-headline-1-line-height: 119%;
+
+  --font-headline-1: var(--font-headline-1-font-style)
+    var(--font-headline-1-font-weight) var(--font-headline-1-font-size) /
+    var(--font-headline-1-line-height) var(--font-family);
+
+  /* headline 2 */
+  --font-headline-2-font-style: normal;
+  --font-headline-2-font-weight: 400;
+  --font-headline-2-font-size: 6rem;
+  --font-headline-2-line-height: 120%;
+
+  --font-headline-2: var(--font-headline-2-font-style)
+    var(--font-headline-2-font-weight) var(--font-headline-2-font-size) /
+    var(--font-headline-2-line-height) var(--font-family);
+
+  /* headline 3 */
+  --font-headline-3-font-style: normal;
+  --font-headline-3-font-weight: 400;
+  --font-headline-3-font-size: 4.8rem;
+  --font-headline-3-line-height: 125%;
+
+  --font-headline-3: var(--font-headline-3-font-style)
+    var(--font-headline-3-font-weight) var(--font-headline-3-font-size) /
+    var(--font-headline-3-line-height) var(--font-family);
+
+  /* headline 4 */
+  --font-headline-4-font-style: normal;
+  --font-headline-4-font-weight: 400;
+  --font-headline-4-font-size: 3.6rem;
+  --font-headline-4-line-height: 133%;
+
+  --font-headline-4: var(--font-headline-4-font-style)
+    var(--font-headline-4-font-weight) var(--font-headline-4-font-size) /
+    var(--font-headline-4-line-height) var(--font-family);
+
+  /* headline 5 */
+  --font-headline-5-font-style: normal;
+  --font-headline-5-font-weight: 400;
+  --font-headline-5-font-size: 3rem;
+  --font-headline-5-line-height: 140%;
+
+  --font-headline-5: var(--font-headline-5-font-style)
+    var(--font-headline-5-font-weight) var(--font-headline-5-font-size) /
+    var(--font-headline-5-line-height) var(--font-family);
+
+  /* headline 6 */
+  --font-headline-6-font-style: normal;
+  --font-headline-6-font-weight: 400;
+  --font-headline-6-font-size: 2.4rem;
+  --font-headline-6-line-height: 150%;
+
+  --font-headline-6: var(--font-headline-6-font-style)
+    var(--font-headline-6-font-weight) var(--font-headline-6-font-size) /
+    var(--font-headline-6-line-height) var(--font-family);
+
+  /* text-1 */
+  --font-text-1-font-style: normal;
+  --font-text-1-font-weight: 400;
+  --font-text-1-font-size: 2.2rem;
+  --font-text-1-line-height: 155%;
+
+  --font-text-1: var(--font-text-1-font-style) var(--font-text-1-font-weight)
+    var(--font-text-1-font-size) / var(--font-text-1-line-height)
+    var(--font-family);
+
+  /* text-2 */
+  --font-text-2-font-style: normal;
+  --font-text-2-font-weight: 400;
+  --font-text-2-font-size: 2rem;
+  --font-text-2-line-height: 160%;
+
+  --font-text-2: var(--font-text-2-font-style) var(--font-text-2-font-weight)
+    var(--font-text-2-font-size) / var(--font-text-2-line-height)
+    var(--font-family);
+
+  /* text-3 */
+  --font-text-3-font-style: normal;
+  --font-text-3-font-weight: 400;
+  --font-text-3-font-size: 1.8rem;
+  --font-text-3-line-height: 167%;
+
+  --font-text-3: var(--font-text-3-font-style) var(--font-text-3-font-weight)
+    var(--font-text-3-font-size) / var(--font-text-3-line-height)
+    var(--font-family);
+
+  /* text-4 */
+  --font-text-4-font-style: normal;
+  --font-text-4-font-weight: 400;
+  --font-text-4-font-size: 1.6rem;
+  --font-text-4-line-height: 162%;
+
+  --font-text-4: var(--font-text-4-font-style) var(--font-text-4-font-weight)
+    var(--font-text-4-font-size) / var(--font-text-4-line-height)
+    var(--font-family);
+
+  /* text-5 */
+  --font-text-5-font-style: normal;
+  --font-text-5-font-weight: 400;
+  --font-text-5-font-size: 1.4rem;
+  --font-text-5-line-height: 157%;
+
+  --font-text-5: var(--font-text-5-font-style) var(--font-text-5-font-weight)
+    var(--font-text-5-font-size) / var(--font-text-5-line-height)
+    var(--font-family);
+
+  /* text-6 */
+  --font-text-6-font-style: normal;
+  --font-text-6-font-weight: 400;
+  --font-text-6-font-size: 1.2rem;
+  --font-text-6-line-height: 150%;
+
+  --font-text-6: var(--font-text-6-font-style) var(--font-text-6-font-weight)
+    var(--font-text-6-font-size) / var(--font-text-6-line-height)
+    var(--font-family);
+}
+
+.headline-1 {
+  font: var(--font-headline-1);
+  color: var(--color);
+}
+
+.headline-2 {
+  font: var(--font-headline-2);
+  color: var(--color);
+}
+
+.headline-3 {
+  font: var(--font-headline-3);
+  color: var(--color);
+}
+
+.headline-4 {
+  font: var(--font-headline-4);
+  color: var(--color);
+}
+
+.headline-5 {
+  font: var(--font-headline-5);
+  color: var(--color);
+}
+
+.headline-6 {
+  font: var(--font-headline-6);
+  color: var(--color);
+}
+
+.text-1 {
+  font: var(--font-text-1);
+  color: var(--color);
+}
+
+.text-2 {
+  font: var(--font-text-2);
+  color: var(--color);
+}
+
+.text-3 {
+  font: var(--font-text-3);
+  color: var(--color);
+}
+
+.text-4 {
+  font: var(--font-text-4);
+  color: var(--color);
+}
+
+.text-5 {
+  font: var(--font-text-5);
+  color: var(--color);
+}
+
+.text-6 {
+  font: var(--font-text-6);
+  color: var(--color);
+}
