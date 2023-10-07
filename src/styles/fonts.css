@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import "colors.css";
 
 :root {
   --font-family: "Inter", sans-serif;
-  --color: #252a31;
+  --color: var(--default-font-color);
   --normal: 400;
   --medium: 500;
   --semi-bold: 600;

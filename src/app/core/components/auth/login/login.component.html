@@ -1,1 +1,19 @@
-login component
+<p class="form-caption">Jelentkezz be a fiókodba</p>
+<p class="form-descr">Kérünk, add meg a helyes felhasználóneved és jelszavad</p>
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <kendo-formfield>
+    <kendo-label [for]="email" text="E-mail*"></kendo-label>
+    <kendo-textbox
+      #email
+      formControlName="userEmail"
+      placeholder="Add meg az e-mail címedet"
+    >
+    </kendo-textbox>
+    <kendo-formerror *ngIf="loginForm.controls.userEmail.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror *ngIf="loginForm.controls.userEmail.errors?.['email']"
+      >Hibás e-mail formátum</kendo-formerror
+    >
+  </kendo-formfield>
+</form>

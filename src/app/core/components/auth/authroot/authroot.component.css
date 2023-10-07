@@ -32,3 +32,23 @@
 .form-container {
   flex: 1 1 auto;
 }
+
+.form-caption {
+  font: var(--font-headline-6);
+  font-weight: var(--semi-bold);
+  color: var(--default-font-color);
+  margin: 1rem 0;
+}
+
+.form-descr {
+  font: var(--font-text-4);
+  font-weight: var(--medium);
+  color: var(--secondary-font-color);
+  margin: 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 47rem;
+}
