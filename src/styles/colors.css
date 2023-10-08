@@ -1,4 +1,6 @@
 :root {
   --default-font-color: #252a31;
   --secondary-font-color: #4f5e71;
+  --input-focus-background-color: #e8f4fd;
+  --input-border-color: #bac7d5;
 }

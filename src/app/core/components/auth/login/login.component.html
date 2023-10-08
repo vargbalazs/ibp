@@ -2,12 +2,20 @@
 <p class="form-descr">Kérünk, add meg a helyes felhasználóneved és jelszavad</p>
 <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
   <kendo-formfield>
-    <kendo-label [for]="email" text="E-mail*"></kendo-label>
+    <kendo-label
+      [for]="email"
+      text="E-mail*"
+      class="label-input-lg"
+    ></kendo-label>
     <kendo-textbox
       #email
       formControlName="userEmail"
       placeholder="Add meg az e-mail címedet"
     >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">mail</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
     </kendo-textbox>
     <kendo-formerror *ngIf="loginForm.controls.userEmail.errors?.['required']"
       >Kötelező mező</kendo-formerror
@@ -15,5 +23,28 @@
     <kendo-formerror *ngIf="loginForm.controls.userEmail.errors?.['email']"
       >Hibás e-mail formátum</kendo-formerror
     >
+  </kendo-formfield>
+  <kendo-formfield
+    ><kendo-label
+      [for]="password"
+      text="Jelszó*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #password
+      formControlName="password"
+      placeholder="**********"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">key</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <span class="material-symbols-outlined toggle-password"
+          >visibility_off</span
+        >
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
   </kendo-formfield>
 </form>

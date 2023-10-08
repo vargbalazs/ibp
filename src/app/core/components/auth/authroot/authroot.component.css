@@ -52,3 +52,7 @@ form {
   flex-direction: column;
   width: 47rem;
 }
+
+kendo-formfield {
+  margin-top: 2rem;
+}

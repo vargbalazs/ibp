@@ -1,5 +1,7 @@
 @import "fonts.css";
 @import "shadows.css";
+@import "labels.css";
+@import "inputs.css";
 
 body {
   margin: 0;

@@ -1,0 +1,52 @@
+/* input */
+
+.k-input-lg {
+  height: 4.8rem;
+  font: var(--font-text-4);
+  font-weight: var(--medium);
+}
+
+.k-input-md {
+  height: 4rem;
+  font: var(--font-text-5);
+  font-weight: var(--medium);
+}
+
+.k-input-sm {
+  height: 3.2rem;
+  font: var(--font-text-6);
+  font-weight: var(--medium);
+}
+
+.k-input-inner::placeholder {
+  color: var(--secondary-font-color);
+}
+
+.k-input-lg .k-input-prefix > .material-symbols-outlined,
+.k-input-md .k-input-prefix > .material-symbols-outlined,
+.k-input-sm .k-input-prefix > .material-symbols-outlined {
+  padding-left: 1rem;
+  padding-right: 0.5rem;
+  color: var(--secondary-font-color);
+}
+
+.k-input-md .k-input-prefix > .material-symbols-outlined,
+.k-input-md .k-input-suffix > .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.k-input-md .k-input-separator {
+  height: 1.4rem;
+}
+
+/* solid */
+
+.k-input-solid:focus,
+.k-input-solid.k-focus {
+  box-shadow: var(--input-focus-shadow);
+  background-color: var(--input-focus-background-color);
+}
+
+.k-input-solid {
+  border: 1px solid var(--input-border-color);
+}

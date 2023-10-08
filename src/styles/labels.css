@@ -1,0 +1,18 @@
+.k-label {
+  font-weight: var(--medium);
+  color: var(--default-font-color);
+}
+
+/* input */
+
+.label-input-lg {
+  font: var(--font-text-4);
+}
+
+.label-input-md {
+  font: var(--font-text-5);
+}
+
+.label-input-sm {
+  font: var(--font-text-6);
+}
