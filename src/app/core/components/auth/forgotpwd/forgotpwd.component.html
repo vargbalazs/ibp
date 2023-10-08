@@ -1,0 +1,48 @@
+<p class="form-caption">Jelszó visszaállítása</p>
+<p class="form-descr">
+  Kérünk, add meg az e-mail címedet, amivel regisztráltál, és küldjük az új
+  jelszót
+</p>
+<form [formGroup]="forgotPwdForm" (ngSubmit)="submitForm()">
+  <kendo-formfield>
+    <kendo-label
+      [for]="email"
+      text="E-mail*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #email
+      size="large"
+      fillMode="solid"
+      formControlName="userEmail"
+      placeholder="Add meg az e-mail címedet"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">mail</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror
+      *ngIf="forgotPwdForm.controls.userEmail.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror *ngIf="forgotPwdForm.controls.userEmail.errors?.['email']"
+      >Hibás e-mail formátum</kendo-formerror
+    >
+  </kendo-formfield>
+  <button
+    type="submit"
+    kendoButton
+    themeColor="primary"
+    fillMode="solid"
+    size="large"
+  >
+    Jelszó visszaállítása
+  </button>
+  <div class="footer">
+    <p class="form-descr">
+      Vissza a
+      <a class="link" href="#" (click)="backToLogin()">bejelentkezéshez</a>
+    </p>
+  </div>
+</form>
