@@ -5,9 +5,17 @@
   --input-focus-background-color: #e8f4fd;
   --input-border-color: #bac7d5;
   --input-border-hover-color: rgba(0, 0, 0, 0.16);
+  --input-focus-icon-color: #0172cb;
+  --input-error-color: #f04438;
+  --input-error-background-color: #fef3f2;
+  --input-error-border-hover-color: #b42318;
 
   --checkbox-background-color: #0172cb;
   --checkbox-border-color: #0172cb;
 
   --link-color: #0172cb;
+
+  --button-primary-background-color: #00a991;
+  --button-primary-hover-color: #009882;
+  --button-primary-border-color: #00a991;
 }

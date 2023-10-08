@@ -20,12 +20,12 @@
 }
 
 .logo img {
-  width: 428px;
-  height: 137px;
+  width: 42.8rem;
+  height: 13.7rem;
 }
 
 .k-card {
-  height: 400px;
+  height: 48rem;
   box-shadow: var(--default-shadow);
 }
 
@@ -61,4 +61,14 @@ a {
   font: var(--font-text-5);
   font-weight: var(--medium);
   color: var(--link-color);
+}
+
+button {
+  margin-top: 3rem;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
 }

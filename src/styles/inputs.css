@@ -45,10 +45,39 @@
 .k-input-solid.k-focus {
   box-shadow: var(--input-focus-shadow);
   background-color: var(--input-focus-background-color);
+
+  .k-input-prefix .material-symbols-outlined,
+  .k-input-suffix .material-symbols-outlined {
+    color: var(--input-focus-icon-color);
+  }
 }
 
 .k-input-solid {
   border: 1px solid var(--input-border-color);
+}
+
+.k-input-solid.k-invalid,
+.k-input-solid.ng-invalid.ng-touched,
+.k-input-solid.ng-invalid.ng-dirty {
+  background-color: var(--input-error-background-color) !important;
+  color: var(--input-error-color);
+}
+
+.k-input-solid.k-invalid:hover,
+.k-input-solid.ng-invalid.ng-touched:hover,
+.k-input-solid.ng-invalid.ng-dirty:hover {
+  border-color: var(--input-error-border-hover-color);
+}
+
+.k-input-solid:focus-within.k-invalid,
+.k-input-solid:focus-within.ng-invalid.ng-touched,
+.k-input-solid:focus-within.ng-invalid.ng-dirty {
+  box-shadow: var(--input-error-focus-shadow);
+
+  .k-input-prefix .material-symbols-outlined,
+  .k-input-suffix .material-symbols-outlined {
+    color: var(--input-error-color);
+  }
 }
 
 /* checkbox */
