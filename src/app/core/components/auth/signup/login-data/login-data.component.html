@@ -1,0 +1,89 @@
+<form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+  <p class="form-caption">Regisztráció</p>
+  <p class="form-descr">Kérünk, töltsd ki az alábbi űrlapot</p>
+  <kendo-formfield>
+    <kendo-label
+      [for]="userName"
+      text="Felhasználónév*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #userName
+      size="large"
+      fillMode="solid"
+      formControlName="userName"
+      placeholder="Adj meg egy felhasználónevet"
+      (valueChange)="userNameChange($event)"
+      [showSuccessIcon]="signupForm.controls.userName.valid"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate> </ng-template>
+    </kendo-textbox>
+    <kendo-formerror *ngIf="signupForm.controls.userName.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror
+      *ngIf="signupForm.controls.userName.errors?.['userNameIsAlreadyInUse']"
+      >Ez a felhasználónév már létezik</kendo-formerror
+    >
+  </kendo-formfield>
+  <kendo-formfield>
+    <kendo-label
+      [for]="email"
+      text="E-mail*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #email
+      size="large"
+      fillMode="solid"
+      formControlName="userEmail"
+      placeholder="Add meg az e-mail címedet"
+      (valueChange)="userEmailChange($event)"
+      [showSuccessIcon]="signupForm.controls.userEmail.valid"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">mail</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate> </ng-template>
+    </kendo-textbox>
+    <kendo-formerror *ngIf="signupForm.controls.userEmail.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror *ngIf="signupForm.controls.userEmail.errors?.['email']"
+      >Hibás e-mail formátum</kendo-formerror
+    >
+    <kendo-formerror
+      *ngIf="signupForm.controls.userEmail.errors?.['userEmailIsAlreadyInUse']"
+      >A megadott e-mail már foglalt</kendo-formerror
+    >
+  </kendo-formfield>
+  <button
+    type="submit"
+    kendoButton
+    themeColor="primary"
+    fillMode="solid"
+    size="large"
+  >
+    Regisztráció
+  </button>
+  <button
+    kendoButton
+    themeColor="secondary"
+    fillMode="solid"
+    size="large"
+    (click)="backToBasicDataForm()"
+  >
+    Vissza
+  </button>
+  <div class="footer">
+    <p class="form-descr">
+      Van már fiókod?
+      <a class="link" href="#" (click)="backToLogin()">Jelentkezz be</a>
+    </p>
+  </div>
+</form>

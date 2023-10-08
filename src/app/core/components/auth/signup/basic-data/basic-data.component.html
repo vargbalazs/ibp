@@ -1,0 +1,59 @@
+<form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+  <p class="form-caption">Regisztráció</p>
+  <p class="form-descr">Kérünk, töltsd ki az alábbi űrlapot</p>
+  <kendo-formfield>
+    <kendo-label
+      [for]="firstName"
+      text="Keresztnév*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #firstName
+      size="medium"
+      fillMode="solid"
+      formControlName="firstName"
+      placeholder="Add meg a keresztneved"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
+  </kendo-formfield>
+  <kendo-formfield>
+    <kendo-label
+      [for]="lastName"
+      text="Vezetéknév*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #lastName
+      size="medium"
+      fillMode="solid"
+      formControlName="lastName"
+      placeholder="Add meg a vezetékneved"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
+  </kendo-formfield>
+  <button
+    type="submit"
+    kendoButton
+    themeColor="primary"
+    fillMode="solid"
+    size="large"
+  >
+    Tovább
+  </button>
+  <div class="footer">
+    <p class="form-descr">
+      Van már fiókod?
+      <a class="link" href="#" (click)="backToLogin()">Jelentkezz be</a>
+    </p>
+  </div>
+</form>

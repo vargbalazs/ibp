@@ -65,6 +65,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
     return false;
   }
 
+  showCreateAccountForm() {
+    this.router.navigate(['/auth/signup/basic-data'], {
+      skipLocationChange: true,
+    });
+    return false;
+  }
+
   submitForm() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {

@@ -12,6 +12,8 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.router.navigate(['/auth/forgotpwd'], { skipLocationChange: true });
+    this.router.navigate(['/auth/signup/basic-data'], {
+      skipLocationChange: true,
+    });
   }
 }
