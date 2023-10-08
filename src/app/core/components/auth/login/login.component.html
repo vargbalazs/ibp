@@ -10,7 +10,7 @@
     <kendo-textbox
       #email
       formControlName="userEmail"
-      placeholder="Add meg az e-mail címedet"
+      placeholder="sajat@e-mail-cimem.hu"
     >
       <ng-template kendoTextBoxPrefixTemplate>
         <span class="material-symbols-outlined">mail</span>
@@ -33,15 +33,17 @@
     <kendo-textbox
       #password
       formControlName="password"
-      placeholder="**********"
+      placeholder="●●●●●●●●●●●●●●●●●"
     >
       <ng-template kendoTextBoxPrefixTemplate>
         <span class="material-symbols-outlined">key</span>
         <kendo-textbox-separator></kendo-textbox-separator>
       </ng-template>
       <ng-template kendoTextBoxSuffixTemplate>
-        <span class="material-symbols-outlined toggle-password"
-          >visibility_off</span
+        <span
+          class="material-symbols-outlined toggle-password"
+          (click)="togglePass()"
+          >{{ passwordVisible ? "visibility" : "visibility_off" }}</span
         >
       </ng-template>
     </kendo-textbox>
