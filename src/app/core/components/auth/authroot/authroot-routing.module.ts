@@ -9,8 +9,16 @@ const routes: Routes = [
     path: 'auth',
     component: AuthrootComponent,
     children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'forgotpwd', component: ForgotpwdComponent },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { animation: 'loginPage' },
+      },
+      {
+        path: 'forgotpwd',
+        component: ForgotpwdComponent,
+        data: { animation: 'forgotPwdPage' },
+      },
     ],
   },
 ];
