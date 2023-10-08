@@ -25,7 +25,7 @@
 }
 
 .k-card {
-  height: 300px;
+  height: 400px;
   box-shadow: var(--default-shadow);
 }
 
@@ -55,4 +55,10 @@ form {
 
 kendo-formfield {
   margin-top: 2rem;
+}
+
+a {
+  font: var(--font-text-5);
+  font-weight: var(--medium);
+  color: var(--link-color);
 }

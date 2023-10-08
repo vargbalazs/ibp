@@ -16,3 +16,26 @@
 .label-input-sm {
   font: var(--font-text-6);
 }
+
+/* checkbox */
+
+.label-checkbox-lg .k-label,
+.label-checkbox-md .k-label,
+.label-checkbox-sm .k-label {
+  font-weight: var(--medium);
+  padding: 0.5rem;
+  position: relative;
+  top: 0.2rem;
+}
+
+.label-checkbox-lg {
+  font: var(--font-text-4);
+}
+
+.label-checkbox-md {
+  font: var(--font-text-5);
+}
+
+.label-checkbox-sm {
+  font: var(--font-text-6);
+}

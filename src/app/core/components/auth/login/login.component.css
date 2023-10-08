@@ -3,3 +3,9 @@
   cursor: pointer;
   color: var(--secondary-font-color);
 }
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}

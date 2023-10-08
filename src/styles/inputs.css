@@ -50,3 +50,29 @@
 .k-input-solid {
   border: 1px solid var(--input-border-color);
 }
+
+/* checkbox */
+
+.k-checkbox {
+  border-color: var(--input-border-color);
+}
+
+.k-checkbox:hover {
+  border-color: var(--input-border-hover-color);
+}
+
+.k-checkbox:focus,
+.k-checkbox.k-focus {
+  box-shadow: var(--input-focus-shadow);
+}
+
+.k-checkbox:checked,
+.k-checkbox.k-checked {
+  border-color: var(--checkbox-border-color);
+  background-color: var(--checkbox-background-color);
+}
+
+.k-checkbox:checked:focus,
+.k-checkbox.k-checked.k-focus {
+  box-shadow: var(--checkbox-focus-shadow);
+}
