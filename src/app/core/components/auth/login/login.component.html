@@ -1,6 +1,8 @@
-<p class="form-caption">Jelentkezz be a fiókodba</p>
-<p class="form-descr">Kérünk, add meg a helyes felhasználóneved és jelszavad</p>
 <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <p class="form-caption">Jelentkezz be a fiókodba</p>
+  <p class="form-descr">
+    Kérünk, add meg a helyes felhasználóneved és jelszavad
+  </p>
   <kendo-formfield>
     <kendo-label
       [for]="email"

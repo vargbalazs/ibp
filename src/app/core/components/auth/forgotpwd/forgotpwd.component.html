@@ -1,9 +1,9 @@
-<p class="form-caption">Jelszó visszaállítása</p>
-<p class="form-descr">
-  Kérünk, add meg az e-mail címedet, amivel regisztráltál, és küldjük az új
-  jelszót
-</p>
 <form [formGroup]="forgotPwdForm" (ngSubmit)="submitForm()">
+  <p class="form-caption">Jelszó visszaállítása</p>
+  <p class="form-descr">
+    Kérünk, add meg az e-mail címedet, amivel regisztráltál, és küldjük az új
+    jelszót
+  </p>
   <kendo-formfield>
     <kendo-label
       [for]="email"
@@ -12,7 +12,7 @@
     ></kendo-label>
     <kendo-textbox
       #email
-      size="large"
+      size="medium"
       fillMode="solid"
       formControlName="userEmail"
       placeholder="Add meg az e-mail címedet"
