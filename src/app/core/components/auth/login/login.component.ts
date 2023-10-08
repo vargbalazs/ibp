@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { AuthService } from 'src/app/core/services/auth.service';
 
@@ -20,7 +21,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   @ViewChild('password') passwordInput!: TextBoxComponent;
 
-  constructor(private authService: AuthService, private renderer2: Renderer2) {}
+  constructor(
+    private authService: AuthService,
+    private renderer2: Renderer2,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loginForm = this.initLoginForm();
@@ -52,6 +57,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
   togglePass() {
     this.authService.togglePass(this.passwordInput);
     this.passwordVisible = !this.passwordVisible;
+    return false;
+  }
+
+  showForgotPwdForm() {
+    this.router.navigate(['/auth/forgotpwd'], { skipLocationChange: true });
     return false;
   }
 
