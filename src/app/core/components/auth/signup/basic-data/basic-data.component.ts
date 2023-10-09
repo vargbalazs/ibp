@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserSignup } from 'src/app/core/models/user-signup.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -13,12 +14,16 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class BasicDataComponent implements OnInit {
   signupForm!: ReturnType<typeof this.initSignupForm>;
-  passwordVisible = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.signupForm = this.initSignupForm();
+
+    const user = this.authService.getNewUser();
+    if (user) {
+      this.signupForm.setValue(user);
+    }
   }
 
   initSignupForm() {
@@ -39,16 +44,17 @@ export class BasicDataComponent implements OnInit {
   submitForm() {
     this.signupForm.markAllAsTouched();
     if (this.signupForm.valid) {
-      const user = this.signupForm.value;
+      const user = <UserSignup>this.signupForm.value;
+      this.authService.setNewUser(user);
       this.router.navigate(['/auth/signup/login-data'], {
         skipLocationChange: true,
-        state: { user: user },
       });
     }
   }
 
   backToLogin() {
     this.router.navigate(['/auth/login'], { skipLocationChange: true });
+    this.authService.setNewUser(new UserSignup());
     return false;
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserSignup } from 'src/app/core/models/user-signup.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
@@ -13,21 +14,18 @@ import { AuthService } from 'src/app/core/services/auth.service';
 })
 export class LoginDataComponent implements OnInit {
   signupForm!: ReturnType<typeof this.initSignupForm>;
-  passwordVisible = false;
   userName = '';
   userEmail = '';
-  backToBasicData = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.signupForm = this.initSignupForm();
 
-    this.signupForm.statusChanges.subscribe((res) => {
-      if (this.signupForm.valid && !this.backToBasicData) {
-        this.submitForm();
-      }
-    });
+    const user = this.authService.getNewUser();
+    if (user) {
+      this.signupForm.setValue(user);
+    }
   }
 
   initSignupForm() {
@@ -49,13 +47,14 @@ export class LoginDataComponent implements OnInit {
     this.signupForm.markAllAsTouched();
     console.log('form submitted');
     if (this.signupForm.valid) {
-      const user = this.signupForm.value;
+      const user = <UserSignup>this.signupForm.value;
       console.log('form valid', user);
     }
   }
 
   backToLogin() {
     this.router.navigate(['/auth/login'], { skipLocationChange: true });
+    this.authService.setNewUser(new UserSignup());
     return false;
   }
 
@@ -66,11 +65,10 @@ export class LoginDataComponent implements OnInit {
     this.signupForm.controls.userEmail.setValue(
       this.userEmail ? this.userEmail : this.signupForm.controls.userEmail.value
     );
+    this.authService.setNewUser(<UserSignup>this.signupForm.value);
     this.router.navigate(['/auth/signup/basic-data'], {
       skipLocationChange: true,
-      state: { user: this.signupForm.value },
     });
-    this.backToBasicData = true;
     return false;
   }
 
