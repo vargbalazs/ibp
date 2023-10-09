@@ -1,8 +1,12 @@
 :root {
   --default-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
     rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+
   --input-focus-shadow: rgb(1, 114, 203) 0px 0px 0px 2px inset;
   --input-error-focus-shadow: #f04438 0px 0px 0px 2px inset;
+
   --checkbox-focus-shadow: 0 0 0 2px rgba(1, 114, 203, 0.3);
-  --button-focus-shadow: 0 0 0 2px rgba(0, 169, 145, 0.3);
+
+  --button-primary-focus-shadow: 0 0 0 2px rgba(0, 169, 145, 0.3);
+  --button-secondary-focus-shadow: 0 0 0 2px rgba(220, 227, 233, 0.3);
 }

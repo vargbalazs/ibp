@@ -18,4 +18,7 @@
   --button-primary-background-color: #00a991;
   --button-primary-hover-color: #009882;
   --button-primary-border-color: #00a991;
+  --button-secondary-background-color: #e8edf1;
+  --button-secondary-hover-color: #dce3e9;
+  --button-secondary-border-color: #e8edf1;
 }

@@ -3,7 +3,7 @@
 .k-button {
   border-radius: 4px;
   font: var(--font-text-5);
-  font-weight: var(--normal);
+  font-weight: var(--medium);
 }
 
 .k-button-lg {
@@ -33,5 +33,24 @@
 .k-button-solid-primary:focus,
 .k-button-solid-primary.k-focus {
   background: var(--button-primary-hover-color);
-  box-shadow: var(--button-focus-shadow);
+  box-shadow: var(--button-primary-focus-shadow);
+}
+
+/* secondary */
+
+.k-button-solid-secondary {
+  background: var(--button-secondary-background-color);
+  border-color: var(--button-secondary-border-color);
+  color: var(--default-font-color);
+}
+
+.k-button-solid-secondary:hover {
+  border-color: transparent;
+  background: var(--button-secondary-hover-color);
+}
+
+.k-button-solid-secondary:focus,
+.k-button-solid-secondary.k-focus {
+  background: var(--button-secondary-hover-color);
+  box-shadow: var(--button-secondary-focus-shadow);
 }
