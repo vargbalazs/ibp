@@ -23,6 +23,7 @@
     "@progress/kendo-angular-common": "13.5.0",
     "@progress/kendo-angular-dialog": "13.5.0",
     "@progress/kendo-angular-icons": "13.5.0",
+    "@progress/kendo-angular-indicators": "^13.5.0",
     "@progress/kendo-angular-inputs": "13.5.0",
     "@progress/kendo-angular-intl": "13.5.0",
     "@progress/kendo-angular-l10n": "13.5.0",
