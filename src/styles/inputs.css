@@ -39,6 +39,15 @@
   height: 1.4rem;
 }
 
+.k-input-validation-icon {
+  color: var(--input-success-color);
+}
+
+.k-loader-primary {
+  color: var(--input-focus-icon-color);
+  margin-right: 0.5rem;
+}
+
 /* solid */
 
 .k-input-solid:focus,
