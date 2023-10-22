@@ -44,6 +44,9 @@ export class LoginDataComponent implements OnInit {
   }
 
   submitForm() {
+    this.authService
+      .userNameExists(this.signupForm.controls.userName.value!)
+      .subscribe();
     this.signupForm.markAllAsTouched();
     console.log('form submitted');
     if (this.signupForm.valid) {
