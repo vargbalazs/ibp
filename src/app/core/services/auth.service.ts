@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { UserSignup } from '../models/user-signup.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { API_URL } from '../constants/api.constant';
 
 @Injectable()
 export class AuthService {
@@ -28,9 +29,14 @@ export class AuthService {
   }
 
   userNameExists(userName: string) {
-    return this.http.get<boolean>(
-      `https://ibp.onrender.com/users/username-exists`,
-      { params: new HttpParams().set('user-name', userName) }
-    );
+    return this.http.get<boolean>(`${API_URL}/users/username-exists`, {
+      params: new HttpParams().set('user-name', userName),
+    });
+  }
+
+  userEmailExists(userEmail: string) {
+    return this.http.get<boolean>(`${API_URL}/users/useremail-exists`, {
+      params: new HttpParams().set('user-email', userEmail),
+    });
   }
 }

@@ -16,10 +16,12 @@
 
   --link-color: #0172cb;
 
-  --button-primary-background-color: #00a991;
-  --button-primary-hover-color: #009882;
-  --button-primary-border-color: #00a991;
+  --button-primary-background-color: #2b7483;
+  --button-primary-hover-color: #225c68;
+  --button-primary-border-color: #2b7483;
   --button-secondary-background-color: #e8edf1;
   --button-secondary-hover-color: #dce3e9;
   --button-secondary-border-color: #e8edf1;
 }
+
+/*https://www.color-hex.com/color-palette/1014735*/
