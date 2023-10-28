@@ -68,6 +68,7 @@ export class LoginDataComponent implements OnInit {
     console.log('form submitted');
     if (this.signupForm.valid) {
       const user = <UserSignup>this.signupForm.value;
+      this.authService.signUp(user).subscribe((res) => console.log(res));
       console.log('form valid', user);
     }
   }

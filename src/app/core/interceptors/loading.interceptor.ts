@@ -7,6 +7,7 @@ import {
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { USE_LOADING_SPINNER } from '../constants/app.constants';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
@@ -16,7 +17,7 @@ export class LoadingInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    this.loaderService.show();
+    if (req.context.get(USE_LOADING_SPINNER)) this.loaderService.show();
 
     return new Observable((observer) => {
       next.handle(req).subscribe({

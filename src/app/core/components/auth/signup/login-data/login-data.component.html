@@ -89,6 +89,7 @@
     fillMode="solid"
     size="large"
     class="loader-button"
+    [disabled]="(isBusy | async)!"
   >
     <kendo-loader
       size="small"

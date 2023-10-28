@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { UserSignup } from '../models/user-signup.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { API_URL } from '../constants/api.constant';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
+import { API_URL, USE_LOADING_SPINNER } from '../constants/app.constants';
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 
@@ -33,12 +33,14 @@ export class AuthService {
   userNameExists(userName: string) {
     return this.http.get<boolean>(`${API_URL}/users/username-exists`, {
       params: new HttpParams().set('user-name', userName),
+      context: new HttpContext().set(USE_LOADING_SPINNER, false),
     });
   }
 
   userEmailExists(userEmail: string) {
     return this.http.get<boolean>(`${API_URL}/users/useremail-exists`, {
       params: new HttpParams().set('user-email', userEmail),
+      context: new HttpContext().set(USE_LOADING_SPINNER, false),
     });
   }
 
@@ -64,5 +66,9 @@ export class AuthService {
         }
       });
     });
+  }
+
+  signUp(user: UserSignup) {
+    return this.http.post<UserSignup>(`${API_URL}/users`, user);
   }
 }
