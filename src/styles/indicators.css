@@ -1,0 +1,14 @@
+.k-loader-primary {
+  color: var(--loader-color-input);
+  margin-right: 0.5rem;
+}
+
+.k-button-solid-primary .k-loader-primary {
+  color: var(--loader-color-button);
+  position: absolute;
+  right: 100%;
+}
+
+.k-button-solid-primary .k-loader-primary.hide-loader {
+  display: none;
+}

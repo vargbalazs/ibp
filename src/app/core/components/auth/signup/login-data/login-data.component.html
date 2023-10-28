@@ -88,8 +88,14 @@
     themeColor="primary"
     fillMode="solid"
     size="large"
+    class="loader-button"
   >
-    Regisztráció
+    <kendo-loader
+      size="small"
+      type="infinite-spinner"
+      [ngClass]="{ 'hide-loader': !(isBusy | async) }"
+    ></kendo-loader>
+    <span class="button-text">Regisztráció</span>
   </button>
   <button
     kendoButton

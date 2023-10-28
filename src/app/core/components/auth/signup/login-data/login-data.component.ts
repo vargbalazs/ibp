@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { UserSignup } from 'src/app/core/models/user-signup.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'app-login-data',
@@ -17,8 +19,15 @@ export class LoginDataComponent implements OnInit {
   userName = '';
   userEmail = '';
   backToBasicData = false;
+  isBusy: BehaviorSubject<boolean>;
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private loaderService: LoaderService
+  ) {
+    this.isBusy = this.loaderService.isLoading;
+  }
 
   ngOnInit(): void {
     this.signupForm = this.initSignupForm();

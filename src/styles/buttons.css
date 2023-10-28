@@ -36,6 +36,10 @@
   box-shadow: var(--button-primary-focus-shadow);
 }
 
+.loader-button .k-button-text {
+  position: relative;
+}
+
 /* secondary */
 
 .k-button-solid-secondary {
