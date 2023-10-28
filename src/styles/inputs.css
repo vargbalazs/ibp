@@ -72,9 +72,9 @@
   color: var(--input-error-color);
 }
 
-.k-input-solid.k-invalid:hover,
-.k-input-solid.ng-invalid.ng-touched:hover,
-.k-input-solid.ng-invalid.ng-dirty:hover {
+.k-input-solid:not(:focus-within).k-invalid:hover,
+.k-input-solid:not(:focus-within).ng-invalid.ng-touched:hover,
+.k-input-solid:not(:focus-within).ng-invalid.ng-dirty:hover {
   border-color: var(--input-error-border-hover-color);
 }
 

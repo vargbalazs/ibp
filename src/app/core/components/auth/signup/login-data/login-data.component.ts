@@ -16,6 +16,7 @@ export class LoginDataComponent implements OnInit {
   signupForm!: ReturnType<typeof this.initSignupForm>;
   userName = '';
   userEmail = '';
+  backToBasicData = false;
 
   constructor(private router: Router, private authService: AuthService) {}
 
@@ -26,6 +27,10 @@ export class LoginDataComponent implements OnInit {
     if (user) {
       this.signupForm.setValue(user);
     }
+
+    this.signupForm.statusChanges.pipe().subscribe((status) => {
+      if (status === 'VALID' && !this.backToBasicData) this.submitForm();
+    });
   }
 
   initSignupForm() {
@@ -34,22 +39,22 @@ export class LoginDataComponent implements OnInit {
       lastName: new FormControl('', [Validators.required]),
       userName: new FormControl('', {
         validators: [Validators.required],
+        asyncValidators: [
+          this.authService.checkUserName.bind(this.authService),
+        ],
         updateOn: 'submit',
       }),
       userEmail: new FormControl('', {
         validators: [Validators.required, Validators.email],
+        asyncValidators: [
+          this.authService.checkUserEmail.bind(this.authService),
+        ],
         updateOn: 'submit',
       }),
     });
   }
 
   submitForm() {
-    this.authService
-      .userNameExists(this.signupForm.controls.userName.value!)
-      .subscribe();
-    this.authService
-      .userEmailExists(this.signupForm.controls.userEmail.value!)
-      .subscribe();
     this.signupForm.markAllAsTouched();
     console.log('form submitted');
     if (this.signupForm.valid) {
@@ -75,6 +80,7 @@ export class LoginDataComponent implements OnInit {
     this.router.navigate(['/auth/signup/basic-data'], {
       skipLocationChange: true,
     });
+    this.backToBasicData = true;
     return false;
   }
 

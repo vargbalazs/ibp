@@ -20,7 +20,17 @@
         <span class="material-symbols-outlined">person</span>
         <kendo-textbox-separator></kendo-textbox-separator>
       </ng-template>
-      <ng-template kendoTextBoxSuffixTemplate> </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-loader
+          *ngIf="
+          !signupForm.controls.userName.errors?.['required'] &&
+          !signupForm.controls.userName.errors?.['userNameIsAlreadyInUse'] &&
+          !signupForm.controls.userName.valid
+        "
+          size="small"
+          type="infinite-spinner"
+        ></kendo-loader>
+      </ng-template>
     </kendo-textbox>
     <kendo-formerror *ngIf="signupForm.controls.userName.errors?.['required']"
       >Kötelező mező</kendo-formerror
@@ -49,7 +59,17 @@
         <span class="material-symbols-outlined">mail</span>
         <kendo-textbox-separator></kendo-textbox-separator>
       </ng-template>
-      <ng-template kendoTextBoxSuffixTemplate> </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-loader
+          *ngIf="
+            !signupForm.controls.userEmail.errors?.['required'] &&
+            !signupForm.controls.userEmail.errors?.['userEmailIsAlreadyInUse'] &&
+            !signupForm.controls.userEmail.valid
+          "
+          size="small"
+          type="infinite-spinner"
+        ></kendo-loader>
+      </ng-template>
     </kendo-textbox>
     <kendo-formerror *ngIf="signupForm.controls.userEmail.errors?.['required']"
       >Kötelező mező</kendo-formerror
