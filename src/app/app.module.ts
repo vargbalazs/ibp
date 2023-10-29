@@ -9,6 +9,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { CustomNofityModule } from './shared/components/custom-notify/custom-notify.module';
 import { NotificationService } from '@progress/kendo-angular-notification';
+import { LayoutModule } from './core/components/layout/layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +20,7 @@ import { NotificationService } from '@progress/kendo-angular-notification';
     BrowserAnimationsModule,
     HttpClientModule,
     CustomNofityModule,
+    LayoutModule,
   ],
   providers: [
     NotificationService,
