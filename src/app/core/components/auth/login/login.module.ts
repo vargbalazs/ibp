@@ -5,6 +5,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonsModule,
     LabelModule,
     ReactiveFormsModule,
+    IndicatorsModule,
   ],
   exports: [LoginComponent],
 })

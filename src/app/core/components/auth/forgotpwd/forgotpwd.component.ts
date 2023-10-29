@@ -57,15 +57,14 @@ export class ForgotpwdComponent implements OnInit {
             return of();
           })
         )
-        .subscribe({
-          next: () =>
-            this.customNotifyService.showNotification(
-              5000,
-              'success',
-              'Elfelejtett jelszó',
-              'Az új jelszót elküldtük a megadott e-mail címre.'
-            ),
-        });
+        .subscribe((res) =>
+          this.customNotifyService.showNotification(
+            5000,
+            'success',
+            'Elfelejtett jelszó',
+            'Az új jelszót elküldtük a megadott e-mail címre.'
+          )
+        );
     }
   }
 

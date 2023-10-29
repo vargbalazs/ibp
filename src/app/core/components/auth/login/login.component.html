@@ -78,8 +78,15 @@
     themeColor="primary"
     fillMode="solid"
     size="large"
+    class="loader-button"
+    [disabled]="(isBusy | async)!"
   >
-    Bejelentkezés
+    <kendo-loader
+      size="small"
+      type="infinite-spinner"
+      [ngClass]="{ 'hide-loader': !(isBusy | async) }"
+    ></kendo-loader>
+    <span class="button-text">Bejelentkezés</span>
   </button>
   <div class="footer">
     <p class="form-descr">

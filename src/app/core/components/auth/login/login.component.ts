@@ -8,7 +8,11 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
+import { BehaviorSubject, catchError, of } from 'rxjs';
+import { UserLogin } from 'src/app/core/models/user-login.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LoaderService } from 'src/app/shared/services/loader.service';
+import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-login',
@@ -18,14 +22,19 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class LoginComponent implements OnInit, AfterViewInit {
   loginForm!: ReturnType<typeof this.initLoginForm>;
   passwordVisible = false;
+  isBusy: BehaviorSubject<boolean>;
 
   @ViewChild('password') passwordInput!: TextBoxComponent;
 
   constructor(
     private authService: AuthService,
     private renderer2: Renderer2,
-    private router: Router
-  ) {}
+    private router: Router,
+    private loaderService: LoaderService,
+    private customNotifyService: CustomNotificationService
+  ) {
+    this.isBusy = this.loaderService.isLoading;
+  }
 
   ngOnInit(): void {
     this.loginForm = this.initLoginForm();
@@ -75,7 +84,32 @@ export class LoginComponent implements OnInit, AfterViewInit {
   submitForm() {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.valid) {
-      const user = this.loginForm.value;
+      const user = new UserLogin(
+        this.loginForm.controls.userEmail.value!,
+        this.loginForm.controls.password.value!
+      );
+      this.authService
+        .login(user)
+        .pipe(
+          catchError((err) => {
+            this.customNotifyService.showNotification(
+              5000,
+              'error',
+              'Bejelentkezés',
+              'Hibás e-mail cím vagy jelszó.'
+            );
+            return of();
+          })
+        )
+        .subscribe((res) => {
+          console.log(res);
+          this.customNotifyService.showNotification(
+            5000,
+            'success',
+            'Bejelentkezés',
+            'A bejelentkezés sikeres.'
+          );
+        });
     }
   }
 }
