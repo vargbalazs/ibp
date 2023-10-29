@@ -1,0 +1,29 @@
+<kendo-appbar
+  position="top"
+  positionsMode="sticky"
+  (click)="appBarClicked($event)"
+>
+  <kendo-appbar-section class="app-bar-icons hamburger">
+    <span
+      id="toggleBtn"
+      class="material-symbols-outlined"
+      (click)="toggleNavbar()"
+      >menu</span
+    >
+  </kendo-appbar-section>
+  <kendo-appbar-section>
+    <div class="appbar-btn" (click)="goHome()">Home</div>
+  </kendo-appbar-section>
+  <kendo-appbar-section>
+    <div class="appbar-btn" (click)="showAdminArea()">Admin</div>
+  </kendo-appbar-section>
+  <kendo-appbar-spacer></kendo-appbar-spacer>
+  <kendo-appbar-section class="app-bar-icons">
+    <span class="material-symbols-outlined">language</span>
+    <span class="material-symbols-outlined">search</span>
+    <span class="material-symbols-outlined">notifications</span>
+  </kendo-appbar-section>
+  <kendo-appbar-section>
+    <kendo-avatar initials="VB" size="medium"></kendo-avatar>
+  </kendo-appbar-section>
+</kendo-appbar>
