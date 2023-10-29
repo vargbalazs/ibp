@@ -1,0 +1,34 @@
+<kendo-textbox
+  #searchBox
+  (valueChange)="filterTerm = $event"
+  [clearButton]="true"
+  placeholder="Keresés..."
+  size="medium"
+  fillMode="outline"
+  (click)="searchBoxClicked()"
+>
+  <ng-template kendoTextBoxPrefixTemplate>
+    <span class="material-symbols-outlined">search</span>
+  </ng-template>
+</kendo-textbox>
+<kendo-treeview
+  #treeview
+  [filter]="filterTerm"
+  [nodes]="menuItems"
+  textField="text"
+  kendoTreeViewHierarchyBinding
+  childrenField="items"
+  kendoTreeViewExpandable
+  [(expandedKeys)]="expandedKeys"
+  kendoTreeViewSelectable
+  [(selectedKeys)]="selectedKeys"
+  [animate]="true"
+  [expandOnFilter]="true"
+  (nodeClick)="nodeClick($event)"
+  [isExpanded]="isItemExpanded"
+>
+  <ng-template kendoTreeViewNodeTemplate let-dataItem>
+    <span class="material-symbols-outlined">{{ dataItem.icon }}</span>
+    <div>{{ dataItem.text }}</div>
+  </ng-template>
+</kendo-treeview>
