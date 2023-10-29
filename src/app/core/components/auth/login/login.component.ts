@@ -102,13 +102,13 @@ export class LoginComponent implements OnInit, AfterViewInit {
           })
         )
         .subscribe((res) => {
-          console.log(res);
           this.customNotifyService.showNotification(
             5000,
             'success',
             'Bejelentkezés',
             'A bejelentkezés sikeres.'
           );
+          this.router.navigate(['home'], { skipLocationChange: true });
         });
     }
   }
