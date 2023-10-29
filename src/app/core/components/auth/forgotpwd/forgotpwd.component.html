@@ -36,8 +36,15 @@
     themeColor="primary"
     fillMode="solid"
     size="large"
+    class="loader-button"
+    [disabled]="(isBusy | async)!"
   >
-    Jelszó visszaállítása
+    <kendo-loader
+      size="small"
+      type="infinite-spinner"
+      [ngClass]="{ 'hide-loader': !(isBusy | async) }"
+    ></kendo-loader>
+    <span class="button-text">Jelszó visszaállítása</span>
   </button>
   <div class="footer">
     <p class="form-descr">

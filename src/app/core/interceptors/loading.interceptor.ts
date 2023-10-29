@@ -5,7 +5,7 @@ import {
   HttpRequest,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { USE_LOADING_SPINNER } from '../constants/app.constants';
 
@@ -22,7 +22,10 @@ export class LoadingInterceptor implements HttpInterceptor {
     return new Observable((observer) => {
       next.handle(req).subscribe({
         next: (res) => observer.next(res),
-        error: () => this.loaderService.hide(),
+        error: (error) => {
+          this.loaderService.hide();
+          observer.error(error);
+        },
         complete: () => this.loaderService.hide(),
       });
     });

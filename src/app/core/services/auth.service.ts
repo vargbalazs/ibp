@@ -5,6 +5,7 @@ import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { API_URL, USE_LOADING_SPINNER } from '../constants/app.constants';
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { HttpErrorResponse } from '../interfaces/http-error-response.interface';
 
 @Injectable()
 export class AuthService {
@@ -70,5 +71,11 @@ export class AuthService {
 
   signUp(user: UserSignup) {
     return this.http.post<UserSignup>(`${API_URL}/users`, user);
+  }
+
+  forgotPwd(userEmail: string) {
+    return this.http.get<HttpErrorResponse>(`${API_URL}/auth/forgotpwd`, {
+      params: new HttpParams().set('user-email', userEmail),
+    });
   }
 }
