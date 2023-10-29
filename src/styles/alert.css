@@ -1,0 +1,103 @@
+.k-notification-content {
+  font: var(--font-text-4);
+}
+
+.k-notification {
+  box-shadow: var(--default-shadow);
+  padding: 0;
+}
+
+.k-notification-group .k-notification {
+  border: 1px solid transparent;
+  background-color: var(--notification-background-color);
+}
+
+.k-notification-container {
+  margin: 2rem;
+}
+
+.custom-notification-title {
+  font: var(--font-text-4);
+  font-weight: var(--medium);
+  color: var(--default-font-color);
+  margin-bottom: 0.25rem;
+}
+
+.custom-notification-icon-container {
+  align-self: center;
+  margin: 1rem;
+}
+
+.custom-notification-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40rem;
+  height: 8rem;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+}
+
+.custom-notification-text {
+  flex: 1;
+  font: var(--font-text-6);
+  color: var(--secondary-font-color);
+}
+
+.custom-notification-success {
+  color: var(--success-color);
+}
+
+.custom-notification-warning {
+  color: var(--warning-color);
+}
+
+.custom-notification-info {
+  color: var(--info-color);
+}
+
+.custom-notification-error {
+  color: var(--error-color);
+}
+
+.custom-notification-bar {
+  width: 0.4rem;
+  height: 100%;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  margin-left: -0.1rem;
+}
+
+.custom-notification-bar-success {
+  background-color: var(--success-color);
+}
+
+.custom-notification-bar-warning {
+  background-color: var(--warning-color);
+}
+
+.custom-notification-bar-info {
+  background-color: var(--info-color);
+}
+
+.custom-notification-bar-error {
+  background-color: var(--error-color);
+}
+
+.close-btn {
+  cursor: pointer;
+  border: none;
+  width: 3rem;
+  height: 101.2%;
+  margin-top: -0.01rem;
+  margin-right: -0.04rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  background-color: var(--notification-close-button-background-color);
+  color: var(--default-font-color);
+  font: var(--font-text-5);
+}
+
+.close-btn:hover {
+  background-color: var(--notification-close-button-hover-background-color);
+}

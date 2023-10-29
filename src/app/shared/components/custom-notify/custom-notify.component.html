@@ -1,0 +1,28 @@
+<div class="custom-notification-content">
+  <div class="custom-notification-bar" [ngClass]="barClass"></div>
+  <div
+    class="custom-notification-icon-container"
+    [ngSwitch]="type"
+    [ngClass]="iconClass"
+  >
+    <span class="material-symbols-outlined" *ngSwitchCase="'success'"
+      >check_circle</span
+    >
+    <span class="material-symbols-outlined" *ngSwitchCase="'warning'">
+      warning
+    </span>
+    <span class="material-symbols-outlined" *ngSwitchCase="'info'">info</span>
+    <span class="material-symbols-outlined" *ngSwitchCase="'error'">
+      error
+    </span>
+  </div>
+  <div class="custom-notification-text">
+    <div class="custom-notification-title">{{ title }}</div>
+    <div>
+      {{ descr }}
+    </div>
+  </div>
+  <button class="close-btn" (click)="closeNotification($event)">
+    X
+  </button>
+</div>

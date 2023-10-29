@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { UserSignup } from 'src/app/core/models/user-signup.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-login-data',
@@ -24,7 +25,8 @@ export class LoginDataComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private customNotifyService: CustomNotificationService
   ) {
     this.isBusy = this.loaderService.isLoading;
   }
@@ -65,11 +67,17 @@ export class LoginDataComponent implements OnInit {
 
   submitForm() {
     this.signupForm.markAllAsTouched();
-    console.log('form submitted');
     if (this.signupForm.valid) {
       const user = <UserSignup>this.signupForm.value;
-      this.authService.signUp(user).subscribe((res) => console.log(res));
-      console.log('form valid', user);
+      this.authService.signUp(user).subscribe((res) => {
+        this.backToLogin();
+        this.customNotifyService.showNotification(
+          5000,
+          'success',
+          'Regisztráció',
+          'A regisztráció sikeres volt. A bejelentkezéshez szükséges jelszót elküldtük a megadott e-mail címre.'
+        );
+      });
     }
   }
 

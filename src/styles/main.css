@@ -5,6 +5,7 @@
 @import "buttons.css";
 @import "form.css";
 @import "indicators.css";
+@import "alert.css";
 
 body {
   margin: 0;

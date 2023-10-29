@@ -26,6 +26,15 @@
 
   --loader-color-input: #0172cb;
   --loader-color-button: #ffffff;
+
+  --success-color: #12b76a;
+  --error-color: #f04438;
+  --warning-color: #f79009;
+  --info-color: #0172cb;
+
+  --notification-background-color: rgba(245, 245, 245, 0.4);
+  --notification-close-button-background-color: rgba(245, 245, 245, 0.7);
+  --notification-close-button-hover-background-color: rgb(245, 245, 245);
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/

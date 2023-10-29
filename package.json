@@ -29,6 +29,7 @@
     "@progress/kendo-angular-l10n": "13.5.0",
     "@progress/kendo-angular-label": "^13.5.0",
     "@progress/kendo-angular-layout": "^13.5.0",
+    "@progress/kendo-angular-notification": "^13.5.0",
     "@progress/kendo-angular-popup": "13.5.0",
     "@progress/kendo-angular-progressbar": "13.5.0",
     "@progress/kendo-angular-upload": "13.5.0",
