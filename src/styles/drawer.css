@@ -1,0 +1,109 @@
+.k-drawer {
+  z-index: 2;
+}
+
+.k-drawer-container {
+  height: 100%;
+  display: flex;
+  background-color: white;
+}
+
+.k-drawer-content {
+  align-self: stretch;
+  overflow: auto;
+}
+
+.drawer-content {
+  background-color: #ffffff;
+  height: 100%;
+  overflow: auto;
+  padding: 1rem;
+}
+
+/* treeview in drawer */
+
+.k-drawer-wrapper .k-treeview {
+  overflow-x: hidden;
+  color: var(--default-font-color);
+}
+
+.k-drawer-wrapper .k-treeview-toggle {
+  order: 2;
+  z-index: 2;
+}
+
+.k-drawer-wrapper .k-treeview-toggle:has(+ .k-treeview-leaf.k-selected) {
+  color: #ffffff;
+}
+
+.k-drawer-wrapper .k-treeview-leaf {
+  flex: 0 0 100%;
+  padding-left: 0.3rem;
+}
+
+.k-drawer-wrapper .k-treeview-leaf .material-symbols-outlined {
+  color: inherit;
+  padding: 0.5rem;
+  margin-right: 1rem;
+}
+
+.k-drawer-mini
+  .k-drawer-wrapper
+  .k-treeview-leaf
+  .material-symbols-outlined:hover {
+  background: var(--primary-color);
+  border-radius: 0.4rem;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.k-drawer-wrapper .k-treeview-leaf-text {
+  display: flex;
+  align-items: center;
+}
+
+.k-drawer-wrapper .k-treeview-item[aria-level="1"] {
+  padding: 0.5rem 1rem 0.5rem 1.3rem;
+}
+
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-top:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-mid:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-bot:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-selected:hover {
+  background: var(--primary-color);
+  border-radius: 0.4rem;
+  color: #ffffff;
+  font-weight: var(--medium);
+  cursor: pointer;
+}
+
+.k-drawer-mini .k-drawer-wrapper .k-treeview-leaf:hover,
+.k-drawer-mini .k-drawer-wrapper .k-treeview-leaf.k-hover,
+.k-drawer-mini .k-drawer-wrapper .k-treeview-leaf.k-selected:hover {
+  background: transparent;
+}
+
+.k-drawer-wrapper .k-treeview-leaf:focus,
+.k-treeview-leaf.k-focus {
+  box-shadow: none;
+  border: 1px solid transparent;
+}
+
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-selected:hover {
+  background: var(--primary-color);
+  color: #ffffff;
+  font-weight: var(--medium);
+}
+
+/* search box */
+
+.k-drawer-wrapper kendo-textbox {
+  margin-left: 1.3rem;
+  width: calc(100% - 2.4rem);
+}
+
+.k-drawer-mini .k-drawer-wrapper kendo-textbox {
+  cursor: pointer;
+}
