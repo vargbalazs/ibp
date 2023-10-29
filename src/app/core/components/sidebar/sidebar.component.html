@@ -1,0 +1,19 @@
+<kendo-drawer-container>
+  <kendo-drawer
+    #drawer
+    [mini]="true"
+    [expanded]="false"
+    [miniWidth]="62"
+    [autoCollapse]="false"
+    mode="push"
+  >
+    <ng-template kendoDrawerTemplate>
+      <app-sidemenu></app-sidemenu>
+    </ng-template>
+  </kendo-drawer>
+  <kendo-drawer-content (click)="drawerContentClicked()">
+    <div class="drawer-content">
+      <!-- <router-outlet></router-outlet> -->
+    </div>
+  </kendo-drawer-content>
+</kendo-drawer-container>
