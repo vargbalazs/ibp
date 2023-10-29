@@ -1,0 +1,10 @@
+.k-avatar {
+  font: var(--font-text-3);
+  font-weight: var(--semi-bold);
+  cursor: pointer;
+}
+
+.k-avatar-solid-primary {
+  color: #ffffff;
+  background: var(--secondary-color);
+}

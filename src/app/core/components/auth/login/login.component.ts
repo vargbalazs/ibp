@@ -108,7 +108,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
             'Bejelentkezés',
             'A bejelentkezés sikeres.'
           );
-          this.router.navigate(['home'], { skipLocationChange: true });
+          this.router.navigate(['/home'], { skipLocationChange: true });
         });
     }
   }

@@ -1,0 +1,22 @@
+.k-appbar-light {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  box-shadow: var(--default-shadow);
+  height: 7rem;
+  z-index: 2;
+  position: relative;
+}
+
+.app-bar-icons .material-symbols-outlined {
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.app-bar-icons .material-symbols-outlined:hover {
+  background-color: var(--appbar-hover-background-color);
+  border-radius: 0.8rem;
+}
+
+.app-bar-icons.hamburger {
+  margin-left: 0.8rem;
+}

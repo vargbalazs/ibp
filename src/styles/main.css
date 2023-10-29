@@ -6,6 +6,8 @@
 @import "form.css";
 @import "indicators.css";
 @import "alert.css";
+@import "appbar.css";
+@import "avatar.css";
 
 body {
   margin: 0;

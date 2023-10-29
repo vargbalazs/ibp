@@ -2,6 +2,9 @@
   --default-font-color: #252a31;
   --secondary-font-color: #4f5e71;
 
+  --primary-color: #2b7483;
+  --secondary-color: #80b3ba;
+
   --input-focus-background-color: #e8f4fd;
   --input-border-color: #bac7d5;
   --input-border-hover-color: rgba(0, 0, 0, 0.16);
@@ -35,6 +38,8 @@
   --notification-background-color: rgba(245, 245, 245, 0.4);
   --notification-close-button-background-color: rgba(245, 245, 245, 0.7);
   --notification-close-button-hover-background-color: rgb(245, 245, 245);
+
+  --appbar-hover-background-color: #80b3ba66;
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/

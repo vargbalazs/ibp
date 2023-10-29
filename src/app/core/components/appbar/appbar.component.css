@@ -2,12 +2,21 @@
   cursor: pointer;
   font: var(--font-text-5);
   font-weight: var(--medium);
-  color: var(--p-grey-500);
   padding: 0.5rem;
 }
 
 .appbar-btn:hover {
-  color: var(--p-blue-500);
-  background-color: var(--p-blue-50);
-  border-radius: 6px;
+  background-color: var(--appbar-hover-background-color);
+  border-radius: 0.8rem;
+}
+
+.logo-symbol {
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 1rem;
+}
+
+.logo-text {
+  font: var(--font-text-5);
+  font-weight: var(--semi-bold);
 }
