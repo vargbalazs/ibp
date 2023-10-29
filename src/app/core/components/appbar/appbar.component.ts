@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { LayoutService } from '../../services/layout.service';
 
 @Component({
   selector: 'app-bar',
@@ -7,11 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./appbar.component.css'],
 })
 export class AppbarComponent {
-  constructor(private router: Router) {}
+  constructor(private layoutService: LayoutService, private router: Router) {}
 
-  toggleNavbar() {}
+  toggleNavbar() {
+    this.layoutService.toggleNavBarPanel();
+  }
 
-  appBarClicked(e: any) {}
+  appBarClicked(e: any) {
+    if (e.target.id !== 'toggleBtn')
+      if (this.layoutService.navbarIsOpen)
+        this.layoutService.toggleNavBarPanel();
+  }
 
   showAdminArea() {
     this.router.navigate(['admin/root'], { skipLocationChange: true });
