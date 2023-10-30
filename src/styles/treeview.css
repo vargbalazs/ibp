@@ -14,27 +14,10 @@
   border: 1px solid transparent;
 }
 
-/* .k-treeview-toggle {
-  color: var(--secondary-font-color);
-} */
-
 .k-treeview-leaf.k-selected {
   background: #ffffff;
-  color: var(--default-font-color);
+  color: var(--primary-color);
+  background-color: var(--appbar-hover-background-color);
   font-weight: var(--medium);
-  border-left: 0.2rem solid red;
-}
-
-.k-treeview-toggle .k-i-caret-alt-right::before {
-  content: "\e014";
-}
-
-.k-treeview-lg .k-i-caret-alt-right::before,
-.k-treeview-lg .k-i-caret-alt-down::before {
-  font-size: 2rem;
-}
-
-.k-treeview-sm .k-i-caret-alt-right::before,
-.k-treeview-sm .k-i-caret-alt-down::before {
-  font-size: 1.4rem;
+  border-left: 0.2rem solid var(--primary-color);
 }

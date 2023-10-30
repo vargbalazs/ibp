@@ -1,5 +1,6 @@
 .k-drawer {
   z-index: 2;
+  padding-top: 1rem;
 }
 
 .k-drawer-container {
@@ -33,6 +34,14 @@
 }
 
 .k-drawer-wrapper .k-treeview-toggle:has(+ .k-treeview-leaf.k-selected) {
+  color: var(--primary-color);
+}
+
+.k-drawer-wrapper .k-treeview-toggle:has(+ .k-treeview-leaf.k-selected:hover) {
+  color: #ffffff;
+}
+
+.k-drawer-wrapper .k-treeview-toggle:has(+ .k-treeview-leaf.k-selected):hover {
   color: #ffffff;
 }
 
@@ -70,13 +79,21 @@
 .k-drawer-expanded .k-drawer-wrapper .k-treeview-mid:hover,
 .k-drawer-expanded .k-drawer-wrapper .k-treeview-bot:hover,
 .k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf:hover,
-.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-hover,
-.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-selected:hover {
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-hover {
   background: var(--primary-color);
   border-radius: 0.4rem;
   color: #ffffff;
   font-weight: var(--medium);
   cursor: pointer;
+}
+
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-top:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-mid:hover,
+.k-drawer-expanded .k-drawer-wrapper .k-treeview-bot:hover {
+  .k-treeview-leaf.k-selected {
+    color: #ffffff;
+    background: var(--primary-color);
+  }
 }
 
 .k-drawer-mini .k-drawer-wrapper .k-treeview-leaf:hover,
@@ -89,12 +106,6 @@
 .k-treeview-leaf.k-focus {
   box-shadow: none;
   border: 1px solid transparent;
-}
-
-.k-drawer-expanded .k-drawer-wrapper .k-treeview-leaf.k-selected:hover {
-  background: var(--primary-color);
-  color: #ffffff;
-  font-weight: var(--medium);
 }
 
 /* search box */

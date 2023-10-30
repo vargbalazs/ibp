@@ -2,6 +2,7 @@ import { Component, OnDestroy, ViewChild } from '@angular/core';
 import { DrawerComponent } from '@progress/kendo-angular-layout';
 import { Subscription } from 'rxjs';
 import { LayoutService } from '../../services/layout.service';
+import { SidemenuComponent } from '../sidemenu/sidemenu.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,6 +13,7 @@ export class SidebarComponent implements OnDestroy {
   toggleNavbar$: Subscription;
 
   @ViewChild('drawer') drawer!: DrawerComponent;
+  @ViewChild('sideMenu') sideMenu!: SidemenuComponent;
 
   constructor(private layoutService: LayoutService) {
     this.toggleNavbar$ = this.layoutService.toggleNavbar$.subscribe(() => {
@@ -20,7 +22,10 @@ export class SidebarComponent implements OnDestroy {
   }
 
   drawerContentClicked() {
-    if (this.layoutService.navbarIsOpen) this.layoutService.toggleNavBarPanel();
+    if (this.layoutService.navbarIsOpen) {
+      this.layoutService.toggleNavBarPanel();
+      this.sideMenu.searchBox.blur();
+    }
   }
 
   ngOnDestroy(): void {
