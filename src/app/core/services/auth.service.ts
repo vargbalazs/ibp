@@ -83,4 +83,8 @@ export class AuthService {
   login(user: UserLogin) {
     return this.http.post<UserLogin>(`${API_URL}/auth/login`, user);
   }
+
+  logout() {
+    return this.http.get(`${API_URL}/auth/logout`, { withCredentials: true });
+  }
 }
