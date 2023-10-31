@@ -10,6 +10,7 @@ import { LoadingInterceptor } from './core/interceptors/loading.interceptor';
 import { CustomNofityModule } from './shared/components/custom-notify/custom-notify.module';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { LayoutModule } from './core/components/layout/layout.module';
+import { WithCredentialsInterceptor } from './core/interceptors/with-credentials.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +26,11 @@ import { LayoutModule } from './core/components/layout/layout.module';
   providers: [
     NotificationService,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WithCredentialsInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

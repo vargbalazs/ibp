@@ -35,9 +35,9 @@
   --warning-color: #f79009;
   --info-color: #0172cb;
 
-  --notification-background-color: rgba(245, 245, 245, 0.4);
-  --notification-close-button-background-color: rgba(245, 245, 245, 0.7);
-  --notification-close-button-hover-background-color: rgb(245, 245, 245);
+  --notification-background-color: #f8f8ff;
+  --notification-close-button-background-color: #f5f5f5b3;
+  --notification-close-button-hover-background-color: #f5f5f5;
 
   --appbar-hover-background-color: #80b3ba66;
 }
