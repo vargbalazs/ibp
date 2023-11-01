@@ -26,11 +26,6 @@ import { WithCredentialsInterceptor } from './core/interceptors/with-credentials
   providers: [
     NotificationService,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: WithCredentialsInterceptor,
-      multi: true,
-    },
   ],
   bootstrap: [AppComponent],
 })
