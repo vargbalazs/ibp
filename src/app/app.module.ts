@@ -11,6 +11,7 @@ import { CustomNofityModule } from './shared/components/custom-notify/custom-not
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { LayoutModule } from './core/components/layout/layout.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     HttpClientModule,
     CustomNofityModule,
     LayoutModule,
+    FeaturesModule,
   ],
   providers: [
     NotificationService,
