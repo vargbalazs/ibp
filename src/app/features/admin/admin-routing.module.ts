@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/core/components/layout/layout.component';
 import { RootComponent } from './components/root/root.component';
 // import { UserListComponent } from './components/user/list/list.component';
-// import { ActionListComponent } from './components/action/list/list.component';
+import { ActionListComponent } from './components/action/list/list.component';
 // import { ModuleRootComponent } from './components/module/root/root.component';
 // import { OperationRootComponent } from './components/operation/root/root.component';
 // import { PrivilegeListComponent } from './components/privileges/list/list.component';
@@ -22,10 +22,10 @@ const routes: Routes = [
       //     path: 'admin/users',
       //     component: UserListComponent,
       //   },
-      //   {
-      //     path: 'admin/actions',
-      //     component: ActionListComponent,
-      //   },
+      {
+        path: 'admin/actions',
+        component: ActionListComponent,
+      },
       //   {
       //     path: 'admin/modules',
       //     component: ModuleRootComponent,

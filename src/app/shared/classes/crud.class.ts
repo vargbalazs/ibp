@@ -41,9 +41,8 @@ export abstract class Crud<T extends { id: number }> {
 
   save(entity: T) {
     if (this.isNew) {
-      this.repositoryService.add!(entity).subscribe((id) => {
-        entity.id = id;
-        this.gridData.data = [...this.gridData.data, entity];
+      this.repositoryService.add!(entity).subscribe((newEntity) => {
+        this.gridData.data = [...this.gridData.data, newEntity];
         this.notifyService.showNotification(
           5000,
           'success',
@@ -52,7 +51,7 @@ export abstract class Crud<T extends { id: number }> {
         );
       });
     } else {
-      this.repositoryService.update!(entity).subscribe((id) => {
+      this.repositoryService.update!(entity).subscribe((updatedEntity) => {
         this.gridData.data = this.gridData.data.map((item) =>
           item.id === entity.id ? entity : item
         );
