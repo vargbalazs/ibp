@@ -1,0 +1,65 @@
+/* grid */
+
+.k-grid {
+  font: var(--font-text-6);
+}
+
+.k-grid .k-grid-header {
+  border-bottom: 1px solid var(--grid-header-border-color);
+}
+
+.k-grid-header,
+.k-grid-header-wrap,
+.k-grouping-header,
+.k-grid .k-table-th,
+.k-grid td,
+.k-grid .k-table-td,
+.k-grid-footer,
+.k-grid-footer-wrap,
+.k-grid-content-locked,
+.k-grid-footer-locked,
+.k-grid-header-locked,
+.k-filter-row > .k-table-th,
+.k-filter-row > td,
+.k-filter-row > .k-table-td {
+  border-color: transparent;
+}
+
+.k-table-thead,
+.k-table-header,
+.k-table-group-sticky-header {
+  color: var(--grid-header-color);
+  background-color: var(--grid-header-background-color);
+  font: var(--font-text-6);
+  text-transform: uppercase;
+}
+
+.k-grid .k-table-th {
+  font-weight: var(--medium);
+}
+
+.k-table,
+.k-data-table {
+  font: var(--font-text-6);
+  color: var(--default-font-color);
+}
+
+.k-grid .k-table-row.k-table-alt-row {
+  background-color: transparent;
+}
+
+.k-grid td,
+.k-grid .k-table-td {
+  border-bottom: 1px solid var(--grid-header-border-color);
+}
+
+.k-grid .k-table-tbody > .k-table-row:not(.k-detail-row):hover,
+.k-grid .k-table-tbody > .k-table-row:not(.k-detail-row).k-hover {
+  background-color: var(--grid-row-hover-color);
+  color: var(--primary-color);
+}
+
+.k-grid .k-table-td .material-symbols-outlined {
+  font-size: 1.8rem;
+  cursor: pointer;
+}

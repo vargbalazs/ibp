@@ -25,6 +25,10 @@
   box-shadow: var(--default-shadow);
 }
 
+.auth-card.k-card:hover {
+  background-color: white;
+}
+
 .form-container {
   flex: 1 1 auto;
 }

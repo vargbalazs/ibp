@@ -52,6 +52,11 @@
   --card-hover-background-color: #f3f4f6;
   --card-hover-border-color: #e5e7eb;
   --card-border-color: #e5e7eb;
+
+  --grid-header-background-color: #f9fafb;
+  --grid-header-border-color: #e5e7eb;
+  --grid-header-color: #6b7280;
+  --grid-row-hover-color: #80b3ba66;
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/
