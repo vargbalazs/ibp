@@ -14,7 +14,7 @@ export class AuthService {
   constructor(private http: HttpClient) {}
 
   private newUser!: UserSignup;
-  private tokens!: AuthToken;
+  private tokens: AuthToken = { accessToken: '', refreshToken: '' };
 
   togglePass(passwordInput: TextBoxComponent) {
     const inputEl = passwordInput.input.nativeElement;
