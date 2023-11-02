@@ -62,4 +62,48 @@
 .k-grid .k-table-td .material-symbols-outlined {
   font-size: 1.8rem;
   cursor: pointer;
+  color: var(--secondary-font-color);
+}
+
+.k-grid .k-table-tbody > .k-table-row:hover .material-symbols-outlined {
+  color: var(--primary-color);
+}
+
+/* sorting */
+
+.k-grid-header .k-sort-icon {
+  color: var(--primary-color);
+}
+
+/* filter */
+
+.k-filtercell .k-input-md,
+.k-filtercell .k-picker-md,
+.k-filter-menu .k-picker-md,
+.k-filter-menu .k-input-md {
+  height: 3.2rem;
+  font: var(--font-text-6);
+}
+
+.k-dropdown-operator.k-picker-md,
+.k-dropdown-operator.k-picker-md .k-input-button,
+.k-filter-row td .k-button-solid-base {
+  border: unset;
+  background-color: transparent;
+  background-image: none;
+}
+
+.k-picker-solid:focus,
+.k-picker-solid.k-focus,
+.k-filter-row td .k-button-solid-base {
+  box-shadow: none;
+  color: var(--secondary-font-color);
+}
+
+.k-filtercell-operator .k-button-solid-base {
+  padding-top: 0.7rem;
+}
+
+.k-i-filter {
+  color: var(--secondary-font-color);
 }
