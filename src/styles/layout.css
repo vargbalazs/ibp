@@ -1,0 +1,27 @@
+/* card */
+
+.k-card {
+  font: var(--font-text-5);
+  box-shadow: var(--default-shadow);
+  border: 1px solid var(--card-border-color);
+}
+
+.k-card:hover {
+  background-color: var(--card-hover-background-color);
+  color: var(--card-hover-border-color);
+}
+
+.k-card-title {
+  font: var(--font-text-4);
+  font-weight: var(--medium);
+  color: var(--default-font-color);
+}
+
+.k-card-subtitle {
+  font: var(--font-text-6);
+  color: var(--secondary-font-color);
+}
+
+.k-card-body {
+  color: var(--secondary-font-color);
+}

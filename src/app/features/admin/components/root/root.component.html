@@ -1,0 +1,160 @@
+<div class="card-container">
+  <div
+    class="card"
+    #user
+    [attr.data-function]="'user'"
+    (click)="navigateToFunction(user)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Felhasználók</h1>
+        </div>
+        <div class="icon user-icon">
+          <span class="material-symbols-outlined">group</span>
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Felhasználókkal kapcsolatos műveletek elvégzése, felhasználói szerepek
+          kezelése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div
+    class="card"
+    #role
+    [attr.data-function]="'role'"
+    (click)="navigateToFunction(role)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Szerepek</h1>
+        </div>
+        <div class="icon role-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              settings_accessibility
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Szerepek, szerepcsoportok kezelése, szerepek és jogosultságok
+          egymáshoz rendelése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div
+    class="card"
+    #module
+    [attr.data-function]="'module'"
+    (click)="navigateToFunction(module)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Modulok</h1>
+        </div>
+        <div class="icon module-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              <span class="material-symbols-outlined">extension</span>
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Az applikáció moduljainak karbantartása, modulok és almodulok
+          hierarchikus összekapcsolása
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div
+    class="card"
+    #action
+    [attr.data-function]="'action'"
+    (click)="navigateToFunction(action)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Elemi műveletek</h1>
+        </div>
+        <div class="icon action-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              <span class="material-symbols-outlined">edit_document</span>
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Olyan alapvető tevékenységek, mint pl. megtekintés, módosítás, törlés
+          kezelése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div
+    class="card"
+    #operation
+    [attr.data-function]="'operation'"
+    (click)="navigateToFunction(operation)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Tranzakciók</h1>
+        </div>
+        <div class="icon operation-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              <span class="material-symbols-outlined">api</span>
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Az egyes almodulokban elérhető funkciók definiálása, almodulokhoz való
+          hozzárendelése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+  <div
+    class="card"
+    #privilege
+    [attr.data-function]="'privilege'"
+    (click)="navigateToFunction(privilege)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Jogosultságok</h1>
+        </div>
+        <div class="icon privilege-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              <span class="material-symbols-outlined">badge</span>
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Az egyes almodulokban elérhető funkciók elemi műveletekkel történő
+          összekötése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
+</div>

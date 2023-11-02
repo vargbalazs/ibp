@@ -10,6 +10,7 @@
 @import "avatar.css";
 @import "drawer.css";
 @import "treeview.css";
+@import "layout.css";
 
 body {
   margin: 0;

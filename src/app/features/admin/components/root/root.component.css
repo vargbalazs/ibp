@@ -1,0 +1,53 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card {
+  margin: 1rem;
+  cursor: pointer;
+}
+
+kendo-card {
+  height: 16rem;
+}
+
+.card-header {
+  justify-content: space-between;
+}
+
+.icon {
+  display: flex;
+  border-radius: 4px;
+  padding: 0.3rem;
+}
+
+.user-icon {
+  background-color: var(--success-solid-color);
+  color: var(--success-color);
+}
+
+.role-icon {
+  background-color: var(--purple-solid-color);
+  color: var(--purple-color);
+}
+
+.module-icon {
+  background-color: var(--info-solid-color);
+  color: var(--info-color);
+}
+
+.action-icon {
+  background-color: var(--warning-solid-color);
+  color: var(--warning-color);
+}
+
+.operation-icon {
+  background-color: var(--error-solid-color);
+  color: var(--error-color);
+}
+
+.privilege-icon {
+  background-color: var(--pink-solid-color);
+  color: var(--pink-color);
+}

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from 'src/app/core/components/layout/layout.component';
-// import { RootComponent } from './components/root/root.component';
+import { RootComponent } from './components/root/root.component';
 // import { UserListComponent } from './components/user/list/list.component';
 // import { ActionListComponent } from './components/action/list/list.component';
 // import { ModuleRootComponent } from './components/module/root/root.component';
@@ -14,10 +14,10 @@ const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      //   {
-      //     path: 'admin/root',
-      //     component: RootComponent,
-      //   },
+      {
+        path: 'admin/root',
+        component: RootComponent,
+      },
       //   {
       //     path: 'admin/users',
       //     component: UserListComponent,
