@@ -57,6 +57,12 @@
   --grid-header-border-color: #e5e7eb;
   --grid-header-color: #6b7280;
   --grid-row-hover-color: #80b3ba66;
+
+  --scrollbar-track-color: #f2f4f7;
+
+  --scrollbar-thumb-color: #e4e7ec;
+
+  --scrollbar-thumb-hover-color: #d0d5dd;
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/

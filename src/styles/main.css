@@ -24,3 +24,27 @@ body {
 html {
   font-size: 62.5%;
 }
+
+::-webkit-scrollbar {
+  width: 0.7rem;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 0.7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2rem;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
