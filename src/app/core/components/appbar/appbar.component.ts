@@ -34,6 +34,9 @@ export class AppbarComponent {
   }
 
   logout() {
-    this.authService.logout().subscribe();
+    this.authService.logout().subscribe(() => {
+      this.authService.clearTokens();
+      this.router.navigate(['auth/login'], { skipLocationChange: true });
+    });
   }
 }

@@ -7,12 +7,14 @@ import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '../interfaces/http-error-response.interface';
 import { UserLogin } from '../models/user-login.model';
+import { AuthToken } from '../interfaces/auth-token.interface';
 
 @Injectable()
 export class AuthService {
   constructor(private http: HttpClient) {}
 
   private newUser!: UserSignup;
+  private tokens!: AuthToken;
 
   togglePass(passwordInput: TextBoxComponent) {
     const inputEl = passwordInput.input.nativeElement;
@@ -81,10 +83,27 @@ export class AuthService {
   }
 
   login(user: UserLogin) {
-    return this.http.post<UserLogin>(`${API_URL}/auth/login`, user);
+    return this.http.post<AuthToken>(`${API_URL}/auth/login`, user);
   }
 
   logout() {
     return this.http.get(`${API_URL}/auth/logout`);
+  }
+
+  saveTokens(tokens: AuthToken) {
+    this.tokens = tokens;
+    localStorage.setItem('accessToken', tokens.accessToken);
+    localStorage.setItem('refreshToken', tokens.refreshToken);
+  }
+
+  getTokens(): AuthToken {
+    this.tokens.accessToken = localStorage.getItem('accessToken')!;
+    this.tokens.refreshToken = localStorage.getItem('refreshToken')!;
+    return this.tokens;
+  }
+
+  clearTokens() {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
   }
 }

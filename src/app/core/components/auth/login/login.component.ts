@@ -101,13 +101,14 @@ export class LoginComponent implements OnInit, AfterViewInit {
             return of();
           })
         )
-        .subscribe((res) => {
+        .subscribe((tokens) => {
           this.customNotifyService.showNotification(
             5000,
             'success',
             'Bejelentkezés',
             'A bejelentkezés sikeres.'
           );
+          this.authService.saveTokens(tokens);
           this.router.navigate(['/home'], { skipLocationChange: true });
         });
     }
