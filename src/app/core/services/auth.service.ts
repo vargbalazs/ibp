@@ -73,7 +73,7 @@ export class AuthService {
   }
 
   signUp(user: UserSignup) {
-    return this.http.post<UserSignup>(`${API_URL}/users`, user);
+    return this.http.post<UserSignup>(`${API_URL}/users/signup`, user);
   }
 
   forgotPwd(userEmail: string) {
