@@ -44,8 +44,15 @@
       themeColor="primary"
       fillMode="solid"
       size="medium"
+      class="loader-button"
+      [disabled]="(isBusy | async)!"
     >
-      Mentés
+      <kendo-loader
+        size="small"
+        type="infinite-spinner"
+        [ngClass]="{ 'hide-loader': !(isBusy | async) }"
+      ></kendo-loader>
+      <span class="button-text">Mentés</span>
     </button>
   </kendo-dialog-actions>
 </kendo-dialog>
