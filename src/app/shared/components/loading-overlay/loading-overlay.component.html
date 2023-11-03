@@ -1,0 +1,8 @@
+<div class="loading-panel" *ngIf="loadingPanelVisible">
+  <div class="loading-panel-mask"></div>
+  <div class="loading-panel-wrapper">
+    <kendo-loader type="infinite-spinner" themeColor="primary" size="large">
+    </kendo-loader>
+    <div class="loading-panel-text">{{ loadingText }}</div>
+  </div>
+</div>
