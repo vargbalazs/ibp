@@ -1,5 +1,4 @@
 <kendo-dialog
-  *ngIf="active"
   [width]="400"
   [height]="220"
   (close)="closeForm()"
@@ -34,6 +33,7 @@
       themeColor="secondary"
       fillMode="solid"
       size="medium"
+      [disabled]="(isBusy | async)!"
     >
       Mégsem
     </button>

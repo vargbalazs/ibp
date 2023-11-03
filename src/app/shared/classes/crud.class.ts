@@ -31,7 +31,9 @@ export abstract class Crud<T extends { id: number }> {
 
   saveHandler(entity: T) {
     this.save(entity);
-    this.resetDataItem();
+    // reset here, if we want to use the loading overlay, as it hides the new/edit dialog immediatelly
+    // otherwise reset in the 'save' method
+    // this.resetDataItem();
   }
 
   cancelHandler() {
@@ -46,7 +48,9 @@ export abstract class Crud<T extends { id: number }> {
 
   save(entity: T) {
     if (this.isNew) {
-      this.repositoryService.add!(entity).subscribe((newEntity) => {
+      const { id, ...newEntity } = entity;
+      this.repositoryService.add!(newEntity).subscribe((newEntity) => {
+        this.resetDataItem();
         this.gridData.data = [...this.gridData.data, newEntity];
         this.notifyService.showNotification(
           5000,
@@ -57,6 +61,7 @@ export abstract class Crud<T extends { id: number }> {
       });
     } else {
       this.repositoryService.update!(entity).subscribe((updatedEntity) => {
+        this.resetDataItem();
         this.gridData.data = this.gridData.data.map((item) =>
           item.id === entity.id ? entity : item
         );

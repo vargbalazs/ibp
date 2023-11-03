@@ -13,6 +13,11 @@
   right: 100%;
 }
 
+.k-dialog-actions .k-loader-primary {
+  position: relative;
+  right: 0%;
+}
+
 .k-button-solid-primary .k-loader-primary.hide-loader {
   display: none;
 }

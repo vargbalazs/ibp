@@ -25,7 +25,9 @@ export class CreateEditComponent<T extends { id: number }> {
   onSave() {
     this.form.markAllAsTouched();
     if (this.form.valid) {
-      this.active = false;
+      // not sure, why we needed this originally
+      // now, we don't need this
+      // this.active = false;
       this.save.emit(this.form.value);
       this.resetState();
     }
