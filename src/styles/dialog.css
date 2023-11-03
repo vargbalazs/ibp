@@ -1,0 +1,43 @@
+.k-overlay {
+  opacity: 0.1;
+}
+
+.k-dialog {
+  font: var(--font-text-5);
+  box-shadow: var(--dialog-shadow);
+  border-radius: 6px;
+  border: 1px solid var(--dialog-border-color);
+  background-color: var(--dialog-background-color);
+}
+
+.k-dialog-wrapper:not(.form-dialog) .k-dialog-titlebar {
+  padding: 0;
+  height: 0.5rem;
+  border: 1px solid transparent;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.k-dialog-wrapper.form-dialog .k-dialog-titlebar {
+  background-color: var(--dialog-background-color);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-weight: var(--medium);
+  color: var(--default-font-color);
+}
+
+.k-dialog-titlebar-actions .k-button-md.k-icon-button {
+  color: var(--dialog-close-icon-color);
+}
+
+.k-dialog-titlebar-actions .k-button-md.k-icon-button:hover {
+  color: var(--dialog-close-icon-hover-color);
+}
+
+.k-dialog-actions {
+  justify-content: end;
+}
+
+.k-actions-stretched > * {
+  flex: inherit;
+}

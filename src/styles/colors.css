@@ -59,10 +59,13 @@
   --grid-row-hover-color: #80b3ba66;
 
   --scrollbar-track-color: #f2f4f7;
-
   --scrollbar-thumb-color: #e4e7ec;
-
   --scrollbar-thumb-hover-color: #d0d5dd;
+
+  --dialog-background-color: #f9fafb;
+  --dialog-border-color: #e5e7eb;
+  --dialog-close-icon-color: #6b7280;
+  --dialog-close-icon-hover-color: #374151;
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/

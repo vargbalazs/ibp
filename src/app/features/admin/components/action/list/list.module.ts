@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ActionListComponent } from './list.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-//import { CreateModule } from '../create/create.module';
+import { CreateModule } from '../create/create.module';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { ActionService } from '../../../services/action.service';
 
@@ -13,7 +13,7 @@ import { ActionService } from '../../../services/action.service';
     CommonModule,
     GridModule,
     DialogModule,
-    // CreateModule,
+    CreateModule,
     LoadingOverlayModule,
   ],
   exports: [ActionListComponent],

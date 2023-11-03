@@ -1,0 +1,51 @@
+<kendo-dialog
+  *ngIf="active"
+  [width]="400"
+  [height]="220"
+  (close)="closeForm()"
+  class="form-dialog"
+>
+  <kendo-dialog-titlebar>{{
+    isNew ? "Új elemi művelet" : "Elemi művelet módosítása"
+  }}</kendo-dialog-titlebar>
+  <form [formGroup]="form" (ngSubmit)="onSave()">
+    <kendo-formfield>
+      <kendo-textbox hidden formControlName="id"></kendo-textbox>
+    </kendo-formfield>
+    <kendo-formfield>
+      <kendo-label
+        [for]="name"
+        text="Elemi művelet megnevezése"
+        class="label-input-md"
+      ></kendo-label>
+      <kendo-textbox size="small" fillMode="solid" formControlName="name" #name>
+      </kendo-textbox>
+      <kendo-formerror *ngIf="form.controls.name.errors?.['required']"
+        >Kötelező mező</kendo-formerror
+      >
+    </kendo-formfield>
+    <button type="submit" hidden></button>
+  </form>
+  <kendo-dialog-actions>
+    <button
+      type="button"
+      kendoButton
+      (click)="onCancel()"
+      themeColor="secondary"
+      fillMode="solid"
+      size="medium"
+    >
+      Mégsem
+    </button>
+    <button
+      type="submit"
+      kendoButton
+      (click)="onSave()"
+      themeColor="primary"
+      fillMode="solid"
+      size="medium"
+    >
+      Mentés
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>
