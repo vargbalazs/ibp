@@ -101,9 +101,21 @@
 }
 
 .k-filtercell-operator .k-button-solid-base {
-  padding-top: 0.7rem;
+  padding-top: 0.6rem;
 }
 
 .k-i-filter {
   color: var(--secondary-font-color);
+}
+
+.k-filtercell .k-input-spinner {
+  display: none;
+}
+
+.k-dropdown-operator.k-picker-md + .k-button-solid-base {
+  position: relative;
+}
+
+.k-dropdown-operator.k-picker-md:has(+ .k-button-solid-base) {
+  display: none;
 }
