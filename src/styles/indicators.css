@@ -3,6 +3,10 @@
   margin-right: 0.5rem;
 }
 
+.loading-panel-wrapper .k-loader-primary {
+  color: var(--primary-color);
+}
+
 .k-button-solid-primary .k-loader-primary {
   color: var(--loader-color-button);
   position: absolute;

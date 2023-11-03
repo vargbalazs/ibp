@@ -1,17 +1,22 @@
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { Repository } from '../interfaces/repository.interface';
 import { CustomNotificationService } from '../services/notification.service';
+import { BehaviorSubject } from 'rxjs';
+import { LoaderService } from '../services/loader.service';
 
 export abstract class Crud<T extends { id: number }> {
   gridData!: GridDataResult;
   isNew: boolean;
   editDataItem!: T;
+  loadingOverlayVisible: BehaviorSubject<boolean>;
 
   constructor(
     private repositoryService: Repository<T>,
-    private notifyService: CustomNotificationService
+    private notifyService: CustomNotificationService,
+    private loaderService: LoaderService
   ) {
     this.isNew = false;
+    this.loadingOverlayVisible = this.loaderService.isLoading;
   }
 
   addHandler() {

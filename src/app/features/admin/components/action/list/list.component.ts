@@ -13,9 +13,10 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 export class ActionListComponent extends Crud<Action> implements OnInit {
   constructor(
     private actionService: ActionService,
-    notifyService: CustomNotificationService
+    notifyService: CustomNotificationService,
+    loaderService: LoaderService
   ) {
-    super(actionService, notifyService);
+    super(actionService, notifyService, loaderService);
   }
 
   ngOnInit(): void {
