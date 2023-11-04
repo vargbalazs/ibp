@@ -11,7 +11,8 @@
     <span class="k-icon k-i-success" *ngSwitchCase="'success'"></span>
     <span class="k-icon k-i-warning" *ngSwitchCase="'warning'"></span>
     <span class="k-icon k-i-info" *ngSwitchCase="'info'"></span>
-    <span class="k-icon k-i-error" *ngSwitchCase="'error'"></span>
+    <!-- <span class="k-icon k-i-error" *ngSwitchCase="'error'"></span> -->
+    <span class="material-symbols-outlined" *ngSwitchCase="'error'">error</span>
   </div>
   <div class="custom-dialog-text">
     <div class="custom-dialog-title">{{ title }}</div>
@@ -25,7 +26,7 @@
     *ngIf="showCancel"
     kendoButton
     themeColor="secondary"
-    fillMode="outline"
+    fillMode="solid"
     size="small"
     (click)="onCancelAction()"
   >

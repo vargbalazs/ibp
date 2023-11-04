@@ -58,3 +58,20 @@
   background: var(--button-secondary-hover-color);
   box-shadow: var(--button-secondary-focus-shadow);
 }
+
+/* error */
+
+.k-button-solid-error {
+  border-color: var(--button-error-border-color);
+  background-color: var(--button-error-background-color);
+  background-image: none;
+}
+
+.k-button-solid-error:hover {
+  border-color: var(--button-error-hover-color);
+  background-color: var(--button-error-hover-color);
+}
+
+.k-button-solid-error:focus {
+  box-shadow: var(--button-error-focus-shadow);
+}

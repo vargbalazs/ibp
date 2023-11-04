@@ -34,10 +34,82 @@
   color: var(--dialog-close-icon-hover-color);
 }
 
+.k-dialog-wrapper:not(.form-dialog)
+  .k-dialog-titlebar-actions
+  .k-button-md.k-icon-button {
+  display: none;
+}
+
 .k-dialog-actions {
   justify-content: end;
 }
 
 .k-actions-stretched > * {
   flex: inherit;
+}
+
+.k-dialog-wrapper:not(.form-dialog) .k-window-content {
+  padding: 0;
+}
+
+.custom-dialog-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.custom-dialog-title {
+  font: var(--font-text-4);
+  font-weight: var(--medium);
+  color: var(--default-font-color);
+  margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.custom-dialog-icon-container {
+  align-self: center;
+  margin: 1rem;
+}
+
+.custom-dialog-icon-container .material-symbols-outlined {
+  font-size: 4rem;
+}
+
+.custom-dialog-text {
+  flex: 1;
+  font: var(--font-text-6);
+  color: var(--secondary-font-color);
+}
+
+.custom-dialog-success {
+  color: var(--p-success-500);
+}
+
+.custom-dialog-warning {
+  color: var(--p-warning-500);
+}
+
+.custom-dialog-info {
+  color: var(--p-blue-500);
+}
+
+.custom-dialog-error {
+  color: var(--error-color);
+}
+
+.custom-dialog-bar-success {
+  background-color: var(--p-success-500);
+}
+
+.custom-dialog-bar-warning {
+  background-color: var(--p-warning-500);
+}
+
+.custom-dialog-bar-info {
+  background-color: var(--p-blue-500);
+}
+
+.custom-dialog-bar-error {
+  background-color: var(--error-color);
 }

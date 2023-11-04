@@ -3,6 +3,9 @@ import { Repository } from '../interfaces/repository.interface';
 import { CustomNotificationService } from '../services/notification.service';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from '../services/loader.service';
+import { MsgDialogService } from '../services/dialog.service';
+import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.enum';
+import { DialogAction } from '../interfaces/dialog-action.interface';
 
 export abstract class Crud<T extends { id: number }> {
   gridData!: GridDataResult;
@@ -13,7 +16,8 @@ export abstract class Crud<T extends { id: number }> {
   constructor(
     private repositoryService: Repository<T>,
     private notifyService: CustomNotificationService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private msgDialogService: MsgDialogService
   ) {
     this.isNew = false;
     this.loadingOverlayVisible = this.loaderService.isLoading;
@@ -40,7 +44,21 @@ export abstract class Crud<T extends { id: number }> {
     this.resetDataItem();
   }
 
-  removeHandler(dataItem: T) {}
+  removeHandler(dataItem: T) {
+    this.msgDialogService
+      .showDialog(
+        'Elem törlése',
+        'Valóban törölni szeretnéd a kiválasztott elemet? Minden adat véglegesen törlődik. Ez a művelet nem visszavonható.',
+        'error',
+        'Igen',
+        true
+      )
+      .result.subscribe((result) => {
+        if ((result as DialogAction).action === DialogActionsEnum.Yes) {
+          this.remove(dataItem);
+        }
+      });
+  }
 
   resetDataItem() {
     this.editDataItem = undefined!;

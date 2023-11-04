@@ -4,6 +4,7 @@ import { Action } from '../../../models/action.model';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ActionService } from '../../../services/action.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
+import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 
 @Component({
   selector: 'action-list',
@@ -14,9 +15,10 @@ export class ActionListComponent extends Crud<Action> implements OnInit {
   constructor(
     private actionService: ActionService,
     notifyService: CustomNotificationService,
-    loaderService: LoaderService
+    loaderService: LoaderService,
+    msgDialogService: MsgDialogService
   ) {
-    super(actionService, notifyService, loaderService);
+    super(actionService, notifyService, loaderService, msgDialogService);
   }
 
   ngOnInit(): void {

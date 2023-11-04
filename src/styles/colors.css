@@ -26,6 +26,9 @@
   --button-secondary-background-color: #e8edf1;
   --button-secondary-hover-color: #dce3e9;
   --button-secondary-border-color: #e8edf1;
+  --button-error-border-color: #dc2626;
+  --button-error-background-color: #dc2626;
+  --button-error-hover-color: #b91c1c;
 
   --loader-color-input: #0172cb;
   --loader-color-button: #ffffff;

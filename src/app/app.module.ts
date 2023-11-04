@@ -12,6 +12,7 @@ import { NotificationService } from '@progress/kendo-angular-notification';
 import { LayoutModule } from './core/components/layout/layout.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FeaturesModule } from './features/features.module';
+import { CustomDialogModule } from './shared/components/custom-dialog/custom-dialog.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { FeaturesModule } from './features/features.module';
     BrowserAnimationsModule,
     HttpClientModule,
     CustomNofityModule,
+    CustomDialogModule,
     LayoutModule,
     FeaturesModule,
   ],
