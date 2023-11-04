@@ -1,0 +1,43 @@
+<kendo-dialog-titlebar [ngClass]="barClass"></kendo-dialog-titlebar>
+<div
+  class="custom-dialog-content"
+  [ngStyle]="{ backgroundColor: 'var(--p-' + dialogColor + '-25)' }"
+>
+  <div
+    class="custom-dialog-icon-container"
+    [ngSwitch]="type"
+    [ngClass]="iconClass"
+  >
+    <span class="k-icon k-i-success" *ngSwitchCase="'success'"></span>
+    <span class="k-icon k-i-warning" *ngSwitchCase="'warning'"></span>
+    <span class="k-icon k-i-info" *ngSwitchCase="'info'"></span>
+    <span class="k-icon k-i-error" *ngSwitchCase="'error'"></span>
+  </div>
+  <div class="custom-dialog-text">
+    <div class="custom-dialog-title">{{ title }}</div>
+    <div>
+      {{ descr }}
+    </div>
+  </div>
+</div>
+<kendo-dialog-actions>
+  <button
+    *ngIf="showCancel"
+    kendoButton
+    themeColor="secondary"
+    fillMode="outline"
+    size="small"
+    (click)="onCancelAction()"
+  >
+    Mégsem
+  </button>
+  <button
+    id="primaryButton"
+    kendoButton
+    [themeColor]="buttonType"
+    size="small"
+    (click)="onConfirmAction()"
+  >
+    {{ confirmButtonText }}
+  </button>
+</kendo-dialog-actions>
