@@ -6,12 +6,15 @@ import { LoaderService } from '../services/loader.service';
 import { MsgDialogService } from '../services/dialog.service';
 import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.enum';
 import { DialogAction } from '../interfaces/dialog-action.interface';
+import { DialogRef } from '@progress/kendo-angular-dialog';
 
 export abstract class Crud<T extends { id: number }> {
   gridData!: GridDataResult;
   isNew: boolean;
+  dialogOpened: boolean;
   editDataItem!: T;
-  loadingOverlayVisible: BehaviorSubject<boolean>;
+  loadingOverlayVisible!: BehaviorSubject<boolean>;
+  private dialogRef!: DialogRef;
 
   constructor(
     private repositoryService: Repository<T>,
@@ -20,16 +23,19 @@ export abstract class Crud<T extends { id: number }> {
     private msgDialogService: MsgDialogService
   ) {
     this.isNew = false;
+    this.dialogOpened = false;
     this.loadingOverlayVisible = this.loaderService.isLoading;
   }
 
   addHandler() {
     this.editDataItem = <T>{};
     this.isNew = true;
+    this.dialogOpened = true;
   }
 
   editHandler(dataItem: T) {
     this.editDataItem = dataItem;
+    this.dialogOpened = true;
     this.isNew = false;
   }
 
@@ -45,19 +51,19 @@ export abstract class Crud<T extends { id: number }> {
   }
 
   removeHandler(dataItem: T) {
-    this.msgDialogService
-      .showDialog(
-        'Elem törlése',
-        'Valóban törölni szeretnéd a kiválasztott elemet? Minden adat véglegesen törlődik. Ez a művelet nem visszavonható.',
-        'error',
-        'Igen',
-        true
-      )
-      .result.subscribe((result) => {
-        if ((result as DialogAction).action === DialogActionsEnum.Yes) {
-          this.remove(dataItem);
-        }
-      });
+    this.dialogOpened = true;
+    this.dialogRef = this.msgDialogService.showDialog(
+      'Elem törlése',
+      'Valóban törölni szeretnéd a kiválasztott elemet? Minden adat véglegesen törlődik. Ez a művelet nem visszavonható.',
+      'error',
+      'Igen',
+      true
+    );
+    this.dialogRef.dialog.instance.close.subscribe((result) => {
+      if ((result as DialogAction).action === DialogActionsEnum.Yes) {
+        this.remove(dataItem);
+      }
+    });
   }
 
   resetDataItem() {
@@ -95,6 +101,7 @@ export abstract class Crud<T extends { id: number }> {
 
   remove(entity: T) {
     this.repositoryService.delete!(entity.id).subscribe((id) => {
+      this.dialogRef.close();
       this.gridData.data = this.gridData.data.filter(
         (item) => item.id !== entity.id
       );

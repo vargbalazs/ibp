@@ -2,6 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ButtonThemeColor } from '@progress/kendo-angular-buttons';
 import { DialogContentBase, DialogRef } from '@progress/kendo-angular-dialog';
 import { DialogActionsEnum } from './dialog-actions.enum';
+import { BehaviorSubject } from 'rxjs';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'custom-dialog',
@@ -14,6 +16,7 @@ export class CustomDialogComponent extends DialogContentBase implements OnInit {
   _type = '';
   buttonType: ButtonThemeColor = 'primary';
   dialogColor = '';
+  isBusy: BehaviorSubject<boolean>;
 
   @Input() title = '';
   @Input() descr = '';
@@ -30,8 +33,12 @@ export class CustomDialogComponent extends DialogContentBase implements OnInit {
   @Input() showCancel = false;
   @Input() confirmButtonText = 'Confirm';
 
-  constructor(public override dialog: DialogRef) {
+  constructor(
+    public override dialog: DialogRef,
+    private loaderService: LoaderService
+  ) {
     super(dialog);
+    this.isBusy = this.loaderService.isLoading;
   }
 
   ngOnInit(): void {
@@ -43,6 +50,8 @@ export class CustomDialogComponent extends DialogContentBase implements OnInit {
   }
 
   onConfirmAction(): void {
-    this.dialog.close({ action: DialogActionsEnum.Yes });
+    // this.dialog.close({ action: DialogActionsEnum.Yes });
+    // with this, we can interrupt closing the dialog, if we want
+    this.dialog.dialog.instance.close.emit({ action: DialogActionsEnum.Yes });
   }
 }

@@ -14,10 +14,12 @@
 }
 
 .k-dialog-actions .k-loader-primary {
+  color: var(--loader-color-button);
   position: relative;
   right: 0%;
 }
 
-.k-button-solid-primary .k-loader-primary.hide-loader {
+.k-button-solid-primary .k-loader-primary.hide-loader,
+.k-dialog-actions .k-loader-primary.hide-loader {
   display: none;
 }

@@ -45,6 +45,6 @@
 ></create-action>
 <div kendoDialogContainer></div>
 <loading-overlay
-  [visible]="loadingOverlayVisible | async"
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
   loadingText=""
 ></loading-overlay>

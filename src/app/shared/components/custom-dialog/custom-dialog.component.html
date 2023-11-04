@@ -29,6 +29,7 @@
     fillMode="solid"
     size="small"
     (click)="onCancelAction()"
+    [disabled]="(isBusy | async)!"
   >
     Mégsem
   </button>
@@ -38,7 +39,12 @@
     [themeColor]="buttonType"
     size="small"
     (click)="onConfirmAction()"
+    class="loader-button"
+    [disabled]="(isBusy | async)!"
   >
-    {{ confirmButtonText }}
+    <loading-button
+      [showIndicator]="(isBusy | async)!"
+      [buttonText]="confirmButtonText"
+    ></loading-button>
   </button>
 </kendo-dialog-actions>

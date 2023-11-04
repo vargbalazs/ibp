@@ -11,12 +11,16 @@ export class MsgDialogService {
     descr: string,
     type: string,
     confirmButtonText: string,
-    showCancel = false
+    showCancel = false,
+    closeOnAction = false
   ): DialogRef {
     const dialog: DialogRef = this.dialogService.open({
       content: CustomDialogComponent,
       width: 400,
       height: 150,
+      preventAction(ev, dialogRef) {
+        return !closeOnAction;
+      },
     });
 
     const contentComponent = dialog.content.instance as CustomDialogComponent;
