@@ -5,7 +5,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { ReactiveFormsModule } from '@angular/forms';
-import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import { LoadingButtonModule } from 'src/app/shared/components/loading-button/loading-button.module';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -15,7 +15,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
     ButtonsModule,
     LabelModule,
     ReactiveFormsModule,
-    IndicatorsModule,
+    LoadingButtonModule,
   ],
   exports: [LoginComponent],
 })

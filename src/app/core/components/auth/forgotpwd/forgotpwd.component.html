@@ -39,12 +39,10 @@
     class="loader-button"
     [disabled]="(isBusy | async)!"
   >
-    <kendo-loader
-      size="small"
-      type="infinite-spinner"
-      [ngClass]="{ 'hide-loader': !(isBusy | async) }"
-    ></kendo-loader>
-    <span class="button-text">Jelszó visszaállítása</span>
+    <loading-button
+      [showIndicator]="(isBusy | async)!"
+      [buttonText]="'Jelszó visszaállítása'"
+    ></loading-button>
   </button>
   <div class="footer">
     <p class="form-descr">

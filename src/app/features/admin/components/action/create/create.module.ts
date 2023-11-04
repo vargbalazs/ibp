@@ -6,7 +6,7 @@ import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-import { IndicatorsModule } from '@progress/kendo-angular-indicators';
+import { LoadingButtonModule } from '../../../../../shared/components/loading-button/loading-button.module';
 
 @NgModule({
   declarations: [CreateComponent],
@@ -17,7 +17,7 @@ import { IndicatorsModule } from '@progress/kendo-angular-indicators';
     ReactiveFormsModule,
     LabelModule,
     DialogModule,
-    IndicatorsModule,
+    LoadingButtonModule,
   ],
   exports: [CreateComponent],
 })

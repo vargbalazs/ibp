@@ -91,12 +91,16 @@
     class="loader-button"
     [disabled]="(isBusy | async)!"
   >
-    <kendo-loader
+    <!-- <kendo-loader
       size="small"
       type="infinite-spinner"
       [ngClass]="{ 'hide-loader': !(isBusy | async) }"
     ></kendo-loader>
-    <span class="button-text">Regisztráció</span>
+    <span class="button-text">Regisztráció</span> -->
+    <loading-button
+      [showIndicator]="(isBusy | async)!"
+      [buttonText]="'Regisztráció'"
+    ></loading-button>
   </button>
   <button
     kendoButton

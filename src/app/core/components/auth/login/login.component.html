@@ -81,12 +81,10 @@
     class="loader-button"
     [disabled]="(isBusy | async)!"
   >
-    <kendo-loader
-      size="small"
-      type="infinite-spinner"
-      [ngClass]="{ 'hide-loader': !(isBusy | async) }"
-    ></kendo-loader>
-    <span class="button-text">Bejelentkezés</span>
+    <loading-button
+      [showIndicator]="(isBusy | async)!"
+      [buttonText]="'Bejelentkezés'"
+    ></loading-button>
   </button>
   <div class="footer">
     <p class="form-descr">
