@@ -32,14 +32,14 @@
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
-<!-- <create-submodule
+<create-submodule
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
   (save)="saveHandler($event)"
   (cancel)="cancelHandler()"
   [modules]="modules"
-></create-submodule> -->
+></create-submodule>
 <div kendoDialogContainer></div>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"

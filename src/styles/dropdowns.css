@@ -15,7 +15,8 @@
   padding-block: 0.4rem;
 }
 
-.k-popup.k-list-container .k-list-md {
+.k-popup.k-list-container .k-list-md,
+.k-popup.k-list-container .k-list-sm {
   font: var(--font-text-6);
 }
 
@@ -33,4 +34,22 @@
 
 .k-list-item.k-focus {
   box-shadow: none;
+}
+
+/* combobox */
+
+.k-combobox .k-button-solid-base {
+  color: var(--secondary-font-color);
+  border: none;
+}
+
+.k-combobox.k-input-sm .k-button-solid-base {
+  height: 2.5rem;
+  margin-top: 0.3rem;
+  margin-right: 0.2rem;
+}
+
+.k-combobox .k-button-solid-base,
+.k-combobox .k-button-solid-base:hover {
+  background: transparent;
 }

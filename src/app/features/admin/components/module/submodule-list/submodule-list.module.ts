@@ -5,7 +5,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { SubModuleService } from '../../../services/submodule.service';
-//import { CreateSubmoduleModule } from '../create-submodule/create-submodule.module';
+import { CreateSubmoduleModule } from '../create-submodule/create-submodule.module';
 
 @NgModule({
   declarations: [SubmoduleListComponent],
@@ -14,7 +14,7 @@ import { SubModuleService } from '../../../services/submodule.service';
     GridModule,
     DialogModule,
     LoadingOverlayModule,
-    //CreateSubmoduleModule,
+    CreateSubmoduleModule,
   ],
   providers: [SubModuleService],
   exports: [SubmoduleListComponent],
