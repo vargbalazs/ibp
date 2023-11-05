@@ -3,3 +3,12 @@
 .k-form-error {
   font: var(--font-text-5);
 }
+
+.k-dialog-content form {
+  display: flex;
+  flex-direction: column;
+}
+
+.k-dialog-content form kendo-formfield:nth-child(n + 3) {
+  margin-top: 1rem;
+}
