@@ -14,10 +14,13 @@
   border: 1px solid transparent;
 }
 
+.k-drawer .k-treeview-leaf.k-selected {
+  border-left: 0.2rem solid var(--primary-color);
+}
+
 .k-treeview-leaf.k-selected {
   background: #ffffff;
   color: var(--primary-color);
   background-color: var(--appbar-hover-background-color);
   font-weight: var(--medium);
-  border-left: 0.2rem solid var(--primary-color);
 }

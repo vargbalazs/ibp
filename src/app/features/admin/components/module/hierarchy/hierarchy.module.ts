@@ -6,7 +6,7 @@ import { ButtonModule } from '@progress/kendo-angular-buttons';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { ContextMenuModule } from '@progress/kendo-angular-menu';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-//import { InfobarModule } from 'src/app/shared/components/infobar/infobar.module';
+import { InfobarModule } from 'src/app/shared/components/infobar/infobar.module';
 
 @NgModule({
   declarations: [HierarchyComponent],
@@ -17,7 +17,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     LoadingOverlayModule,
     ContextMenuModule,
     InputsModule,
-    //InfobarModule,
+    InfobarModule,
   ],
   exports: [HierarchyComponent],
 })

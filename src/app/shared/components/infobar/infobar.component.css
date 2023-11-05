@@ -1,0 +1,29 @@
+.icon-container {
+  display: flex;
+}
+
+.text {
+  margin-left: 0.5rem;
+}
+
+.info {
+  background-color: var(--info-solid-color);
+  color: var(--info-color);
+}
+
+.error {
+  background-color: var(--error-solid-color);
+  color: var(--error-color);
+}
+
+.bar {
+  padding: 1rem;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  font: var(--font-text-5);
+  height: 6rem;
+  border-left: 0.4rem solid var(--info-color);
+}

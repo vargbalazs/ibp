@@ -1,8 +1,8 @@
-<!-- <infobar
+<infobar
   [text]="
     'Egy adott almodul eltávolításához mutassunk egérrel az almodulra és a jobb egérgomb megnyomása után válasszuk ki a kívánt parancsot.'
   "
-></infobar> -->
+></infobar>
 <div class="container">
   <kendo-textbox
     (valueChange)="filterTerm = $event"
@@ -19,6 +19,7 @@
   <kendo-treeview
     kendoTreeViewHierarchyBinding
     #treeview
+    size="small"
     [nodes]="modules"
     childrenField="subModules"
     [filter]="filterTerm"
