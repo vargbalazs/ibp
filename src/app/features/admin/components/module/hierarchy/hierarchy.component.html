@@ -1,0 +1,50 @@
+<!-- <infobar
+  [text]="
+    'Egy adott almodul eltávolításához mutassunk egérrel az almodulra és a jobb egérgomb megnyomása után válasszuk ki a kívánt parancsot.'
+  "
+></infobar> -->
+<div class="container">
+  <kendo-textbox
+    (valueChange)="filterTerm = $event"
+    [clearButton]="true"
+    placeholder="Szűrés..."
+    size="small"
+    fillMode="solid"
+  >
+    <ng-template kendoTextBoxPrefixTemplate>
+      <span class="material-symbols-outlined">search</span>
+      <kendo-textbox-separator></kendo-textbox-separator>
+    </ng-template>
+  </kendo-textbox>
+  <kendo-treeview
+    kendoTreeViewHierarchyBinding
+    #treeview
+    [nodes]="modules"
+    childrenField="subModules"
+    [filter]="filterTerm"
+    textField="name"
+    [animate]="true"
+    [expandOnFilter]="true"
+    [(expandedKeys)]="expandedKeys"
+    kendoTreeViewExpandable
+    (nodeClick)="nodeClick($event)"
+    (selectionChange)="onSelectionChange($event)"
+    [isExpanded]="isItemExpanded"
+    [isSelected]="isItemSelected"
+  >
+    <ng-template kendoTreeViewNodeTemplate let-dataItem let-index="index">
+      {{ dataItem.name }}
+    </ng-template>
+  </kendo-treeview>
+  <div kendoDialogContainer></div>
+  <loading-overlay
+    [visible]="loadingOverlayVisible | async"
+    loadingText=""
+  ></loading-overlay>
+  <kendo-contextmenu
+    #contextMenu
+    [items]="contextMenuItems"
+    (select)="onContextMenuItemSelect($event)"
+  >
+  </kendo-contextmenu>
+</div>

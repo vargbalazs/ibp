@@ -23,4 +23,8 @@ export class ModuleService implements Repository<Module> {
   getModules() {
     return this.http.get<Module[]>(`${API_URL}/modules`);
   }
+
+  getModulesWithSubModules() {
+    return this.http.get<Module[]>(`${API_URL}/modules/with-submodules`);
+  }
 }

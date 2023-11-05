@@ -18,7 +18,7 @@ export abstract class Crud<T extends { id: number }> {
 
   constructor(
     private repositoryService: Repository<T>,
-    private notifyService: CustomNotificationService,
+    protected notifyService: CustomNotificationService,
     private loaderService: LoaderService,
     private msgDialogService: MsgDialogService
   ) {

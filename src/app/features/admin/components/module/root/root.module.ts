@@ -5,7 +5,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { ModuleListModule } from '../module-list/module-list.module';
 import { SubmoduleListModule } from '../submodule-list/submodule-list.module';
-// import { HierarchyModule } from '../hierarchy/hierarchy.module';
+import { HierarchyModule } from '../hierarchy/hierarchy.module';
 
 @NgModule({
   declarations: [ModuleRootComponent],
@@ -15,7 +15,7 @@ import { SubmoduleListModule } from '../submodule-list/submodule-list.module';
     LoadingOverlayModule,
     ModuleListModule,
     SubmoduleListModule,
-    // HierarchyModule,
+    HierarchyModule,
   ],
   exports: [ModuleRootComponent],
 })
