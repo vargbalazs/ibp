@@ -4,7 +4,7 @@ import { LayoutComponent } from 'src/app/core/components/layout/layout.component
 import { RootComponent } from './components/root/root.component';
 // import { UserListComponent } from './components/user/list/list.component';
 import { ActionListComponent } from './components/action/list/list.component';
-// import { ModuleRootComponent } from './components/module/root/root.component';
+import { ModuleRootComponent } from './components/module/root/root.component';
 // import { OperationRootComponent } from './components/operation/root/root.component';
 // import { PrivilegeListComponent } from './components/privileges/list/list.component';
 // import { RoleRootComponent } from './components/role/root/root.component';
@@ -26,10 +26,10 @@ const routes: Routes = [
         path: 'admin/actions',
         component: ActionListComponent,
       },
-      //   {
-      //     path: 'admin/modules',
-      //     component: ModuleRootComponent,
-      //   },
+      {
+        path: 'admin/modules',
+        component: ModuleRootComponent,
+      },
       //   {
       //     path: 'admin/operations',
       //     component: OperationRootComponent,
