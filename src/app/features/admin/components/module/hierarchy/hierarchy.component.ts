@@ -62,6 +62,18 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
     });
   }
 
+  removeSubModule() {
+    const selectedModule = this.modules.find(
+      (module) => module.id === this.contextItem.module.id
+    )!;
+    selectedModule.subModules = selectedModule.subModules.filter(
+      (subModule) => subModule.id !== this.contextItem.id
+    );
+    this.modules = this.modules.map((module) =>
+      module.id !== selectedModule.id ? module : selectedModule
+    );
+  }
+
   nodeClick(e: any) {
     const item = e.item.dataItem;
     const index = e.item.index;
@@ -93,7 +105,8 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
         'Sikeres törlés!',
         'Az almodul sikeresen el lett távolítva az adott modulból.'
       );
-      this.loadTreeview();
+      //this.loadTreeview();
+      this.removeSubModule();
     });
   }
 
