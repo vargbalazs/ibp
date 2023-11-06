@@ -1,0 +1,21 @@
+/* contextmenu */
+
+.k-context-menu-popup {
+  font: var(--font-text-6);
+}
+
+.k-menu-group .k-item:focus > .k-link,
+.k-menu-group .k-item.k-focus > .k-link,
+.k-menu.k-context-menu .k-item:focus > .k-link,
+.k-menu.k-context-menu .k-item.k-focus > .k-link {
+  box-shadow: none;
+}
+
+.k-menu-group .k-item > .k-link:active,
+.k-menu-group .k-item > .k-link.k-active,
+.k-menu-group .k-item > .k-link.k-selected,
+.k-menu.k-context-menu .k-item > .k-link:active,
+.k-menu.k-context-menu .k-item > .k-link.k-active,
+.k-menu.k-context-menu .k-item > .k-link.k-selected {
+  background-color: var(--primary-color);
+}

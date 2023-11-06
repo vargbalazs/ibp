@@ -9,6 +9,7 @@ import { SubModuleService } from '../../../services/submodule.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
+import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 
 @Component({
   selector: 'module-hierarchy',
@@ -28,10 +29,12 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
   @ViewChild('treeview') treeview!: TreeViewComponent;
   @ViewChild('contextMenu') trvContextMenu!: ContextMenuComponent;
 
+  svgDelete: SVGIcon = trashIcon;
+
   contextMenuItems: any[] = [
     {
       text: 'Almodul eltávolítása',
-      icon: 'delete',
+      svgIcon: this.svgDelete,
       tag: 'deleteRole',
       disabled: false,
     },
