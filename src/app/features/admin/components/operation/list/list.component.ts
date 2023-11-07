@@ -7,6 +7,7 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
 import { first, forkJoin } from 'rxjs';
+import { Module } from '../../../models/module.model';
 
 @Component({
   selector: 'operation-list',
@@ -14,6 +15,8 @@ import { first, forkJoin } from 'rxjs';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent extends Crud<Operation> implements OnInit {
+  modules!: Module[];
+
   constructor(
     private operationService: OperationService,
     private moduleService: ModuleService,
@@ -26,7 +29,11 @@ export class ListComponent extends Crud<Operation> implements OnInit {
 
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
-    this.operationService.getOperations().subscribe((operations) => {
+    forkJoin({
+      modules: this.moduleService.getModules().pipe(first()),
+      operations: this.operationService.getOperations().pipe(first()),
+    }).subscribe(({ modules, operations }) => {
+      this.modules = modules;
       if (operations) {
         this.gridData = { data: operations, total: operations.length };
       }

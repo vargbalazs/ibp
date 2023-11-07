@@ -5,7 +5,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { OperationService } from '../../../services/operation.service';
-//import { CreateOperationModule } from '../create/create.module';
+import { CreateOperationModule } from '../create/create.module';
 
 @NgModule({
   declarations: [ListComponent],
@@ -14,7 +14,7 @@ import { OperationService } from '../../../services/operation.service';
     GridModule,
     DialogModule,
     LoadingOverlayModule,
-    //CreateOperationModule,
+    CreateOperationModule,
   ],
   providers: [OperationService],
   exports: [ListComponent],
