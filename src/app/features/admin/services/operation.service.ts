@@ -24,6 +24,6 @@ export class OperationService implements Repository<Operation> {
   }
 
   getOperations() {
-    return this.http.get<Operation[]>(`${API_URL}/operations`);
+    return this.http.get<Operation[]>(`${API_URL}/operations/with-submodules`);
   }
 }

@@ -18,7 +18,10 @@
   <kendo-grid-column field="id" title="Id" [hidden]="true"></kendo-grid-column>
   <kendo-grid-column field="name" title="Funkció"></kendo-grid-column>
   <kendo-grid-column field="subModule.name" title="Almodul"></kendo-grid-column>
-  <kendo-grid-column field="module.name" title="Modul"></kendo-grid-column>
+  <kendo-grid-column
+    field="subModule.module.name"
+    title="Modul"
+  ></kendo-grid-column>
   <kendo-grid-command-column [width]="70">
     <ng-template kendoGridCellTemplate let-dataItem>
       <span class="material-symbols-outlined" (click)="editHandler(dataItem)"
