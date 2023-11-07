@@ -10,6 +10,7 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'module-hierarchy',
@@ -98,16 +99,29 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
   }
 
   onContextMenuItemSelect({ item }: { item: any }): void {
-    this.subModuleService.delete(this.contextItem.id!).subscribe((id) => {
-      this.notifyService.showNotification(
-        3000,
-        'success',
-        'Sikeres törlés!',
-        'Az almodul sikeresen el lett távolítva az adott modulból.'
-      );
-      //this.loadTreeview();
-      this.removeSubModule();
-    });
+    this.subModuleService
+      .delete(this.contextItem.id!)
+      .pipe(
+        catchError(() => {
+          this.notifyService.showNotification(
+            5000,
+            'error',
+            'Törlés nem sikerült!',
+            'Az almodulhoz tartozik legalább egy tranzakció.'
+          );
+          return of();
+        })
+      )
+      .subscribe((id) => {
+        this.notifyService.showNotification(
+          5000,
+          'success',
+          'Sikeres törlés!',
+          'Az almodul sikeresen el lett távolítva az adott modulból.'
+        );
+        //this.loadTreeview();
+        this.removeSubModule();
+      });
   }
 
   onSelectionChange(event: TreeItem) {
