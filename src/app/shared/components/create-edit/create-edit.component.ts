@@ -4,7 +4,7 @@ import { FormGroup } from '@angular/forms';
 @Component({
   template: '',
 })
-export class CreateEditComponent<T extends { id: number }> {
+export class CreateEditComponent<T extends { id?: number }> {
   formData: T = <T>{};
   form: FormGroup = new FormGroup({});
 

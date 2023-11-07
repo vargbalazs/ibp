@@ -45,22 +45,30 @@ export class CreateOperationComponent
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.editMode) {
+      this.form.controls.module.setValue(
+        this.form.controls.subModule.value!.module
+      );
       this.comboBoxValueChange = true;
-      this.moduleChange(this.form.controls.module.value!);
+      this.moduleChange(this.form.controls.subModule.value!.module);
       this.comboBoxValueChange = false;
     }
   }
 
   initForm() {
     return new FormGroup({
-      id: new FormControl(this.formData.id),
-      name: new FormControl(this.formData.name, [Validators.required]),
-      module: new FormControl(this.formData.subModule?.module, [
-        Validators.required,
-      ]),
-      subModule: new FormControl(this.formData.subModule, [
-        Validators.required,
-      ]),
+      id: new FormControl(this.formData.id, { nonNullable: true }),
+      name: new FormControl(this.formData.name, {
+        validators: Validators.required,
+        nonNullable: true,
+      }),
+      module: new FormControl(this.formData.subModule?.module, {
+        validators: Validators.required,
+        nonNullable: true,
+      }),
+      subModule: new FormControl(this.formData.subModule, {
+        validators: Validators.required,
+        nonNullable: true,
+      }),
     });
   }
 
@@ -82,5 +90,27 @@ export class CreateOperationComponent
   override resetState() {
     this.utilityService.changeControlState(this.form, ['subModule'], false);
     this.subModules = [];
+  }
+
+  override onSave() {
+    this.form.markAllAsTouched();
+    if (this.form.valid) {
+      const formValue: Operation = {};
+      Object.assign(formValue, this.form.value);
+
+      const module = formValue.module!;
+      const subModules = module!.subModules;
+
+      delete module!.subModules;
+
+      formValue.module = module;
+
+      this.save.emit(formValue);
+      this.resetState();
+
+      this.modules.find(
+        (module) => module.id === this.form.value.module!.id
+      )!.subModules = subModules;
+    }
   }
 }

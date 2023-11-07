@@ -8,7 +8,7 @@ import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.en
 import { DialogAction } from '../interfaces/dialog-action.interface';
 import { DialogRef } from '@progress/kendo-angular-dialog';
 
-export abstract class Crud<T extends { id: number }> {
+export abstract class Crud<T extends { id?: number }> {
   gridData!: GridDataResult;
   isNew: boolean;
   dialogOpened: boolean;
@@ -100,7 +100,7 @@ export abstract class Crud<T extends { id: number }> {
   }
 
   remove(entity: T) {
-    this.repositoryService.delete!(entity.id).subscribe((id) => {
+    this.repositoryService.delete!(entity.id!).subscribe((id) => {
       this.dialogRef.close();
       this.gridData.data = this.gridData.data.filter(
         (item) => item.id !== entity.id

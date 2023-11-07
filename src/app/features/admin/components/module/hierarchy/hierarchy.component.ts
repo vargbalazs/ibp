@@ -67,7 +67,7 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
     const selectedModule = this.modules.find(
       (module) => module.id === this.contextItem.module.id
     )!;
-    selectedModule.subModules = selectedModule.subModules.filter(
+    selectedModule.subModules = selectedModule.subModules!.filter(
       (subModule) => subModule.id !== this.contextItem.id
     );
     this.modules = this.modules.map((module) =>
