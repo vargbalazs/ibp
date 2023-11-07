@@ -10,7 +10,7 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
 import { SubModule } from '../../../models/submodule.model';
-import { first, forkJoin } from 'rxjs';
+import { catchError, first, forkJoin, of } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 
 @Component({
@@ -106,16 +106,29 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
   }
 
   onContextMenuItemSelect({ item }: { item: any }): void {
-    this.operationService.delete(this.contextItem.id!).subscribe((id) => {
-      this.notifyService.showNotification(
-        5000,
-        'success',
-        'Sikeres törlés!',
-        'A funkció sikeresen el lett távolítva az adott almodulból.'
-      );
-      //this.loadTreeview();
-      this.removeOperation();
-    });
+    this.operationService
+      .delete(this.contextItem.id!)
+      .pipe(
+        catchError(() => {
+          this.notifyService.showNotification(
+            5000,
+            'error',
+            'Törlés nem sikerült!',
+            'A funkcióhoz tartozik legalább egy jogosultság.'
+          );
+          return of();
+        })
+      )
+      .subscribe((id) => {
+        this.notifyService.showNotification(
+          5000,
+          'success',
+          'Sikeres törlés!',
+          'A funkció sikeresen el lett távolítva az adott almodulból.'
+        );
+        //this.loadTreeview();
+        this.removeOperation();
+      });
   }
 
   onSelectionChange(event: TreeItem) {
