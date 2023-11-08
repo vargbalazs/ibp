@@ -44,7 +44,9 @@ export class PermissionListComponent
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
     forkJoin({
-      permissions: this.permissionService.getPermissions().pipe(first()),
+      permissions: this.permissionService
+        .getPermissionsWithDetails()
+        .pipe(first()),
       modules: this.moduleService.getModules().pipe(first()),
       operations: this.operationService.getOperations().pipe(first()),
       actions: this.actionService.getActions().pipe(first()),
