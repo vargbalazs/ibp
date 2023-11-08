@@ -5,7 +5,6 @@ import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { API_URL, USE_LOADING_SPINNER } from '../constants/app.constants';
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { HttpErrorResponse } from '../interfaces/http-error-response.interface';
 import { UserLogin } from '../models/user-login.model';
 import { AuthToken } from '../interfaces/auth-token.interface';
 
@@ -77,7 +76,7 @@ export class AuthService {
   }
 
   forgotPwd(userEmail: string) {
-    return this.http.get<HttpErrorResponse>(`${API_URL}/auth/forgotpwd`, {
+    return this.http.get<boolean>(`${API_URL}/auth/forgotpwd`, {
       params: new HttpParams().set('user-email', userEmail),
     });
   }

@@ -1,7 +1,7 @@
 import { GridDataResult } from '@progress/kendo-angular-grid';
 import { Repository } from '../interfaces/repository.interface';
 import { CustomNotificationService } from '../services/notification.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, catchError, of } from 'rxjs';
 import { LoaderService } from '../services/loader.service';
 import { MsgDialogService } from '../services/dialog.service';
 import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.enum';
@@ -100,17 +100,24 @@ export abstract class Crud<T extends { id?: number }> {
   }
 
   remove(entity: T) {
-    this.repositoryService.delete!(entity.id!).subscribe((id) => {
-      this.dialogRef.close();
-      this.gridData.data = this.gridData.data.filter(
-        (item) => item.id !== entity.id
-      );
-      this.notifyService.showNotification(
-        5000,
-        'success',
-        'Sikeres törlés!',
-        'A kiválasztott elem eltávolításra került a listából.'
-      );
-    });
+    this.repositoryService.delete!(entity.id!)
+      .pipe(
+        catchError((err) => {
+          this.dialogRef.close();
+          return of();
+        })
+      )
+      .subscribe((id) => {
+        this.dialogRef.close();
+        this.gridData.data = this.gridData.data.filter(
+          (item) => item.id !== entity.id
+        );
+        this.notifyService.showNotification(
+          5000,
+          'success',
+          'Sikeres törlés!',
+          'A kiválasztott elem eltávolításra került a listából.'
+        );
+      });
   }
 }

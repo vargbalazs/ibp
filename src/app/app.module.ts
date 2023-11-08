@@ -13,6 +13,7 @@ import { LayoutModule } from './core/components/layout/layout.module';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FeaturesModule } from './features/features.module';
 import { CustomDialogModule } from './shared/components/custom-dialog/custom-dialog.module';
+import { DatabaseErrorInterceptor } from './core/interceptors/database-error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,6 +32,11 @@ import { CustomDialogModule } from './shared/components/custom-dialog/custom-dia
     NotificationService,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: DatabaseErrorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

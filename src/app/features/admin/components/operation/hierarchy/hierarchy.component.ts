@@ -110,12 +110,6 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
       .delete(this.contextItem.id!)
       .pipe(
         catchError(() => {
-          this.notifyService.showNotification(
-            5000,
-            'error',
-            'Törlés nem sikerült!',
-            'A funkcióhoz tartozik legalább egy jogosultság.'
-          );
           return of();
         })
       )

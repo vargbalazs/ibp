@@ -103,12 +103,6 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
       .delete(this.contextItem.id!)
       .pipe(
         catchError(() => {
-          this.notifyService.showNotification(
-            5000,
-            'error',
-            'Törlés nem sikerült!',
-            'Az almodulhoz tartozik legalább egy tranzakció.'
-          );
           return of();
         })
       )
