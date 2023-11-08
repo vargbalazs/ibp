@@ -30,8 +30,8 @@ export class RootComponent {
           skipLocationChange: true,
         });
         break;
-      case 'privilege':
-        this.router.navigate(['admin/privileges'], {
+      case 'permission':
+        this.router.navigate(['admin/permissions'], {
           skipLocationChange: true,
         });
         break;

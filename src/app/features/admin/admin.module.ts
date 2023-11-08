@@ -4,6 +4,7 @@ import { RootModule } from './components/root/root.module';
 import { ActionModule } from './components/action/action.module';
 import { ModuleModule } from './components/module/module.module';
 import { OperationModule } from './components/operation/operation.module';
+import { PermissionsModule } from './components/permission/permission.module';
 
 @NgModule({
   declarations: [],
@@ -13,6 +14,7 @@ import { OperationModule } from './components/operation/operation.module';
     ActionModule,
     ModuleModule,
     OperationModule,
+    PermissionsModule,
   ],
   providers: [],
   exports: [],

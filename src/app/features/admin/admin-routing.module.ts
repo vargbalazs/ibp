@@ -6,7 +6,7 @@ import { RootComponent } from './components/root/root.component';
 import { ActionListComponent } from './components/action/list/list.component';
 import { ModuleRootComponent } from './components/module/root/root.component';
 import { OperationRootComponent } from './components/operation/root/root.component';
-// import { PrivilegeListComponent } from './components/privileges/list/list.component';
+import { PermissionListComponent } from './components/permission/list/list.component';
 // import { RoleRootComponent } from './components/role/root/root.component';
 
 const routes: Routes = [
@@ -34,10 +34,10 @@ const routes: Routes = [
         path: 'admin/operations',
         component: OperationRootComponent,
       },
-      //   {
-      //     path: 'admin/privileges',
-      //     component: PrivilegeListComponent,
-      //   },
+      {
+        path: 'admin/permissions',
+        component: PermissionListComponent,
+      },
       //   {
       //     path: 'admin/roles',
       //     component: RoleRootComponent,

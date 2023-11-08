@@ -36,4 +36,8 @@ export class PermissionService implements Repository<Permission> {
       permissionId: permissionId,
     });
   }
+
+  getPermissions() {
+    return this.http.get<Permission[]>(`${API_URL}/permissions`);
+  }
 }
