@@ -44,7 +44,7 @@
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
-<!-- <create-privilege
+<create-permission
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
@@ -54,7 +54,7 @@
   [actions]="actions"
   (save)="saveHandler($event)"
   (cancel)="cancelHandler()"
-></create-privilege> -->
+></create-permission>
 <div kendoDialogContainer></div>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"

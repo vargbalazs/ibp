@@ -47,7 +47,7 @@ export class PermissionListComponent
       permissions: this.permissionService
         .getPermissionsWithDetails()
         .pipe(first()),
-      modules: this.moduleService.getModules().pipe(first()),
+      modules: this.moduleService.getModulesWithSubModules().pipe(first()),
       operations: this.operationService.getOperations().pipe(first()),
       actions: this.actionService.getActions().pipe(first()),
     }).subscribe(({ permissions, modules, operations, actions }) => {
