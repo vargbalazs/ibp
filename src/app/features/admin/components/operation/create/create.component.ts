@@ -91,26 +91,4 @@ export class CreateOperationComponent
     this.utilityService.changeControlState(this.form, ['subModule'], false);
     this.subModules = [];
   }
-
-  override onSave() {
-    this.form.markAllAsTouched();
-    if (this.form.valid) {
-      const formValue: Operation = {};
-      Object.assign(formValue, this.form.value);
-
-      const module = formValue.module!;
-      const subModules = module!.subModules;
-
-      delete module!.subModules;
-
-      formValue.module = module;
-
-      this.save.emit(formValue);
-      this.resetState();
-
-      this.modules.find(
-        (module) => module.id === this.form.value.module!.id
-      )!.subModules = subModules;
-    }
-  }
 }
