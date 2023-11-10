@@ -48,6 +48,7 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
   getReferencedObjectName(details: string): string {
     if (details.includes('operations')) return 'funkciók';
     if (details.includes('permissions')) return 'jogosultságok';
+    if (details.includes('users_rolegroups')) return 'felhasználók';
     return '';
   }
 }

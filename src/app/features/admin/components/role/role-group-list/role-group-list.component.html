@@ -31,13 +31,13 @@
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
-<!-- <create-rolegroup
+<create-rolegroup
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
   (save)="saveHandler($event)"
   (cancel)="cancelHandler()"
-></create-rolegroup> -->
+></create-rolegroup>
 <div kendoDialogContainer></div>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"

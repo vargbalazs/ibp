@@ -5,7 +5,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { RoleGroupService } from '../../../services/rolegroup.service';
-//import { CreateGroupModule } from '../create-group/create-group.module';
+import { CreateRoleGroupModule } from '../create-role-group/create-role-group.module';
 
 @NgModule({
   declarations: [RoleGroupListComponent],
@@ -14,7 +14,7 @@ import { RoleGroupService } from '../../../services/rolegroup.service';
     GridModule,
     DialogModule,
     LoadingOverlayModule,
-    //CreateGroupModule,
+    CreateRoleGroupModule,
   ],
   exports: [RoleGroupListComponent],
   providers: [RoleGroupService],
