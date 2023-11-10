@@ -4,7 +4,7 @@ import { RoleRootComponent } from './root.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 // import { RoleListModule } from '../list/list.module';
-// import { RoleGroupListModule } from '../group-list/group-list.module';
+import { RoleGroupListModule } from '../role-group-list/role-group-list.module';
 // import { AssignToGroupModule } from '../assign-to-group/assign-to-group.module';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/
     LayoutModule,
     LoadingOverlayModule,
     // RoleListModule,
-    // RoleGroupListModule,
+    RoleGroupListModule,
     // AssignToGroupModule,
   ],
   exports: [RoleRootComponent],
