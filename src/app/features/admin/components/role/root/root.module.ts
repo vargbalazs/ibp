@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RoleRootComponent } from './root.component';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
-// import { RoleListModule } from '../list/list.module';
+import { RoleListModule } from '../role-list/role-list.module';
 import { RoleGroupListModule } from '../role-group-list/role-group-list.module';
 // import { AssignToGroupModule } from '../assign-to-group/assign-to-group.module';
 
@@ -13,7 +13,7 @@ import { RoleGroupListModule } from '../role-group-list/role-group-list.module';
     CommonModule,
     LayoutModule,
     LoadingOverlayModule,
-    // RoleListModule,
+    RoleListModule,
     RoleGroupListModule,
     // AssignToGroupModule,
   ],

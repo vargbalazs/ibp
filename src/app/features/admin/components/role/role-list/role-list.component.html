@@ -1,0 +1,45 @@
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [style.maxHeight.%]="100"
+  [filterable]="true"
+  (add)="addHandler()"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button
+      kendoGridAddCommand
+      themeColor="primary"
+      fillMode="solid"
+      size="small"
+    >
+      Új szerep
+    </button>
+  </ng-template>
+  <kendo-grid-column field="id" title="Id" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column field="name" title="Szerep"></kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span class="material-symbols-outlined" (click)="editHandler(dataItem)"
+        >edit</span
+      >
+      <span class="material-symbols-outlined" (click)="removeHandler(dataItem)"
+        >delete</span
+      >
+    </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<!-- <create-role
+  *ngIf="editDataItem"
+  [model]="editDataItem"
+  [isNew]="isNew"
+  (save)="saveHandler($event)"
+  (cancel)="cancelHandler()"
+></create-role> -->
+<div kendoDialogContainer></div>
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>
