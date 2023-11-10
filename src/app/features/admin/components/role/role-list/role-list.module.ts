@@ -5,7 +5,7 @@ import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { RoleService } from '../../../services/role.service';
-//import { CreateRoleModule } from '../create-role/create-role.module';
+import { CreateRoleModule } from '../create-role/create-role.module';
 
 @NgModule({
   declarations: [RoleListComponent],
@@ -14,7 +14,7 @@ import { RoleService } from '../../../services/role.service';
     GridModule,
     DialogModule,
     LoadingOverlayModule,
-    //CreateRoleModule,
+    CreateRoleModule,
   ],
   exports: [RoleListComponent],
   providers: [RoleService],
