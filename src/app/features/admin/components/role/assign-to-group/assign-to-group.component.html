@@ -1,0 +1,68 @@
+<button
+  kendoButton
+  themeColor="primary"
+  fillMode="solid"
+  size="small"
+  (click)="showAssignForm()"
+>
+  Szerep hozzárendelése csoporthoz
+</button>
+<infobar
+  [text]="
+    'Egy adott szerep eltávolításához mutassunk egérrel a szerepre és a jobb egérgomb megnyomása után válasszuk ki a kívánt parancsot.'
+  "
+></infobar>
+<div class="container">
+  <kendo-textbox
+    (valueChange)="filterTerm = $event"
+    [clearButton]="true"
+    placeholder="Szűrés..."
+    size="small"
+    fillMode="solid"
+  >
+    <ng-template kendoTextBoxPrefixTemplate>
+      <span class="material-symbols-outlined">search</span>
+      <kendo-textbox-separator></kendo-textbox-separator>
+    </ng-template>
+  </kendo-textbox>
+  <kendo-treeview
+    kendoTreeViewHierarchyBinding
+    #treeview
+    [nodes]="roleGroups"
+    childrenField="roles"
+    [filter]="filterTerm"
+    textField="name"
+    [animate]="true"
+    [expandOnFilter]="true"
+    [(expandedKeys)]="expandedKeys"
+    kendoTreeViewExpandable
+    (nodeClick)="nodeClick($event)"
+    (selectionChange)="onSelectionChange($event)"
+    [isExpanded]="isItemExpanded"
+    [isSelected]="isItemSelected"
+  >
+    <ng-template kendoTreeViewNodeTemplate let-dataItem let-index="index">
+      {{ dataItem.name }}
+    </ng-template>
+  </kendo-treeview>
+  <!-- <assign
+    *ngIf="editDataItem"
+    [model]="editDataItem"
+    [isNew]="isNew"
+    [roles]="roles"
+    [roleGroups]="roleGroups"
+    (save)="saveHandler($event)"
+    (cancel)="cancelHandler()"
+  ></assign> -->
+  <div kendoDialogContainer></div>
+  <loading-overlay
+    [visible]="loadingOverlayVisible | async"
+    loadingText=""
+  ></loading-overlay>
+  <kendo-contextmenu
+    #contextMenu
+    [items]="contextMenuItems"
+    (select)="onContextMenuItemSelect($event)"
+  >
+  </kendo-contextmenu>
+</div>

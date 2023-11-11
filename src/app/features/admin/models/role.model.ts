@@ -4,6 +4,7 @@ export class Role {
   constructor(
     public id?: number,
     public name?: string,
-    public roleGroups?: RoleGroup[]
+    public roleGroups?: RoleGroup[],
+    public roleGroupId?: number
   ) {}
 }

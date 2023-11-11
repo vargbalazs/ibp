@@ -1,0 +1,15 @@
+button {
+  margin-bottom: 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 79%;
+  width: 400px;
+}
+
+kendo-textbox {
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
