@@ -5,7 +5,8 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { RoleListModule } from '../role-list/role-list.module';
 import { RoleGroupListModule } from '../role-group-list/role-group-list.module';
-import { AssignToGroupModule } from '../hierarchy/hierarchy.module';
+import { HierarchyModule } from '../hierarchy/hierarchy.module';
+import { RolesAndPermissionsModule } from '../roles-and-permissions/roles-and-permissions.module';
 
 @NgModule({
   declarations: [RoleRootComponent],
@@ -15,7 +16,8 @@ import { AssignToGroupModule } from '../hierarchy/hierarchy.module';
     LoadingOverlayModule,
     RoleListModule,
     RoleGroupListModule,
-    AssignToGroupModule,
+    HierarchyModule,
+    RolesAndPermissionsModule,
   ],
   exports: [RoleRootComponent],
 })

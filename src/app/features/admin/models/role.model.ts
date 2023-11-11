@@ -1,3 +1,4 @@
+import { Permission } from './permission.model';
 import { RoleGroup } from './rolegroup.model';
 
 export class Role {
@@ -5,6 +6,7 @@ export class Role {
     public id?: number,
     public name?: string,
     public roleGroups?: RoleGroup[],
-    public roleGroupId?: number
+    public roleGroupId?: number,
+    public permissions?: Permission[]
   ) {}
 }

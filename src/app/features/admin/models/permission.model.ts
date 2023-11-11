@@ -5,6 +5,7 @@ export class Permission {
   constructor(
     public id?: number,
     public name?: string,
-    public operation?: Operation //public roles?: Role[]
+    public operation?: Operation,
+    public roleId?: number
   ) {}
 }
