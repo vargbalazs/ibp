@@ -108,7 +108,7 @@ export class RolesAndPermissionsComponent
 
   loadTreeview() {
     forkJoin({
-      roles: this.roleService.getRoles().pipe(first()),
+      roles: this.roleService.getRolesWithPermissions().pipe(first()),
       permissions: this.permissionService.getPermissions().pipe(first()),
     }).subscribe(({ roles, permissions }) => {
       this.roles = roles;
