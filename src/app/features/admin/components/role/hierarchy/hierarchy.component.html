@@ -45,7 +45,7 @@
       {{ dataItem.name }}
     </ng-template>
   </kendo-treeview>
-  <!-- <assign
+  <assign-to-rolegroup
     *ngIf="editDataItem"
     [model]="editDataItem"
     [isNew]="isNew"
@@ -53,7 +53,7 @@
     [roleGroups]="roleGroups"
     (save)="saveHandler($event)"
     (cancel)="cancelHandler()"
-  ></assign> -->
+  ></assign-to-rolegroup>
   <div kendoDialogContainer></div>
   <loading-overlay
     [visible]="loadingOverlayVisible | async"

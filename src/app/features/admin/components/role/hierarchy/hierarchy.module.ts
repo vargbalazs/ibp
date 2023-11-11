@@ -7,7 +7,7 @@ import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/
 import { InfobarModule } from 'src/app/shared/components/infobar/infobar.module';
 import { ContextMenuModule } from '@progress/kendo-angular-menu';
 import { InputsModule } from '@progress/kendo-angular-inputs';
-//import { AssignModule } from '../assign/assign.module';
+import { AssignToRoleGroupModule } from '../assign-to-rolegroup/assign-to-rolegroup.module';
 
 @NgModule({
   declarations: [AssignToGroupComponent],
@@ -19,7 +19,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     LoadingOverlayModule,
     InfobarModule,
     ContextMenuModule,
-    //AssignModule,
+    AssignToRoleGroupModule,
   ],
   exports: [AssignToGroupComponent],
 })
