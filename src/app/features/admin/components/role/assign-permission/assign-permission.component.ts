@@ -1,24 +1,24 @@
 import { Component, Input } from '@angular/core';
 import { CreateEditComponent } from 'src/app/shared/components/create-edit/create-edit.component';
-import { AssignRole } from '../../../models/assign-role.model';
 import { Role } from '../../../models/role.model';
-import { RoleGroup } from '../../../models/rolegroup.model';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { AssignPermission } from '../../../models/assign-permission.model';
+import { Permission } from '../../../models/permission.model';
 
 @Component({
-  selector: 'assign-to-rolegroup',
-  templateUrl: './assign-to-rolegroup.component.html',
-  styleUrls: ['./assign-to-rolegroup.component.css'],
+  selector: 'assign-permission',
+  templateUrl: './assign-permission.component.html',
+  styleUrls: ['./assign-permission.component.css'],
 })
-export class AssignToRoleGroupComponent extends CreateEditComponent<AssignRole> {
+export class AssignPermissionComponent extends CreateEditComponent<AssignPermission> {
   isBusy: BehaviorSubject<boolean>;
 
   override form: ReturnType<typeof this.initForm>;
 
+  @Input() permissions: Permission[] = [];
   @Input() roles: Role[] = [];
-  @Input() roleGroups: RoleGroup[] = [];
 
   constructor(private loaderService: LoaderService) {
     super();
@@ -29,11 +29,11 @@ export class AssignToRoleGroupComponent extends CreateEditComponent<AssignRole> 
   initForm() {
     return new FormGroup({
       roleId: new FormControl(this.formData.roleId, [Validators.required]),
-      roleGroupId: new FormControl(this.formData.roleGroupId, [
+      permissionId: new FormControl(this.formData.permissionId, [
         Validators.required,
       ]),
       role: new FormControl(this.formData.role, [Validators.required]),
-      roleGroup: new FormControl(this.formData.roleGroup, [
+      permission: new FormControl(this.formData.permission, [
         Validators.required,
       ]),
     });
@@ -43,7 +43,7 @@ export class AssignToRoleGroupComponent extends CreateEditComponent<AssignRole> 
     if (value) this.form.patchValue({ roleId: value.id });
   }
 
-  roleGroupChange(value: RoleGroup) {
-    if (value) this.form.patchValue({ roleGroupId: value.id });
+  permissionChange(value: Permission) {
+    if (value) this.form.patchValue({ permissionId: value.id });
   }
 }

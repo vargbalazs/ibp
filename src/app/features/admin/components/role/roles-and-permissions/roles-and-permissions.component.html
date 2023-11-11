@@ -45,15 +45,15 @@
       {{ dataItem.name }}
     </ng-template>
   </kendo-treeview>
-  <!-- <assign-to-rolegroup
+  <assign-permission
     *ngIf="editDataItem"
     [model]="editDataItem"
     [isNew]="isNew"
     [roles]="roles"
-    [roleGroups]="roleGroups"
+    [permissions]="permissions"
     (save)="saveHandler($event)"
     (cancel)="cancelHandler()"
-  ></assign-to-rolegroup> -->
+  ></assign-permission>
   <div kendoDialogContainer></div>
   <loading-overlay
     [visible]="loadingOverlayVisible | async"

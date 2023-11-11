@@ -7,6 +7,7 @@ import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/
 import { InfobarModule } from 'src/app/shared/components/infobar/infobar.module';
 import { ContextMenuModule } from '@progress/kendo-angular-menu';
 import { InputsModule } from '@progress/kendo-angular-inputs';
+import { AssignPermissionModule } from '../assign-permission/assign-permission.module';
 
 @NgModule({
   declarations: [RolesAndPermissionsComponent],
@@ -18,6 +19,7 @@ import { InputsModule } from '@progress/kendo-angular-inputs';
     LoadingOverlayModule,
     InfobarModule,
     ContextMenuModule,
+    AssignPermissionModule,
   ],
   exports: [RolesAndPermissionsComponent],
 })
