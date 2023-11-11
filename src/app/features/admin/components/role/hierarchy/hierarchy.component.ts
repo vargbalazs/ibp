@@ -14,9 +14,9 @@ import { first, forkJoin } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 
 @Component({
-  selector: 'assign-to-group',
-  templateUrl: './assign-to-group.component.html',
-  styleUrls: ['./assign-to-group.component.css'],
+  selector: 'hierarchy',
+  templateUrl: './hierarchy.component.html',
+  styleUrls: ['./hierarchy.component.css'],
 })
 export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
   filterTerm = '';
