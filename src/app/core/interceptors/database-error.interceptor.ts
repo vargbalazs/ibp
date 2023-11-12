@@ -50,6 +50,7 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
     if (details.includes('permissions')) return 'jogosultságok';
     if (details.includes('users_rolegroups')) return 'felhasználók';
     if (details.includes('rolegroups_roles')) return 'szerepcsoportok';
+    if (details.includes('submodules')) return 'almodulok';
     return '';
   }
 }

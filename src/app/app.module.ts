@@ -14,7 +14,6 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FeaturesModule } from './features/features.module';
 import { CustomDialogModule } from './shared/components/custom-dialog/custom-dialog.module';
 import { DatabaseErrorInterceptor } from './core/interceptors/database-error.interceptor';
-import { RefreshTokenInterceptor } from './core/interceptors/refresh-token.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,11 +32,6 @@ import { RefreshTokenInterceptor } from './core/interceptors/refresh-token.inter
     NotificationService,
     { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: RefreshTokenInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DatabaseErrorInterceptor,
