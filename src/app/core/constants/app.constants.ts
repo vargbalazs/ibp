@@ -5,6 +5,7 @@ export const USE_LOADING_SPINNER = new HttpContextToken<boolean>(() => true);
 export const PUBLIC_URLS = [
   '/auth/login',
   '/auth/forgotpwd',
+  '/auth/refresh',
   '/users/signup',
   '/users/username-exists',
   '/users/useremail-exists',

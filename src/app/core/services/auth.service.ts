@@ -1,7 +1,12 @@
 import { Injectable } from '@angular/core';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { UserSignup } from '../models/user-signup.model';
-import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpContext,
+  HttpHeaders,
+  HttpParams,
+} from '@angular/common/http';
 import { API_URL, USE_LOADING_SPINNER } from '../constants/app.constants';
 import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
@@ -104,5 +109,15 @@ export class AuthService {
   clearTokens() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
+  }
+
+  refreshTokens() {
+    const header = new HttpHeaders().set(
+      'Authorization',
+      `Bearer ${this.getTokens().refreshToken}`
+    );
+    return this.http.get<AuthToken>(`${API_URL}/auth/refresh`, {
+      headers: header,
+    });
   }
 }
