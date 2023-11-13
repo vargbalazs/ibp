@@ -1,0 +1,77 @@
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [filterable]="true"
+  [style.maxHeight.%]="100"
+>
+  <ng-template kendoGridToolbarTemplate> </ng-template>
+  <kendo-grid-column field="id" title="Id" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column
+    field="userId"
+    title="Felhasználóazonosító"
+  ></kendo-grid-column>
+  <kendo-grid-column field="firstName" title="Keresztnév"></kendo-grid-column>
+  <kendo-grid-column field="lastName" title="Vezetéknév"></kendo-grid-column>
+  <kendo-grid-column
+    field="userName"
+    title="Felhasználónév"
+  ></kendo-grid-column>
+  <kendo-grid-column field="userEmail" title="E-mail"></kendo-grid-column>
+  <kendo-grid-column field="active" title="Aktív" filter="boolean">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="badge-container">
+        <div
+          [ngClass]="dataItem.active ? 'badge-success' : 'badge-error'"
+          class="badge"
+        >
+          {{ dataItem.active ? "Aktív" : "Inaktív" }}
+        </div>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-column field="notLocked" title="Zárolt" filter="boolean">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <div class="badge-container">
+        <div
+          [ngClass]="!dataItem.notLocked ? 'badge-error' : 'badge-success'"
+          class="badge"
+        >
+          {{ !dataItem.notLocked ? "Zárolt" : "" }}
+        </div>
+      </div>
+    </ng-template>
+  </kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span
+        class="material-symbols-outlined"
+        (click)="showDetails({ dataItem: dataItem })"
+        >edit</span
+      >
+      <span class="material-symbols-outlined" (click)="removeHandler(dataItem)"
+        >delete</span
+      >
+    </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<div kendoDialogContainer></div>
+<!-- <create-user
+  *ngIf="editDataItem"
+  [model]="editDataItem"
+  [isNew]="isNew"
+  (save)="saveHandler($event)"
+  (cancel)="cancelHandler()"
+></create-user>
+<user-details
+  *ngIf="userDetails"
+  [model]="userDetails"
+  (cancel)="userDetailsCancel()"
+  (basicDataChanged)="updateList($event)"
+></user-details> -->
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>

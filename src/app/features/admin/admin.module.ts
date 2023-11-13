@@ -6,6 +6,8 @@ import { ModuleModule } from './components/module/module.module';
 import { OperationModule } from './components/operation/operation.module';
 import { PermissionsModule } from './components/permission/permission.module';
 import { RoleModule } from './components/role/role.module';
+import { UserModule } from './components/user/user.module';
+import { AdminService } from './services/admin.service';
 
 @NgModule({
   declarations: [],
@@ -17,8 +19,9 @@ import { RoleModule } from './components/role/role.module';
     OperationModule,
     PermissionsModule,
     RoleModule,
+    UserModule,
   ],
-  providers: [],
+  providers: [AdminService],
   exports: [],
 })
 export class AdminModule {}

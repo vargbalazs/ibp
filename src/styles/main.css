@@ -15,6 +15,7 @@
 @import "dropdowns.css";
 @import "dialog.css";
 @import "menu.css";
+@import "badges.css";
 
 body {
   margin: 0;

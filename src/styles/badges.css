@@ -1,0 +1,27 @@
+.k-badge-solid-success,
+.badge-success {
+  color: var(--badge-success-color);
+  background: var(--badge-success-background-color);
+}
+
+.k-badge-solid-error,
+.badge-error {
+  color: var(--badge-error-color);
+  background: var(--badge-error-background-color);
+}
+
+/* used for badges without any parent element */
+
+.badge-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.badge {
+  border-radius: 2rem;
+  text-align: center;
+  width: fit-content;
+  padding: 0 1rem;
+  font-weight: var(--medium);
+}
