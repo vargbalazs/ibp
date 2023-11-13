@@ -119,3 +119,23 @@
 .k-dropdown-operator.k-picker-md:has(+ .k-button-solid-base) {
   display: none;
 }
+
+.k-filtercell-boolean .k-dropdownlist,
+.k-filter-menu .k-dropdownlist {
+  background-color: white;
+  border-color: var(--input-border-color);
+}
+
+.k-filtercell-boolean .k-dropdownlist:focus,
+.k-filter-menu .k-dropdownlist:focus {
+  box-shadow: var(--input-focus-shadow);
+}
+
+.k-selected.k-list-optionlabel,
+.k-selected.k-list-optionlabel:hover {
+  background-color: var(--primary-color);
+}
+
+.k-focus.k-list-optionlabel {
+  box-shadow: none;
+}

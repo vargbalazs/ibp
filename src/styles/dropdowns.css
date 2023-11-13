@@ -53,3 +53,15 @@
 .k-combobox .k-button-solid-base:hover {
   background: transparent;
 }
+
+/* dropdownlist */
+
+.k-dropdownlist .k-button-solid-base {
+  color: var(--secondary-font-color);
+  border: none;
+}
+
+.k-dropdownlist .k-button-outline-base:hover {
+  box-shadow: none;
+  background: transparent;
+}
