@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/core/models/user.model';
 import { of } from 'rxjs';
@@ -16,8 +16,10 @@ export class UserService {
     return of(user);
   }
 
-  delete(id: number) {
-    return this.http.delete<number>(`${API_URL}/users/${id}`);
+  delete(id: string) {
+    return this.http.delete<number>(`${API_URL}/users`, {
+      params: new HttpParams().set('userId', id),
+    });
   }
 
   getUsers() {

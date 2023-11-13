@@ -48,7 +48,14 @@
         (click)="showDetails({ dataItem: dataItem })"
         >edit</span
       >
-      <span class="material-symbols-outlined" (click)="removeHandler(dataItem)"
+      <span
+        class="material-symbols-outlined"
+        (click)="
+          removeHandler(dataItem, {
+            columnName: 'userId',
+            value: dataItem.userId
+          })
+        "
         >delete</span
       >
     </ng-template>

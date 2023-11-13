@@ -7,6 +7,7 @@ import { MsgDialogService } from '../services/dialog.service';
 import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.enum';
 import { DialogAction } from '../interfaces/dialog-action.interface';
 import { DialogRef } from '@progress/kendo-angular-dialog';
+import { AlternativeId } from '../interfaces/alternative-id.interface';
 
 export abstract class Crud<T extends { id?: number }> {
   gridData!: GridDataResult;
@@ -50,7 +51,7 @@ export abstract class Crud<T extends { id?: number }> {
     this.resetDataItem();
   }
 
-  removeHandler(dataItem: T) {
+  removeHandler(dataItem: T, alternativeId?: AlternativeId) {
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(
       'Elem törlése',
@@ -61,7 +62,7 @@ export abstract class Crud<T extends { id?: number }> {
     );
     this.dialogRef.dialog.instance.close.subscribe((result) => {
       if ((result as DialogAction).action === DialogActionsEnum.Yes) {
-        this.remove(dataItem);
+        this.remove(dataItem, alternativeId);
       }
     });
   }
@@ -99,8 +100,9 @@ export abstract class Crud<T extends { id?: number }> {
     }
   }
 
-  remove(entity: T) {
-    this.repositoryService.delete!(entity.id!)
+  remove(entity: T, alternativeId?: AlternativeId) {
+    const id = alternativeId ? alternativeId.value : entity.id;
+    this.repositoryService.delete!(id!)
       .pipe(
         catchError((err) => {
           this.dialogRef.close();
@@ -109,9 +111,16 @@ export abstract class Crud<T extends { id?: number }> {
       )
       .subscribe((id) => {
         this.dialogRef.close();
-        this.gridData.data = this.gridData.data.filter(
-          (item) => item.id !== entity.id
-        );
+        this.gridData.data = this.gridData.data.filter((item) => {
+          if (alternativeId) {
+            return (
+              item[alternativeId!.columnName as keyof typeof item] !==
+              alternativeId!.value
+            );
+          } else {
+            return item.id !== entity.id;
+          }
+        });
         this.notifyService.showNotification(
           5000,
           'success',
