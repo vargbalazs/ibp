@@ -6,6 +6,8 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { UtilityService } from 'src/app/shared/services/utility.service';
 import { AdminService } from '../../../services/admin.service';
 import { UserService } from '../../../services/user.service';
+import { BehaviorSubject } from 'rxjs';
+import { LoaderService } from 'src/app/shared/services/loader.service';
 
 @Component({
   selector: 'basic-data',
@@ -18,6 +20,7 @@ export class BasicDataComponent implements OnInit {
   edit = false;
   userStatusChanged = false;
   currentUserName = '';
+  isBusy: BehaviorSubject<boolean>;
 
   @Output() successfullyUpdated: EventEmitter<User> = new EventEmitter();
 
@@ -26,8 +29,11 @@ export class BasicDataComponent implements OnInit {
     private notifyService: CustomNotificationService,
     private utilityService: UtilityService,
     private adminService: AdminService,
-    private userService: UserService
-  ) {}
+    private userService: UserService,
+    private loaderService: LoaderService
+  ) {
+    this.isBusy = this.loaderService.isLoading;
+  }
 
   ngOnInit(): void {
     this.userForm = this.initForm();

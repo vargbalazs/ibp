@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { IndicatorsModule } from '@progress/kendo-angular-indicators';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { LabelModule } from '@progress/kendo-angular-label';
+import { LoadingButtonModule } from 'src/app/shared/components/loading-button/loading-button.module';
 
 @NgModule({
   declarations: [BasicDataComponent],
@@ -17,6 +18,7 @@ import { LabelModule } from '@progress/kendo-angular-label';
     ReactiveFormsModule,
     IndicatorsModule,
     LabelModule,
+    LoadingButtonModule,
   ],
   providers: [AuthService],
   exports: [BasicDataComponent],

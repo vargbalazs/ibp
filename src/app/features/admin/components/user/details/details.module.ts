@@ -5,6 +5,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { BasicDataModule } from '../basic-data/basic-data.module';
+import { RolesModule } from '../roles/roles.module';
 
 @NgModule({
   declarations: [DetailsComponent],
@@ -14,6 +15,7 @@ import { BasicDataModule } from '../basic-data/basic-data.module';
     ButtonsModule,
     LayoutModule,
     BasicDataModule,
+    RolesModule,
   ],
   exports: [DetailsComponent],
 })

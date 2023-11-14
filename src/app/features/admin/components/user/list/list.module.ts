@@ -4,7 +4,6 @@ import { UserListComponent } from './list.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { UserService } from '../../../services/user.service';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-//import { CreateModule } from '../create/create.module';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { DetailsModule } from '../details/details.module';
 
@@ -14,7 +13,6 @@ import { DetailsModule } from '../details/details.module';
     CommonModule,
     GridModule,
     DialogModule,
-    // CreateModule,
     LoadingOverlayModule,
     DetailsModule,
   ],
