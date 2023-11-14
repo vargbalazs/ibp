@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { User } from 'src/app/core/models/user.model';
+import { User } from 'src/app/features/admin/models/user.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { UtilityService } from 'src/app/shared/services/utility.service';

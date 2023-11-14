@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/core/models/user.model';
+import { User } from 'src/app/features/admin/models/user.model';
 import { of } from 'rxjs';
 import { API_URL } from 'src/app/core/constants/app.constants';
 
@@ -28,5 +28,11 @@ export class UserService {
 
   updateAsAdmin(user: User) {
     return this.http.put<User>(`${API_URL}/users/${user.userId}`, user);
+  }
+
+  getUserWithRoleGroups(user: User) {
+    return this.http.get<User>(
+      `${API_URL}/users/user-with-rolegroups/${user.userId}`
+    );
   }
 }

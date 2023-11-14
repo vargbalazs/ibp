@@ -1,3 +1,5 @@
+import { RoleGroup } from './rolegroup.model';
+
 export class User {
   constructor(
     public id?: number,
@@ -12,6 +14,7 @@ export class User {
     public joinDate?: Date,
     public active?: boolean,
     public notLocked?: boolean,
-    public firstLogin?: boolean
+    public firstLogin?: boolean,
+    public roleGroups?: RoleGroup[]
   ) {}
 }

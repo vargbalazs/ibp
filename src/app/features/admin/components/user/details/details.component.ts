@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { User } from 'src/app/core/models/user.model';
+import { User } from 'src/app/features/admin/models/user.model';
 import { CreateEditComponent } from 'src/app/shared/components/create-edit/create-edit.component';
 import { Role } from '../../../models/role.model';
 

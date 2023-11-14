@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/core/models/user.model';
+import { User } from 'src/app/features/admin/models/user.model';
 import { Crud } from 'src/app/shared/classes/crud.class';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
@@ -43,7 +43,9 @@ export class UserListComponent extends Crud<User> implements OnInit {
   }
 
   showDetails({ dataItem }: { dataItem: User }) {
-    this.userDetails = dataItem;
-    this.adminService.setUser(dataItem);
+    this.userService.getUserWithRoleGroups(dataItem).subscribe((user) => {
+      this.userDetails = dataItem;
+      this.adminService.setUser(user);
+    });
   }
 }
