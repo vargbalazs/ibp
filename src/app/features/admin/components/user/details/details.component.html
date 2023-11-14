@@ -1,0 +1,35 @@
+<kendo-dialog
+  [width]="800"
+  [height]="570"
+  (close)="closeForm()"
+  class="form-dialog"
+>
+  <kendo-dialog-titlebar>Felhasználói adatok</kendo-dialog-titlebar>
+  <kendo-tabstrip>
+    <kendo-tabstrip-tab title="Alapadatok" [selected]="true">
+      <!-- <ng-template kendoTabContent
+        ><basic-data
+          (successfullyUpdated)="basicDataUpdated($event)"
+        ></basic-data
+      ></ng-template> -->
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Szerepek">
+      <ng-template kendoTabContent> szerepek </ng-template>
+    </kendo-tabstrip-tab>
+    <kendo-tabstrip-tab title="Jogosultságok">
+      <ng-template kendoTabContent> jogosultságok </ng-template>
+    </kendo-tabstrip-tab>
+  </kendo-tabstrip>
+  <kendo-dialog-actions layout="end">
+    <button
+      type="button"
+      kendoButton
+      themeColor="secondary"
+      fillMode="solid"
+      size="medium"
+      (click)="onCancel()"
+    >
+      Bezárás
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

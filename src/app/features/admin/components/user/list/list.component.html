@@ -71,13 +71,13 @@
   [isNew]="isNew"
   (save)="saveHandler($event)"
   (cancel)="cancelHandler()"
-></create-user>
+></create-user> -->
 <user-details
   *ngIf="userDetails"
   [model]="userDetails"
   (cancel)="userDetailsCancel()"
   (basicDataChanged)="updateList($event)"
-></user-details> -->
+></user-details>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"
   loadingText=""

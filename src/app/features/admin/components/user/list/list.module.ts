@@ -6,7 +6,7 @@ import { UserService } from '../../../services/user.service';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 //import { CreateModule } from '../create/create.module';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
-//import { DetailsModule } from '../details/details.module';
+import { DetailsModule } from '../details/details.module';
 
 @NgModule({
   declarations: [UserListComponent],
@@ -16,7 +16,7 @@ import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/
     DialogModule,
     // CreateModule,
     LoadingOverlayModule,
-    // DetailsModule,
+    DetailsModule,
   ],
   exports: [UserListComponent],
   providers: [UserService],
