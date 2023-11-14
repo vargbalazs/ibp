@@ -1,0 +1,174 @@
+<form [formGroup]="userForm" (ngSubmit)="submitForm()">
+  <div class="form-group-with-legend">
+    <legend class="k-form-legend">Belépési adatok</legend>
+    <span class="k-form-separator"></span>
+  </div>
+  <kendo-formfield>
+    <kendo-label
+      [for]="userName"
+      text="Felhasználónév*"
+      class="label-input-md"
+    ></kendo-label>
+    <kendo-textbox
+      #userName
+      size="small"
+      fillMode="solid"
+      formControlName="userName"
+      placeholder="Adj meg egy felhasználónevet"
+      [showSuccessIcon]="userForm.controls.userName.valid"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-loader
+          *ngIf="
+                !userForm.controls.userName.errors?.['required'] &&
+                !userForm.controls.userName.errors?.['userNameIsAlreadyInUse'] &&
+                !userForm.controls.userName.valid && !userForm.controls.userName.disabled
+              "
+          size="small"
+          type="infinite-spinner"
+        ></kendo-loader>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror *ngIf="userForm.controls.userName.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror
+      *ngIf="userForm.controls.userName.errors?.['userNameIsAlreadyInUse']"
+      >Ez a felhasználónév már létezik</kendo-formerror
+    >
+  </kendo-formfield>
+  <kendo-formfield>
+    <kendo-label
+      [for]="email"
+      text="E-mail*"
+      class="label-input-md"
+    ></kendo-label>
+    <kendo-textbox
+      #email
+      size="small"
+      fillMode="solid"
+      formControlName="userEmail"
+      placeholder="Add meg az e-mail címedet"
+      [showSuccessIcon]="userForm.controls.userEmail.valid"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">mail</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <kendo-loader
+          *ngIf="
+                !userForm.controls.userEmail.errors?.['required'] &&
+                !userForm.controls.userEmail.errors?.['userEmailIsAlreadyInUse'] &&
+                !userForm.controls.userEmail.valid  && !userForm.controls.userEmail.disabled
+              "
+          size="small"
+          type="infinite-spinner"
+        ></kendo-loader>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror *ngIf="userForm.controls.userEmail.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+    <kendo-formerror *ngIf="userForm.controls.userEmail.errors?.['email']"
+      >Hibás e-mail formátum</kendo-formerror
+    >
+    <kendo-formerror
+      *ngIf="userForm.controls.userEmail.errors?.['userEmailIsAlreadyInUse']"
+      >A megadott e-mail már foglalt</kendo-formerror
+    >
+  </kendo-formfield>
+  <div class="form-group-with-legend">
+    <legend class="k-form-legend">Személyes adatok</legend>
+    <span class="k-form-separator"></span>
+  </div>
+  <kendo-formfield>
+    <kendo-label
+      [for]="firstName"
+      text="Keresztnév*"
+      class="label-input-md"
+    ></kendo-label>
+    <kendo-textbox
+      #firstName
+      size="small"
+      fillMode="solid"
+      formControlName="firstName"
+      placeholder="Add meg a keresztneved"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
+  </kendo-formfield>
+  <kendo-formfield>
+    <kendo-label
+      [for]="lastName"
+      text="Vezetéknév*"
+      class="label-input-md"
+    ></kendo-label>
+    <kendo-textbox
+      #lastName
+      size="small"
+      fillMode="solid"
+      formControlName="lastName"
+      placeholder="Add meg a vezetékneved"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">person</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
+  </kendo-formfield>
+  <div class="status">
+    <kendo-formfield>
+      <div>
+        <input
+          type="checkbox"
+          #active
+          formControlName="active"
+          kendoCheckBox
+          size="medium"
+        />
+        <kendo-label
+          class="label-checkbox-md"
+          [for]="active"
+          text="Aktív"
+        ></kendo-label>
+      </div>
+    </kendo-formfield>
+    <kendo-formfield>
+      <div>
+        <input
+          type="checkbox"
+          #notLocked
+          formControlName="notLocked"
+          kendoCheckBox
+          size="medium"
+        />
+        <kendo-label
+          class="label-checkbox-md"
+          [for]="notLocked"
+          text="Nem zárolt"
+        ></kendo-label>
+      </div>
+    </kendo-formfield>
+  </div>
+  <div>
+    <button
+      type="submit"
+      kendoButton
+      themeColor="primary"
+      fillMode="solid"
+      size="medium"
+    >
+      {{ !edit ? "Szerkesztés" : "Mentés" }}
+    </button>
+  </div>
+</form>

@@ -12,3 +12,24 @@
 .k-dialog-content form kendo-formfield:nth-child(n + 3) {
   margin-top: 1rem;
 }
+
+.form-group-with-legend {
+  display: flex;
+  color: var(--secondary-font-color);
+  font-size: var(--font-text-5-font-size);
+}
+
+.form-group-with-legend legend {
+  padding: 0;
+}
+
+.form-group-with-legend:not(.form-group-with-legend:first-child) {
+  margin-top: 1.5rem;
+}
+
+.k-form-separator {
+  flex-grow: 1;
+  border-color: var(--input-border-color);
+  align-self: center;
+  margin: 0 0 0 0.5rem;
+}

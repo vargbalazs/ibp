@@ -4,7 +4,7 @@ import { DetailsComponent } from './details.component';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
-//import { BasicModule } from '../basic/basic.module';
+import { BasicDataModule } from '../basic-data/basic-data.module';
 
 @NgModule({
   declarations: [DetailsComponent],
@@ -13,7 +13,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
     DialogModule,
     ButtonsModule,
     LayoutModule,
-    //BasicModule,
+    BasicDataModule,
   ],
   exports: [DetailsComponent],
 })

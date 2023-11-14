@@ -25,4 +25,8 @@ export class UserService {
   getUsers() {
     return this.http.get<User[]>(`${API_URL}/users`);
   }
+
+  updateAsAdmin(user: User) {
+    return this.http.put<User>(`${API_URL}/users/${user.userId}`, user);
+  }
 }

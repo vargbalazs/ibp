@@ -1,17 +1,17 @@
 <kendo-dialog
   [width]="800"
-  [height]="570"
+  [height]="710"
   (close)="closeForm()"
   class="form-dialog"
 >
   <kendo-dialog-titlebar>Felhasználói adatok</kendo-dialog-titlebar>
   <kendo-tabstrip>
     <kendo-tabstrip-tab title="Alapadatok" [selected]="true">
-      <!-- <ng-template kendoTabContent
+      <ng-template kendoTabContent
         ><basic-data
           (successfullyUpdated)="basicDataUpdated($event)"
         ></basic-data
-      ></ng-template> -->
+      ></ng-template>
     </kendo-tabstrip-tab>
     <kendo-tabstrip-tab title="Szerepek">
       <ng-template kendoTabContent> szerepek </ng-template>
