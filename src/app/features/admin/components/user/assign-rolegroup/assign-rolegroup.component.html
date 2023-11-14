@@ -1,0 +1,67 @@
+<kendo-dialog
+  [width]="400"
+  [height]="320"
+  (close)="closeForm()"
+  class="form-dialog"
+>
+  <kendo-dialog-titlebar
+    >Szerepcsoport hozzárendelése felhasználóhoz</kendo-dialog-titlebar
+  >
+  <form [formGroup]="form" (ngSubmit)="onSave()">
+    <kendo-formfield>
+      <kendo-textbox hidden formControlName="roleGroupId"></kendo-textbox>
+    </kendo-formfield>
+    <kendo-formfield>
+      <kendo-label
+        [for]="roleGroup"
+        text="Szerepcsoport"
+        class="label-input-md"
+      ></kendo-label>
+      <kendo-combobox
+        #roleGroup
+        size="small"
+        fillMode="solid"
+        formControlName="roleGroup"
+        [data]="roleGroups"
+        textField="name"
+        valueField="id"
+        [kendoDropDownFilter]="{ operator: 'contains' }"
+        (valueChange)="roleGroupChange($event)"
+      >
+      </kendo-combobox>
+      <kendo-formerror>Kötelező mező</kendo-formerror>
+    </kendo-formfield>
+    <kendo-formfield>
+      <kendo-textbox hidden formControlName="roleId"></kendo-textbox>
+    </kendo-formfield>
+    <button type="submit" hidden></button>
+  </form>
+  <kendo-dialog-actions>
+    <button
+      type="button"
+      kendoButton
+      (click)="onCancel()"
+      themeColor="secondary"
+      fillMode="solid"
+      size="medium"
+      [disabled]="(isBusy | async)!"
+    >
+      Mégsem
+    </button>
+    <button
+      type="submit"
+      kendoButton
+      (click)="onSave()"
+      themeColor="primary"
+      fillMode="solid"
+      size="medium"
+      class="loader-button"
+      [disabled]="(isBusy | async)!"
+    >
+      <loading-button
+        [showIndicator]="(isBusy | async)!"
+        [buttonText]="'Mentés'"
+      ></loading-button>
+    </button>
+  </kendo-dialog-actions>
+</kendo-dialog>

@@ -41,14 +41,13 @@
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
-<!-- <create-submodule
+<assign-rolegroup
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
   (save)="saveHandler($event)"
   (cancel)="cancelHandler()"
-  [modules]="modules"
-></create-submodule> -->
+></assign-rolegroup>
 <div kendoDialogContainer></div>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"

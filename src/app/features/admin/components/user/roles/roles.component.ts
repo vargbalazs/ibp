@@ -6,7 +6,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { UserService } from '../../../services/user.service';
 import { AdminService } from '../../../services/admin.service';
-import { AssignRoleToUser } from '../../../interfaces/assign-role-to-user.interface';
+import { AssignRoleGroupToUser } from '../../../interfaces/assign-rolegroup-to-user.interface';
 
 @Component({
   selector: 'user-roles',
@@ -27,7 +27,7 @@ export class UserRolesComponent extends Crud<User> implements OnInit {
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
     const user = this.adminService.getUser();
-    const roles: AssignRoleToUser[] = [];
+    const roles: AssignRoleGroupToUser[] = [];
 
     user.roleGroups?.map((roleGroup) => {
       roleGroup.roles?.forEach((role) => {
