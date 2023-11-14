@@ -37,12 +37,24 @@
   background-color: white;
 }
 
+.k-dialog-content .k-tabstrip-top > .k-tabstrip-items-wrapper {
+  background-color: transparent;
+}
+
 .k-tabstrip-items-wrapper .k-item.k-active {
   border-color: transparent;
 }
 
+.k-dialog-content .k-tabstrip-items-wrapper .k-item.k-active {
+  background-color: transparent;
+}
+
 .k-tabstrip-content {
   border-color: transparent;
+}
+
+.k-dialog-content .k-tabstrip-content {
+  background-color: transparent;
 }
 
 .k-tabstrip-top > .k-tabstrip-items-wrapper .k-item.k-active .k-link {

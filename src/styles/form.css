@@ -27,6 +27,10 @@
   margin-top: 1.5rem;
 }
 
+.form-group-with-legend + kendo-formfield {
+  margin-top: 1.5rem;
+}
+
 .k-form-separator {
   flex-grow: 1;
   border-color: var(--input-border-color);

@@ -29,14 +29,14 @@
       </div>
     </ng-template>
   </kendo-grid-column>
-  <kendo-grid-column field="notLocked" title="Jóváhagyott" filter="boolean">
+  <kendo-grid-column field="notLocked" title="Feloldott" filter="boolean">
     <ng-template kendoGridCellTemplate let-dataItem>
       <div class="badge-container">
         <div
           [ngClass]="dataItem.notLocked ? 'badge-success' : 'badge-error'"
           class="badge"
         >
-          {{ dataItem.notLocked ? "" : "Zárolt" }}
+          {{ dataItem.notLocked ? "Feloldott" : "Zárolt" }}
         </div>
       </div>
     </ng-template>
