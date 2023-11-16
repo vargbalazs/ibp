@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { NotificationService } from '@progress/kendo-angular-notification';
 import { CustomNotifyComponent } from '../components/custom-notify/custom-notify.component';
 
@@ -10,7 +10,8 @@ export class CustomNotificationService {
     hideAfter: number,
     type: 'none' | 'success' | 'warning' | 'error' | 'info',
     title: string,
-    descr: string
+    descr: string,
+    appendTo?: ViewContainerRef
   ) {
     const notifyRef = this.notificationService.show({
       content: CustomNotifyComponent,
@@ -18,6 +19,7 @@ export class CustomNotificationService {
       position: { horizontal: 'right', vertical: 'top' },
       animation: { type: 'fade', duration: 400 },
       type: { icon: false },
+      appendTo: appendTo,
     });
 
     const contentComponent = notifyRef!.content!

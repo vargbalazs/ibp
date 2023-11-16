@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { CreateEditComponent } from 'src/app/shared/components/create-edit/create-edit.component';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { AssignRoleGroup } from '../../../models/assign-rolegroup.model';
 import { RoleGroup } from '../../../models/rolegroup.model';
+import { AdminService } from '../../../services/admin.service';
 
 @Component({
   selector: 'assign-rolegroup',
@@ -16,17 +17,21 @@ export class AssignRoleGroupComponent extends CreateEditComponent<AssignRoleGrou
 
   override form: ReturnType<typeof this.initForm>;
 
-  @Input() roleGroups: RoleGroup[] = [];
+  roleGroups: RoleGroup[] = [];
 
-  constructor(private loaderService: LoaderService) {
+  constructor(
+    private loaderService: LoaderService,
+    private adminService: AdminService
+  ) {
     super();
     this.form = this.initForm();
     this.isBusy = this.loaderService.isLoading;
+    this.roleGroups = this.adminService.getUser().allRoleGroups!;
   }
 
   initForm() {
     return new FormGroup({
-      roleId: new FormControl(this.formData.roleId, [Validators.required]),
+      userId: new FormControl(this.formData.userId, [Validators.required]),
       roleGroupId: new FormControl(this.formData.roleGroupId, [
         Validators.required,
       ]),
@@ -37,6 +42,9 @@ export class AssignRoleGroupComponent extends CreateEditComponent<AssignRoleGrou
   }
 
   roleGroupChange(value: RoleGroup) {
-    if (value) this.form.patchValue({ roleGroupId: value.id });
+    if (value) {
+      this.form.patchValue({ roleGroupId: value.id });
+      this.form.patchValue({ userId: this.adminService.getUser().userId });
+    }
   }
 }

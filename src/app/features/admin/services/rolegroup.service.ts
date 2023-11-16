@@ -26,4 +26,11 @@ export class RoleGroupService implements Repository<RoleGroup> {
   getRoleGroups() {
     return this.http.get<RoleGroup[]>(`${API_URL}/role-groups`);
   }
+
+  assignRoleGroupToUser(roleGroupId: number, userId: string) {
+    return this.http.post<boolean>(`${API_URL}/role-groups/assign-to-user`, {
+      roleGroupId: roleGroupId,
+      userId: userId,
+    });
+  }
 }

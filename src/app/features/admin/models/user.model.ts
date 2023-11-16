@@ -15,6 +15,7 @@ export class User {
     public active?: boolean,
     public notLocked?: boolean,
     public firstLogin?: boolean,
-    public roleGroups?: RoleGroup[]
+    public roleGroups?: RoleGroup[],
+    public allRoleGroups?: RoleGroup[]
   ) {}
 }

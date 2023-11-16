@@ -6,6 +6,8 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { UserService } from '../../../services/user.service';
 import { AdminService } from '../../../services/admin.service';
+import { first, forkJoin } from 'rxjs';
+import { RoleGroupService } from '../../../services/rolegroup.service';
 
 @Component({
   selector: 'user-list',
@@ -18,6 +20,7 @@ export class UserListComponent extends Crud<User> implements OnInit {
   constructor(
     private userService: UserService,
     private adminService: AdminService,
+    private roleGroupService: RoleGroupService,
     loaderService: LoaderService,
     notifyService: CustomNotificationService,
     msgDialogService: MsgDialogService
@@ -43,8 +46,12 @@ export class UserListComponent extends Crud<User> implements OnInit {
   }
 
   showDetails({ dataItem }: { dataItem: User }) {
-    this.userService.getUserWithRoleGroups(dataItem).subscribe((user) => {
+    forkJoin({
+      user: this.userService.getUserWithRoleGroups(dataItem).pipe(first()),
+      roleGroups: this.roleGroupService.getRoleGroups().pipe(first()),
+    }).subscribe(({ user, roleGroups }) => {
       this.userDetails = dataItem;
+      user.allRoleGroups = roleGroups;
       this.adminService.setUser(user);
     });
   }

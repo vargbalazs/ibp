@@ -37,6 +37,15 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
                     dbError.details.detail
                   )}).`
                 );
+                break;
+              case '23505':
+                this.notifyService.showNotification(
+                  5000,
+                  'error',
+                  'Mentés nem sikerült!',
+                  'A hozzáadni kívánt elem már létezik a listában.'
+                );
+                break;
             }
           }
         }

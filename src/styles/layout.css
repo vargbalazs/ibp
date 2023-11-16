@@ -79,10 +79,6 @@
   outline-width: 0;
 }
 
-.k-tabstrip-top > .k-tabstrip-items-wrapper .k-item.k-active {
-  /* margin-bottom: 0; */
-}
-
 .k-tabstrip-items .k-link {
   position: relative;
 }
@@ -112,4 +108,8 @@
 
 .k-tabstrip-items .k-active .k-link:after {
   transition: all 0s;
+}
+
+.k-tabstrip-top > .k-tabstrip-items-wrapper .k-item:active {
+  background-color: transparent;
 }
