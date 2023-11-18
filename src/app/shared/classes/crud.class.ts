@@ -16,12 +16,13 @@ export abstract class Crud<T extends { id?: number }> {
   editDataItem!: T;
   loadingOverlayVisible!: BehaviorSubject<boolean>;
   protected dialogRef!: DialogRef;
+  customRemoveFn!: (dataItem: T) => void;
 
   constructor(
     private repositoryService: Repository<T>,
     protected notifyService: CustomNotificationService,
     private loaderService: LoaderService,
-    protected msgDialogService: MsgDialogService
+    private msgDialogService: MsgDialogService
   ) {
     this.isNew = false;
     this.dialogOpened = false;
@@ -51,7 +52,11 @@ export abstract class Crud<T extends { id?: number }> {
     this.resetDataItem();
   }
 
-  removeHandler(dataItem: T, alternativeId?: AlternativeId) {
+  removeHandler(
+    dataItem: T,
+    type: 'default' | 'custom',
+    alternativeId?: AlternativeId
+  ) {
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(
       'Elem törlése',
@@ -62,7 +67,9 @@ export abstract class Crud<T extends { id?: number }> {
     );
     this.dialogRef.dialog.instance.close.subscribe((result) => {
       if ((result as DialogAction).action === DialogActionsEnum.Yes) {
-        this.remove(dataItem, alternativeId);
+        if (type === 'default') {
+          this.defaultRemove(dataItem, alternativeId);
+        } else this.customRemove(dataItem);
       }
     });
   }
@@ -102,7 +109,7 @@ export abstract class Crud<T extends { id?: number }> {
     }
   }
 
-  remove(entity: T, alternativeId?: AlternativeId) {
+  defaultRemove(entity: T, alternativeId?: AlternativeId) {
     const id = alternativeId ? alternativeId.value : entity.id;
     this.repositoryService.delete!(id!)
       .pipe(
@@ -131,5 +138,9 @@ export abstract class Crud<T extends { id?: number }> {
           'A kiválasztott elem eltávolításra került a listából.'
         );
       });
+  }
+
+  private customRemove(dataItem: T) {
+    this.customRemoveFn(dataItem);
   }
 }

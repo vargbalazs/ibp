@@ -10,15 +10,16 @@ import { AssignRoleGroupToUser } from '../../../interfaces/assign-rolegroup-to-u
 import { AssignRoleGroup } from '../../../models/assign-rolegroup.model';
 import { RoleGroupService } from '../../../services/rolegroup.service';
 import { RoleGroup } from '../../../models/rolegroup.model';
-import { DialogAction } from 'src/app/shared/interfaces/dialog-action.interface';
-import { DialogActionsEnum } from 'src/app/shared/components/custom-dialog/dialog-actions.enum';
 
 @Component({
   selector: 'user-roles',
   templateUrl: './roles.component.html',
   styleUrls: ['./roles.component.css'],
 })
-export class UserRolesComponent extends Crud<User> implements OnInit {
+export class UserRolesComponent
+  extends Crud<AssignRoleGroup>
+  implements OnInit
+{
   user!: User;
   roles: AssignRoleGroupToUser[] = [];
 
@@ -34,6 +35,29 @@ export class UserRolesComponent extends Crud<User> implements OnInit {
     msgDialogService: MsgDialogService
   ) {
     super(userService, notifyService, loaderService, msgDialogService);
+
+    this.customRemoveFn = function customRemove(dataItem: AssignRoleGroup) {
+      this.roleGroupService
+        .removeRoleGroupFromUser(dataItem.roleGroupId!, this.user.userId!)
+        .subscribe((resp) => {
+          this.dialogRef.close();
+          this.notifyService.showNotification(
+            'compact',
+            5000,
+            'success',
+            'Sikeres törlés!',
+            'A kiválasztott elem eltávolításra került a listából.',
+            this.container
+          );
+          this.gridData.data = this.roles.filter(
+            (role) => role.roleGroupId !== dataItem.roleGroupId
+          );
+          this.user.roleGroups = this.user.roleGroups?.filter(
+            (roleGroup) => roleGroup.id !== dataItem.roleGroupId
+          );
+          this.resetDataItem();
+        });
+    };
   }
 
   ngOnInit(): void {
@@ -63,44 +87,6 @@ export class UserRolesComponent extends Crud<User> implements OnInit {
         this.user.roleGroups?.push(assignRoleGroup.roleGroup!);
         this.resetDataItem();
       });
-  }
-
-  override removeHandler(assignRoleGroup: AssignRoleGroup) {
-    this.dialogOpened = true;
-    this.dialogRef = this.msgDialogService.showDialog(
-      'Elem törlése',
-      'Valóban törölni szeretnéd a kiválasztott elemet? Minden adat véglegesen törlődik. Ez a művelet nem visszavonható.',
-      'error',
-      'Igen',
-      true
-    );
-    this.dialogRef.dialog.instance.close.subscribe((result) => {
-      if ((result as DialogAction).action === DialogActionsEnum.Yes) {
-        this.roleGroupService
-          .removeRoleGroupFromUser(
-            assignRoleGroup.roleGroupId!,
-            this.user.userId!
-          )
-          .subscribe((resp) => {
-            this.dialogRef.close();
-            this.notifyService.showNotification(
-              'compact',
-              5000,
-              'success',
-              'Sikeres törlés!',
-              'A kiválasztott elem eltávolításra került a listából.',
-              this.container
-            );
-            this.gridData.data = this.roles.filter(
-              (role) => role.roleGroupId !== assignRoleGroup.roleGroupId
-            );
-            this.user.roleGroups = this.user.roleGroups?.filter(
-              (roleGroup) => roleGroup.id !== assignRoleGroup.roleGroupId
-            );
-            this.resetDataItem();
-          });
-      }
-    });
   }
 
   addRoles(roleGroup: RoleGroup) {
