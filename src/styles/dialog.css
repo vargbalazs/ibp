@@ -98,18 +98,22 @@
   color: var(--error-color);
 }
 
-.custom-dialog-bar-success {
+.custom-dialog-bar-success,
+.k-dialog-wrapper.form-dialog .k-dialog-titlebar.custom-dialog-bar-success {
   background-color: var(--p-success-500);
 }
 
-.custom-dialog-bar-warning {
+.custom-dialog-bar-warning,
+.k-dialog-wrapper.form-dialog .k-dialog-titlebar.custom-dialog-bar-warning {
   background-color: var(--p-warning-500);
 }
 
-.custom-dialog-bar-info {
+.custom-dialog-bar-info,
+.k-dialog-wrapper.form-dialog .k-dialog-titlebar.custom-dialog-bar-info {
   background-color: var(--p-blue-500);
 }
 
-.custom-dialog-bar-error {
+.custom-dialog-bar-error,
+.k-dialog-wrapper.form-dialog .k-dialog-titlebar.custom-dialog-bar-error {
   background-color: var(--error-color);
 }
