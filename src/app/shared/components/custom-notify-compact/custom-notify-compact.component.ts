@@ -13,7 +13,7 @@ export class CustomNotifyCompactComponent {
   @Input() title = '';
   @Input() descr = '';
   @Input() set type(value: string) {
-    this.iconClass = 'custom-notification-compact' + value;
+    this.iconClass = 'custom-notification-compact-' + value;
     this.barClass = 'custom-notification-compact-bar-' + value;
     this._type = value;
   }

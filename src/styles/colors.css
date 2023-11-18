@@ -74,6 +74,11 @@
   --badge-error-color: #dc2626;
   --badge-success-background-color: #dcfce7;
   --badge-success-color: #15803d;
+
+  --message-success-background-color: #f0fdf4;
+  --message-success-color: #15803d;
+  --message-error-background-color: #fff5f5;
+  --message-error-color: #b91c1c;
 }
 
 /*https://www.color-hex.com/color-palette/1014735*/

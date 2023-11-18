@@ -1,3 +1,5 @@
+/* normal */
+
 .k-notification-content {
   font: var(--font-text-4);
 }
@@ -100,4 +102,69 @@
 
 .close-btn:hover {
   background-color: var(--notification-close-button-hover-background-color);
+}
+
+/* compact */
+
+.custom-notification-compact-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50rem;
+  height: 4rem;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  padding: 0.9rem 0.7rem;
+}
+
+.custom-notification-compact-content .close-btn {
+  font: var(--font-text-6);
+  font-weight: var(--medium);
+}
+
+.k-notification:has(.custom-notification-compact-content) {
+  box-shadow: none;
+}
+
+.custom-notification-compact-error,
+.custom-notification-compact-error + .custom-notification-text,
+.custom-notification-compact-error ~ .close-btn {
+  color: var(--message-error-color);
+}
+
+.custom-notification-compact-success,
+.custom-notification-compact-success + .custom-notification-text,
+.custom-notification-compact-success ~ .close-btn {
+  color: var(--message-success-color);
+}
+
+.k-notification:has(.custom-notification-compact-content):has(
+    .custom-notification-compact-error
+  ) {
+  background-color: var(--message-error-background-color);
+  border: 1px solid var(--message-error-color);
+}
+
+.k-notification:has(.custom-notification-compact-content):has(
+    .custom-notification-compact-success
+  ) {
+  background-color: var(--message-success-background-color);
+  border: 1px solid var(--message-success-color);
+}
+
+.custom-notification-compact-content .custom-notification-icon-container {
+  margin: 0rem;
+  margin-right: 0.5rem;
+  display: flex;
+}
+
+.custom-notification-compact-content
+  .custom-notification-icon-container
+  .material-symbols-outlined {
+  font-size: 2rem;
+}
+
+.custom-notification-compact-content .close-btn,
+.custom-notification-compact-content .close-btn:hover {
+  background-color: transparent;
 }
