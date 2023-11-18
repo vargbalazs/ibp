@@ -15,13 +15,13 @@ export abstract class Crud<T extends { id?: number }> {
   dialogOpened: boolean;
   editDataItem!: T;
   loadingOverlayVisible!: BehaviorSubject<boolean>;
-  private dialogRef!: DialogRef;
+  protected dialogRef!: DialogRef;
 
   constructor(
     private repositoryService: Repository<T>,
     protected notifyService: CustomNotificationService,
     private loaderService: LoaderService,
-    private msgDialogService: MsgDialogService
+    protected msgDialogService: MsgDialogService
   ) {
     this.isNew = false;
     this.dialogOpened = false;

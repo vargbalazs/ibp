@@ -33,4 +33,11 @@ export class RoleGroupService implements Repository<RoleGroup> {
       userId: userId,
     });
   }
+
+  removeRoleGroupFromUser(roleGroupId: number, userId: string) {
+    return this.http.post<boolean>(`${API_URL}/role-groups/remove-from-user`, {
+      roleGroupId: roleGroupId,
+      userId: userId,
+    });
+  }
 }
