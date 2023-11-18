@@ -53,6 +53,7 @@ export class AuthInterceptor implements HttpInterceptor {
               });
               this.authService.clearTokens();
               this.notifyService.showNotification(
+                'normal',
                 5000,
                 'error',
                 'Hozzáférés megtagadva',

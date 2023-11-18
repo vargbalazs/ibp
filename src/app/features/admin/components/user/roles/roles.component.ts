@@ -50,6 +50,7 @@ export class UserRolesComponent extends Crud<User> implements OnInit {
       .assignRoleGroupToUser(assignRoleGroup.roleGroupId!, this.user.userId!)
       .subscribe((resp) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres mentés!',

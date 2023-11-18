@@ -30,6 +30,7 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
             switch (dbError.details.code) {
               case '23503':
                 this.notifyService.showNotification(
+                  'normal',
                   5000,
                   'error',
                   'Törlés nem sikerült!',
@@ -40,6 +41,7 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
                 break;
               case '23505':
                 this.notifyService.showNotification(
+                  'normal',
                   5000,
                   'error',
                   'Mentés nem sikerült!',

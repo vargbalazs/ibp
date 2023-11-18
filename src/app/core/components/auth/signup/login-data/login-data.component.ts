@@ -72,6 +72,7 @@ export class LoginDataComponent implements OnInit {
       this.authService.signUp(user).subscribe((res) => {
         this.backToLogin();
         this.customNotifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Regisztráció',

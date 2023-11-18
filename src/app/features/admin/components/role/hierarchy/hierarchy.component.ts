@@ -92,6 +92,7 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
       .assignToRoleGroup(assignRole.roleGroupId!, assignRole.roleId!)
       .subscribe((resp) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres mentés!',
@@ -117,6 +118,7 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
       .removeFromRoleGroup(this.contextItem.roleGroupId!, this.contextItem.id!)
       .subscribe((roleId) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres törlés!',

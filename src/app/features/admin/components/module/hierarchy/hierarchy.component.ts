@@ -108,6 +108,7 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
       )
       .subscribe((id) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres törlés!',

@@ -78,6 +78,7 @@ export abstract class Crud<T extends { id?: number }> {
         this.resetDataItem();
         this.gridData.data = [...this.gridData.data, newEntity];
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres mentés!',
@@ -91,6 +92,7 @@ export abstract class Crud<T extends { id?: number }> {
           item.id === entity.id ? entity : item
         );
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres módosítás!',
@@ -122,6 +124,7 @@ export abstract class Crud<T extends { id?: number }> {
           }
         });
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres törlés!',

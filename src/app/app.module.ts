@@ -14,6 +14,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { FeaturesModule } from './features/features.module';
 import { CustomDialogModule } from './shared/components/custom-dialog/custom-dialog.module';
 import { DatabaseErrorInterceptor } from './core/interceptors/database-error.interceptor';
+import { CustomNofityCompactModule } from './shared/components/custom-notify-compact/custom-notify-compact.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,6 +25,7 @@ import { DatabaseErrorInterceptor } from './core/interceptors/database-error.int
     BrowserAnimationsModule,
     HttpClientModule,
     CustomNofityModule,
+    CustomNofityCompactModule,
     CustomDialogModule,
     LayoutModule,
     FeaturesModule,

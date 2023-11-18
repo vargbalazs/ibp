@@ -109,6 +109,7 @@ export class BasicDataComponent implements OnInit {
     user.currentUserName = this.currentUserName;
     this.userService.updateAsAdmin(user).subscribe((resp: User) => {
       this.notifyService.showNotification(
+        'normal',
         5000,
         'success',
         'Sikeres módosítás!',

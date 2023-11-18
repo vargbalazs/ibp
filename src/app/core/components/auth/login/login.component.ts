@@ -93,6 +93,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         .pipe(
           catchError((err) => {
             this.customNotifyService.showNotification(
+              'normal',
               5000,
               'error',
               'Bejelentkezés',
@@ -103,6 +104,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
         )
         .subscribe((tokens) => {
           this.customNotifyService.showNotification(
+            'normal',
             5000,
             'success',
             'Bejelentkezés',

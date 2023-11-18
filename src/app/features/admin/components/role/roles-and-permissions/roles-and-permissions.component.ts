@@ -96,6 +96,7 @@ export class RolesAndPermissionsComponent
       .assignToRole(assignPermission.roleId!, assignPermission.permissionId!)
       .subscribe((resp) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres mentés!',
@@ -121,6 +122,7 @@ export class RolesAndPermissionsComponent
       .removeFromRole(this.contextItem.roleId!, this.contextItem.id!)
       .subscribe((res) => {
         this.notifyService.showNotification(
+          'normal',
           5000,
           'success',
           'Sikeres törlés!',

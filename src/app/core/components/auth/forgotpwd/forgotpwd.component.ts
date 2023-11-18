@@ -49,6 +49,7 @@ export class ForgotpwdComponent implements OnInit {
         .pipe(
           catchError((error) => {
             this.customNotifyService.showNotification(
+              'normal',
               5000,
               'error',
               'Elfelejtett jelszó',
@@ -59,6 +60,7 @@ export class ForgotpwdComponent implements OnInit {
         )
         .subscribe((res) =>
           this.customNotifyService.showNotification(
+            'normal',
             5000,
             'success',
             'Elfelejtett jelszó',
