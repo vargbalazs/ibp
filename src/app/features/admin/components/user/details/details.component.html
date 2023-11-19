@@ -4,7 +4,9 @@
   (close)="closeForm()"
   class="form-dialog"
 >
-  <kendo-dialog-titlebar>Felhasználói adatok</kendo-dialog-titlebar>
+  <kendo-dialog-titlebar draggableContent
+    >Felhasználói adatok</kendo-dialog-titlebar
+  >
   <kendo-tabstrip>
     <kendo-tabstrip-tab title="Alapadatok" [selected]="true">
       <ng-template kendoTabContent

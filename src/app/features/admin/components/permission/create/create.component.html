@@ -4,7 +4,7 @@
   (close)="closeForm()"
   class="form-dialog"
 >
-  <kendo-dialog-titlebar>{{
+  <kendo-dialog-titlebar draggableContent>{{
     isNew ? "Új jogosultság" : "Jogosultság módosítása"
   }}</kendo-dialog-titlebar>
   <form [formGroup]="form" (ngSubmit)="onSave()">

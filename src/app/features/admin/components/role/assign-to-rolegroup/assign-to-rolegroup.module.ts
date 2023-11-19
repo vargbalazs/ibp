@@ -8,6 +8,7 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 import { LoadingButtonModule } from 'src/app/shared/components/loading-button/loading-button.module';
+import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.module';
 
 @NgModule({
   declarations: [AssignToRoleGroupComponent],
@@ -20,6 +21,7 @@ import { LoadingButtonModule } from 'src/app/shared/components/loading-button/lo
     DialogModule,
     DropDownsModule,
     LoadingButtonModule,
+    DraggableModule,
   ],
   exports: [AssignToRoleGroupComponent],
 })

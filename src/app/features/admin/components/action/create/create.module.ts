@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { LabelModule } from '@progress/kendo-angular-label';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingButtonModule } from '../../../../../shared/components/loading-button/loading-button.module';
+import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.module';
 
 @NgModule({
   declarations: [CreateComponent],
@@ -18,6 +19,7 @@ import { LoadingButtonModule } from '../../../../../shared/components/loading-bu
     LabelModule,
     DialogModule,
     LoadingButtonModule,
+    DraggableModule,
   ],
   exports: [CreateComponent],
 })

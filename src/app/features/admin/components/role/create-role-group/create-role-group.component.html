@@ -4,9 +4,9 @@
   (close)="closeForm()"
   class="form-dialog"
 >
-  <kendo-dialog-titlebar>{{
+  <kendo-dialog-titlebar draggableContent>{{
     isNew ? "Új szerepcsoport" : "Szerepcsoport módosítása"
-  }}</kendo-dialog-titlebar>
+  }}</kendo-dialog-titlebar >
   <form [formGroup]="form" (ngSubmit)="onSave()">
     <kendo-formfield>
       <kendo-textbox hidden formControlName="id"></kendo-textbox>
