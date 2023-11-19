@@ -49,6 +49,7 @@ export abstract class Crud<T extends { id?: number }> {
   }
 
   cancelHandler() {
+    this.dialogOpened = false;
     this.resetDataItem();
   }
 
@@ -66,16 +67,21 @@ export abstract class Crud<T extends { id?: number }> {
       true
     );
     this.dialogRef.dialog.instance.close.subscribe((result) => {
+      if ((result as DialogAction).action === DialogActionsEnum.Cancel) {
+        this.closeDialog();
+      }
       if ((result as DialogAction).action === DialogActionsEnum.Yes) {
         if (type === 'default') {
           this.defaultRemove(dataItem, alternativeId);
         } else this.customRemove(dataItem);
+        this.dialogOpened = false;
       }
     });
   }
 
   resetDataItem() {
     this.editDataItem = undefined!;
+    this.dialogOpened = false;
   }
 
   save(entity: T) {
@@ -114,12 +120,12 @@ export abstract class Crud<T extends { id?: number }> {
     this.repositoryService.delete!(id!)
       .pipe(
         catchError((err) => {
-          this.dialogRef.close();
+          this.closeDialog();
           return of();
         })
       )
       .subscribe((id) => {
-        this.dialogRef.close();
+        this.closeDialog();
         this.gridData.data = this.gridData.data.filter((item) => {
           if (alternativeId) {
             return (
@@ -142,5 +148,10 @@ export abstract class Crud<T extends { id?: number }> {
 
   private customRemove(dataItem: T) {
     this.customRemoveFn(dataItem);
+  }
+
+  private closeDialog() {
+    this.dialogRef.close();
+    this.dialogOpened = false;
   }
 }

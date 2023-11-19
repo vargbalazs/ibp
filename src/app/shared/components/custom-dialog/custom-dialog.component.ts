@@ -46,7 +46,10 @@ export class CustomDialogComponent extends DialogContentBase implements OnInit {
   }
 
   onCancelAction(): void {
-    this.dialog.close({ action: DialogActionsEnum.Cancel });
+    //this.dialog.close({ action: DialogActionsEnum.Cancel });
+    this.dialog.dialog.instance.close.emit({
+      action: DialogActionsEnum.Cancel,
+    });
   }
 
   onConfirmAction(): void {
