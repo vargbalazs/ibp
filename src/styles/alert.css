@@ -126,6 +126,11 @@
   box-shadow: none;
 }
 
+.k-notification-container:has(.custom-notification-compact-content) {
+  margin-top: -1rem;
+  margin-right: -1rem;
+}
+
 .custom-notification-compact-error,
 .custom-notification-compact-error + .custom-notification-text,
 .custom-notification-compact-error ~ .close-btn {
