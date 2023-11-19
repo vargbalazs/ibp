@@ -17,6 +17,7 @@ export abstract class Crud<T extends { id?: number }> {
   loadingOverlayVisible!: BehaviorSubject<boolean>;
   protected dialogRef!: DialogRef;
   customRemoveFn!: (dataItem: T) => void;
+  customSaveFn!: (dataItem: T) => void;
 
   constructor(
     private repositoryService: Repository<T>,
@@ -41,8 +42,13 @@ export abstract class Crud<T extends { id?: number }> {
     this.isNew = false;
   }
 
-  saveHandler(entity: T) {
-    this.save(entity);
+  saveHandler(entity: T, type: 'default' | 'custom') {
+    if (type === 'default') {
+      this.defaultSave(entity);
+    } else {
+      this.customSave(entity);
+    }
+
     // reset here, if we want to use the loading overlay, as it hides the new/edit dialog immediatelly
     // otherwise reset in the 'save' method
     // this.resetDataItem();
@@ -84,7 +90,7 @@ export abstract class Crud<T extends { id?: number }> {
     this.dialogOpened = false;
   }
 
-  save(entity: T) {
+  defaultSave(entity: T) {
     if (this.isNew) {
       const { id, ...newEntity } = entity;
       this.repositoryService.add!(newEntity).subscribe((newEntity) => {
@@ -148,6 +154,10 @@ export abstract class Crud<T extends { id?: number }> {
 
   private customRemove(dataItem: T) {
     this.customRemoveFn(dataItem);
+  }
+
+  private customSave(dataItem: T) {
+    this.customSaveFn(dataItem);
   }
 
   private closeDialog() {

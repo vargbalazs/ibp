@@ -38,7 +38,7 @@
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
-  (save)="saveHandler($event)"
+  (save)="saveHandler($event, 'default')"
   (cancel)="cancelHandler()"
   [modules]="modules"
 ></create-submodule>

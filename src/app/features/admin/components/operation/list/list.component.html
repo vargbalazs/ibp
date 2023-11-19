@@ -43,7 +43,7 @@
   [model]="editDataItem"
   [isNew]="isNew"
   [modules]="modules"
-  (save)="saveHandler($event)"
+  (save)="saveHandler($event, 'default')"
   (cancel)="cancelHandler()"
 ></create-operation>
 <div kendoDialogContainer></div>

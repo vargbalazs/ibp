@@ -36,6 +36,24 @@ export class UserRolesComponent
   ) {
     super(userService, notifyService, loaderService, msgDialogService);
 
+    this.customSaveFn = function customSave(dataItem: AssignRoleGroup) {
+      this.roleGroupService
+        .assignRoleGroupToUser(dataItem.roleGroupId!, this.user.userId!)
+        .subscribe((resp) => {
+          this.notifyService.showNotification(
+            'compact',
+            5000,
+            'success',
+            'Sikeres mentés!',
+            'Az új elem megtalálható a listában.',
+            this.container
+          );
+          this.addRoles(dataItem.roleGroup!);
+          this.user.roleGroups?.push(dataItem.roleGroup!);
+          this.resetDataItem();
+        });
+    };
+
     this.customRemoveFn = function customRemove(dataItem: AssignRoleGroup) {
       this.roleGroupService
         .removeRoleGroupFromUser(dataItem.roleGroupId!, this.user.userId!)
@@ -69,24 +87,6 @@ export class UserRolesComponent
     });
 
     this.gridData = { data: this.roles, total: this.roles.length };
-  }
-
-  override saveHandler(assignRoleGroup: AssignRoleGroup) {
-    this.roleGroupService
-      .assignRoleGroupToUser(assignRoleGroup.roleGroupId!, this.user.userId!)
-      .subscribe((resp) => {
-        this.notifyService.showNotification(
-          'compact',
-          5000,
-          'success',
-          'Sikeres mentés!',
-          'Az új elem megtalálható a listában.',
-          this.container
-        );
-        this.addRoles(assignRoleGroup.roleGroup!);
-        this.user.roleGroups?.push(assignRoleGroup.roleGroup!);
-        this.resetDataItem();
-      });
   }
 
   addRoles(roleGroup: RoleGroup) {
