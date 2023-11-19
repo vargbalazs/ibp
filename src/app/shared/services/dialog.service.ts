@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { DialogRef, DialogService } from '@progress/kendo-angular-dialog';
 import { CustomDialogComponent } from '../components/custom-dialog/custom-dialog.component';
 
@@ -7,6 +7,7 @@ export class MsgDialogService {
   constructor(private dialogService: DialogService) {}
 
   showDialog(
+    appendTo: ViewContainerRef,
     title: string,
     descr: string,
     type: string,
@@ -21,6 +22,7 @@ export class MsgDialogService {
       preventAction(ev, dialogRef) {
         return !closeOnAction;
       },
+      appendTo: appendTo,
     });
 
     const contentComponent = dialog.content.instance as CustomDialogComponent;

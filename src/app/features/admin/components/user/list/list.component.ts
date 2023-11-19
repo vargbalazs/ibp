@@ -37,6 +37,7 @@ export class UserListComponent extends Crud<User> implements OnInit {
 
   userDetailsCancel() {
     this.userDetails = undefined!;
+    this.dialogOpened = false;
   }
 
   updateList(user: User) {
@@ -53,6 +54,7 @@ export class UserListComponent extends Crud<User> implements OnInit {
       this.userDetails = dataItem;
       user.allRoleGroups = roleGroups;
       this.adminService.setUser(user);
+      this.dialogOpened = true;
     });
   }
 }

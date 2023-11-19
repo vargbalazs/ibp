@@ -51,7 +51,7 @@
     (save)="saveHandler($event, 'custom')"
     (cancel)="cancelHandler()"
   ></assign-rolegroup>
-  <div kendoDialogContainer></div>
+  <ng-container #dialogContainer></ng-container>
   <loading-overlay
     [visible]="(loadingOverlayVisible | async) && !dialogOpened"
     loadingText=""

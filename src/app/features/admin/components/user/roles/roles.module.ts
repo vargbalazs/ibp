@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridModule } from '@progress/kendo-angular-grid';
-import { DialogModule } from '@progress/kendo-angular-dialog';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { UserRolesComponent } from './roles.component';
 import { AssignRoleGroupModule } from '../assign-rolegroup/assign-rolegroup.module';
@@ -11,7 +10,6 @@ import { AssignRoleGroupModule } from '../assign-rolegroup/assign-rolegroup.modu
   imports: [
     CommonModule,
     GridModule,
-    DialogModule,
     LoadingOverlayModule,
     AssignRoleGroupModule,
   ],

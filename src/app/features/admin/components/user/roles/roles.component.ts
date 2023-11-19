@@ -25,6 +25,8 @@ export class UserRolesComponent
 
   @ViewChild('container', { read: ViewContainerRef })
   container!: ViewContainerRef;
+  @ViewChild('dialogContainer', { read: ViewContainerRef })
+  override dialogContainer!: ViewContainerRef;
 
   constructor(
     private userService: UserService,
@@ -67,9 +69,10 @@ export class UserRolesComponent
             'A kiválasztott elem eltávolításra került a listából.',
             this.container
           );
-          this.gridData.data = this.roles.filter(
+          this.roles = this.roles.filter(
             (role) => role.roleGroupId !== dataItem.roleGroupId
           );
+          this.gridData.data = this.roles;
           this.user.roleGroups = this.user.roleGroups?.filter(
             (roleGroup) => roleGroup.id !== dataItem.roleGroupId
           );

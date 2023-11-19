@@ -8,6 +8,7 @@ import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.en
 import { DialogAction } from '../interfaces/dialog-action.interface';
 import { DialogRef } from '@progress/kendo-angular-dialog';
 import { AlternativeId } from '../interfaces/alternative-id.interface';
+import { ViewContainerRef } from '@angular/core';
 
 export abstract class Crud<T extends { id?: number }> {
   gridData!: GridDataResult;
@@ -18,6 +19,7 @@ export abstract class Crud<T extends { id?: number }> {
   protected dialogRef!: DialogRef;
   customRemoveFn!: (dataItem: T) => void;
   customSaveFn!: (dataItem: T) => void;
+  dialogContainer!: ViewContainerRef;
 
   constructor(
     private repositoryService: Repository<T>,
@@ -66,6 +68,7 @@ export abstract class Crud<T extends { id?: number }> {
   ) {
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(
+      this.dialogContainer,
       'Elem törlése',
       'Valóban törölni szeretnéd a kiválasztott elemet? Minden adat véglegesen törlődik. Ez a művelet nem visszavonható.',
       'error',
@@ -80,7 +83,6 @@ export abstract class Crud<T extends { id?: number }> {
         if (type === 'default') {
           this.defaultRemove(dataItem, alternativeId);
         } else this.customRemove(dataItem);
-        this.dialogOpened = false;
       }
     });
   }
