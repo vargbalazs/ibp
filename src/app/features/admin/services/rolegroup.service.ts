@@ -4,7 +4,7 @@ import { Repository } from 'src/app/shared/interfaces/repository.interface';
 import { RoleGroup } from '../models/rolegroup.model';
 import {
   API_URL,
-  NOTIFICATION_FORMAT_TYPE,
+  NOTIFICATION_TYPE,
 } from 'src/app/core/constants/app.constants';
 
 @Injectable()
@@ -41,14 +41,32 @@ export class RoleGroupService implements Repository<RoleGroup> {
         roleGroupId: roleGroupId,
         userId: userId,
       },
-      { context: new HttpContext().set(NOTIFICATION_FORMAT_TYPE, 'compact') }
+      {
+        context: new HttpContext().set(NOTIFICATION_TYPE, {
+          type: 'compact',
+          container: container,
+        }),
+      }
     );
   }
 
-  removeRoleGroupFromUser(roleGroupId: number, userId: string) {
-    return this.http.post<boolean>(`${API_URL}/role-groups/remove-from-user`, {
-      roleGroupId: roleGroupId,
-      userId: userId,
-    });
+  removeRoleGroupFromUser(
+    roleGroupId: number,
+    userId: string,
+    container: ViewContainerRef
+  ) {
+    return this.http.post<boolean>(
+      `${API_URL}/role-groups/remove-from-user`,
+      {
+        roleGroupId: roleGroupId,
+        userId: userId,
+      },
+      {
+        context: new HttpContext().set(NOTIFICATION_TYPE, {
+          type: 'compact',
+          container: container,
+        }),
+      }
+    );
   }
 }

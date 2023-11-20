@@ -62,7 +62,11 @@ export class UserRolesComponent
 
     this.customRemoveFn = function customRemove(dataItem: AssignRoleGroup) {
       this.roleGroupService
-        .removeRoleGroupFromUser(dataItem.roleGroupId!, this.user.userId!)
+        .removeRoleGroupFromUser(
+          dataItem.roleGroupId!,
+          this.user.userId!,
+          this.container
+        )
         .subscribe((resp) => {
           this.dialogRef.close();
           this.notifyService.showNotification(
