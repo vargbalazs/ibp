@@ -1,8 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpContext } from '@angular/common/http';
+import { Injectable, ViewContainerRef } from '@angular/core';
 import { Repository } from 'src/app/shared/interfaces/repository.interface';
 import { RoleGroup } from '../models/rolegroup.model';
-import { API_URL } from 'src/app/core/constants/app.constants';
+import {
+  API_URL,
+  NOTIFICATION_FORMAT_TYPE,
+} from 'src/app/core/constants/app.constants';
 
 @Injectable()
 export class RoleGroupService implements Repository<RoleGroup> {
@@ -27,11 +30,19 @@ export class RoleGroupService implements Repository<RoleGroup> {
     return this.http.get<RoleGroup[]>(`${API_URL}/role-groups`);
   }
 
-  assignRoleGroupToUser(roleGroupId: number, userId: string) {
-    return this.http.post<boolean>(`${API_URL}/role-groups/assign-to-user`, {
-      roleGroupId: roleGroupId,
-      userId: userId,
-    });
+  assignRoleGroupToUser(
+    roleGroupId: number,
+    userId: string,
+    container: ViewContainerRef
+  ) {
+    return this.http.post<boolean>(
+      `${API_URL}/role-groups/assign-to-user`,
+      {
+        roleGroupId: roleGroupId,
+        userId: userId,
+      },
+      { context: new HttpContext().set(NOTIFICATION_FORMAT_TYPE, 'compact') }
+    );
   }
 
   removeRoleGroupFromUser(roleGroupId: number, userId: string) {

@@ -40,7 +40,11 @@ export class UserRolesComponent
 
     this.customSaveFn = function customSave(dataItem: AssignRoleGroup) {
       this.roleGroupService
-        .assignRoleGroupToUser(dataItem.roleGroupId!, this.user.userId!)
+        .assignRoleGroupToUser(
+          dataItem.roleGroupId!,
+          this.user.userId!,
+          this.container
+        )
         .subscribe((resp) => {
           this.notifyService.showNotification(
             'compact',

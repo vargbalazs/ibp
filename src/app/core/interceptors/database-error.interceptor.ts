@@ -11,6 +11,10 @@ import { catchError } from 'rxjs/operators';
 import { DatabaseError } from '../interfaces/database-error.interface';
 import { CustomHttpErrorResponse } from '../interfaces/custom-http-error-response.interface';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
+import {
+  NOTIFICATION_CONTAINER,
+  NOTIFICATION_FORMAT_TYPE,
+} from '../constants/app.constants';
 
 @Injectable()
 export class DatabaseErrorInterceptor implements HttpInterceptor {
@@ -30,22 +34,24 @@ export class DatabaseErrorInterceptor implements HttpInterceptor {
             switch (dbError.details.code) {
               case '23503':
                 this.notifyService.showNotification(
-                  'normal',
+                  request.context.get(NOTIFICATION_FORMAT_TYPE),
                   5000,
                   'error',
                   'Törlés nem sikerült!',
                   `A törlés sajnos nem sikerült, mivel még vannak kapcsolódó objektumok (${this.getReferencedObjectName(
                     dbError.details.detail
-                  )}).`
+                  )}).`,
+                  request.context.get(NOTIFICATION_CONTAINER)
                 );
                 break;
               case '23505':
                 this.notifyService.showNotification(
-                  'normal',
+                  request.context.get(NOTIFICATION_FORMAT_TYPE),
                   5000,
                   'error',
                   'Mentés nem sikerült!',
-                  'A hozzáadni kívánt elem már létezik a listában.'
+                  'A hozzáadni kívánt elem már létezik a listában.',
+                  request.context.get(NOTIFICATION_CONTAINER)
                 );
                 break;
             }
