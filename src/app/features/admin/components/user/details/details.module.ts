@@ -6,6 +6,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { LayoutModule } from '@progress/kendo-angular-layout';
 import { BasicDataModule } from '../basic-data/basic-data.module';
 import { RolesModule } from '../roles/roles.module';
+import { PermissionsModule } from '../permissions/permissions.module';
 import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.module';
 
 @NgModule({
@@ -17,6 +18,7 @@ import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.m
     LayoutModule,
     BasicDataModule,
     RolesModule,
+    PermissionsModule,
     DraggableModule,
   ],
   exports: [DetailsComponent],

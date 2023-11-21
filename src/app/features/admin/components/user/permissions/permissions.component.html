@@ -1,0 +1,17 @@
+<div #container class="container">
+  <kendo-grid
+    [kendoGridBinding]="gridData.data"
+    [sortable]="true"
+    [style.maxHeight.%]="100"
+    [filterable]="true"
+  >
+    <kendo-grid-column
+      field="roleGroupName"
+      title="Szerepcsoport"
+    ></kendo-grid-column>
+    <kendo-grid-column field="roleName" title="Szerep"></kendo-grid-column>
+    <ng-template kendoGridNoRecordsTemplate>
+      Nincs megjelenítendő adat
+    </ng-template>
+  </kendo-grid>
+</div>
