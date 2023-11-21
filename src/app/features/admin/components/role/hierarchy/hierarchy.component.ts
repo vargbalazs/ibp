@@ -10,7 +10,7 @@ import { RoleService } from '../../../services/role.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { RoleGroupService } from '../../../services/rolegroup.service';
-import { first, forkJoin } from 'rxjs';
+import { catchError, first, forkJoin, of } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 
 @Component({
@@ -53,6 +53,28 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
   ) {
     super(roleService, notifyService, loaderService, msgDialogService);
     this.expandedKeys = [];
+
+    this.customSaveFn = function customSave(assignRole: AssignRole) {
+      this.roleService
+        .assignToRoleGroup(assignRole.roleGroupId!, assignRole.roleId!)
+        .pipe(
+          catchError((err) => {
+            this.cancelHandler();
+            return of();
+          })
+        )
+        .subscribe((resp) => {
+          this.notifyService.showNotification(
+            'normal',
+            5000,
+            'success',
+            'Sikeres mentés!',
+            'Az új elem megtalálható a listában.'
+          );
+          this.resetDataItem();
+          this.loadTreeview();
+        });
+    };
   }
 
   ngOnInit(): void {
@@ -85,22 +107,6 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
 
   showAssignForm() {
     this.addHandler();
-  }
-
-  override saveHandler(assignRole: AssignRole) {
-    this.roleService
-      .assignToRoleGroup(assignRole.roleGroupId!, assignRole.roleId!)
-      .subscribe((resp) => {
-        this.notifyService.showNotification(
-          'normal',
-          5000,
-          'success',
-          'Sikeres mentés!',
-          'Az új elem megtalálható a listában.'
-        );
-        this.resetDataItem();
-        this.loadTreeview();
-      });
   }
 
   loadTreeview() {

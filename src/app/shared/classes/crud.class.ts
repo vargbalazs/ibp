@@ -95,31 +95,45 @@ export abstract class Crud<T extends { id?: number }> {
   defaultSave(entity: T) {
     if (this.isNew) {
       const { id, ...newEntity } = entity;
-      this.repositoryService.add!(newEntity).subscribe((newEntity) => {
-        this.resetDataItem();
-        this.gridData.data = [...this.gridData.data, newEntity];
-        this.notifyService.showNotification(
-          'normal',
-          5000,
-          'success',
-          'Sikeres mentés!',
-          'Az új elem megtalálható a listában.'
-        );
-      });
+      this.repositoryService.add!(newEntity)
+        .pipe(
+          catchError((err) => {
+            this.closeDialog();
+            return of();
+          })
+        )
+        .subscribe((newEntity) => {
+          this.resetDataItem();
+          this.gridData.data = [...this.gridData.data, newEntity];
+          this.notifyService.showNotification(
+            'normal',
+            5000,
+            'success',
+            'Sikeres mentés!',
+            'Az új elem megtalálható a listában.'
+          );
+        });
     } else {
-      this.repositoryService.update!(entity).subscribe((updatedEntity) => {
-        this.resetDataItem();
-        this.gridData.data = this.gridData.data.map((item) =>
-          item.id === entity.id ? entity : item
-        );
-        this.notifyService.showNotification(
-          'normal',
-          5000,
-          'success',
-          'Sikeres módosítás!',
-          'A listában már a módosított adatok szerepelnek.'
-        );
-      });
+      this.repositoryService.update!(entity)
+        .pipe(
+          catchError((err) => {
+            this.closeDialog();
+            return of();
+          })
+        )
+        .subscribe((updatedEntity) => {
+          this.resetDataItem();
+          this.gridData.data = this.gridData.data.map((item) =>
+            item.id === entity.id ? entity : item
+          );
+          this.notifyService.showNotification(
+            'normal',
+            5000,
+            'success',
+            'Sikeres módosítás!',
+            'A listában már a módosított adatok szerepelnek.'
+          );
+        });
     }
   }
 
@@ -162,7 +176,7 @@ export abstract class Crud<T extends { id?: number }> {
     this.customSaveFn(dataItem);
   }
 
-  private closeDialog() {
+  public closeDialog() {
     this.dialogRef.close();
     this.dialogOpened = false;
   }

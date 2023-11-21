@@ -10,6 +10,7 @@ import { AssignRoleGroupToUser } from '../../../interfaces/assign-rolegroup-to-u
 import { AssignRoleGroup } from '../../../models/assign-rolegroup.model';
 import { RoleGroupService } from '../../../services/rolegroup.service';
 import { RoleGroup } from '../../../models/rolegroup.model';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'user-roles',
@@ -45,6 +46,12 @@ export class UserRolesComponent
           this.user.userId!,
           this.container
         )
+        .pipe(
+          catchError((err) => {
+            this.cancelHandler();
+            return of();
+          })
+        )
         .subscribe((resp) => {
           this.notifyService.showNotification(
             'compact',
@@ -66,6 +73,12 @@ export class UserRolesComponent
           dataItem.roleGroupId!,
           this.user.userId!,
           this.container
+        )
+        .pipe(
+          catchError((err) => {
+            this.closeDialog();
+            return of();
+          })
         )
         .subscribe((resp) => {
           this.dialogRef.close();

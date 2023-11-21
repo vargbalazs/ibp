@@ -8,7 +8,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { RoleService } from '../../../services/role.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
-import { first, forkJoin } from 'rxjs';
+import { catchError, first, forkJoin, of } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 import { AssignPermission } from '../../../models/assign-permission.model';
 import { Permission } from '../../../models/permission.model';
@@ -57,6 +57,30 @@ export class RolesAndPermissionsComponent
   ) {
     super(permissionService, notifyService, loaderService, msgDialogService);
     this.expandedKeys = [];
+
+    this.customSaveFn = function customSave(
+      assignPermission: AssignPermission
+    ) {
+      this.permissionService
+        .assignToRole(assignPermission.roleId!, assignPermission.permissionId!)
+        .pipe(
+          catchError((err) => {
+            this.cancelHandler();
+            return of();
+          })
+        )
+        .subscribe((resp) => {
+          this.notifyService.showNotification(
+            'normal',
+            5000,
+            'success',
+            'Sikeres mentés!',
+            'Az új elem megtalálható a listában.'
+          );
+          this.resetDataItem();
+          this.loadTreeview();
+        });
+    };
   }
 
   ngOnInit(): void {
@@ -89,22 +113,6 @@ export class RolesAndPermissionsComponent
 
   showAssignForm() {
     this.addHandler();
-  }
-
-  override saveHandler(assignPermission: AssignPermission) {
-    this.permissionService
-      .assignToRole(assignPermission.roleId!, assignPermission.permissionId!)
-      .subscribe((resp) => {
-        this.notifyService.showNotification(
-          'normal',
-          5000,
-          'success',
-          'Sikeres mentés!',
-          'Az új elem megtalálható a listában.'
-        );
-        this.resetDataItem();
-        this.loadTreeview();
-      });
   }
 
   loadTreeview() {
