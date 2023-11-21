@@ -32,7 +32,7 @@ export class UserService {
 
   getUserWithRoleGroups(user: User) {
     return this.http.get<User>(
-      `${API_URL}/users/user-with-rolegroups/${user.userId}`
+      `${API_URL}/users/user-with-rolegroups-and-permissions/${user.userId}`
     );
   }
 }
