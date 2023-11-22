@@ -10,7 +10,7 @@ import {
 
 export const slideInRouteAnimation = trigger('routeAnimations', [
   transition(
-    'loginPage <=> signupPageBasic, loginPage <=> signupPageLogin, signupPageBasic <=> signupPageLogin, loginPage <=> forgotPwdPage',
+    'loginPage <=> signupPageBasic, loginPage <=> signupPageLogin, signupPageBasic <=> signupPageLogin, loginPage <=> forgotPwdPage, loginPage => changePwdPage',
     [
       style({ position: 'relative' }),
       query(':enter, :leave', [
@@ -30,7 +30,7 @@ export const slideInRouteAnimation = trigger('routeAnimations', [
     ]
   ),
   transition(
-    'loginPage <=> signupPageBasic, loginPage <=> signupPageLogin, signupPageBasic <=> signupPageLogin, loginPage <=> forgotPwdPage',
+    'loginPage <=> signupPageBasic, loginPage <=> signupPageLogin, signupPageBasic <=> signupPageLogin, loginPage <=> forgotPwdPage, loginPage => changePwdPage',
     [
       style({ position: 'relative' }),
       query(':enter, :leave', [

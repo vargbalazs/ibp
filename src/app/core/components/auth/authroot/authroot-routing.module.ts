@@ -5,6 +5,7 @@ import { LoginComponent } from '../login/login.component';
 import { ForgotpwdComponent } from '../forgotpwd/forgotpwd.component';
 import { BasicDataComponent } from '../signup/basic-data/basic-data.component';
 import { LoginDataComponent } from '../signup/login-data/login-data.component';
+import { FirstLoginComponent } from '../firstlogin/firstlogin.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
         path: 'signup/login-data',
         component: LoginDataComponent,
         data: { animation: 'signupPageLogin' },
+      },
+      {
+        path: 'changepwd',
+        component: FirstLoginComponent,
+        data: { animation: 'changePwdPage' },
       },
     ],
   },

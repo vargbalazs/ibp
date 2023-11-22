@@ -1,0 +1,73 @@
+<form [formGroup]="firstLoginForm" (ngSubmit)="submitForm()">
+  <p class="form-caption">Jelszó megváltoztatása</p>
+  <p class="form-descr">
+    Az első bejelentkezés alkalmával meg kell változtatnod a jelszavad.
+  </p>
+  <kendo-formfield>
+    <kendo-label
+      [for]="password"
+      text="Jelszó*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #password
+      formControlName="password"
+      placeholder="●●●●●●●●●●●●●●●●●"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">key</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <span
+          class="material-symbols-outlined toggle-password"
+          (click)="togglePassword()"
+          >{{ passwordVisible ? "visibility" : "visibility_off" }}</span
+        >
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror
+      *ngIf="firstLoginForm.controls.password.errors?.['required']"
+      >Kötelező mező</kendo-formerror
+    >
+  </kendo-formfield>
+  <kendo-formfield
+    ><kendo-label
+      [for]="confirmPassword"
+      text="Jelszó újra*"
+      class="label-input-lg"
+    ></kendo-label>
+    <kendo-textbox
+      #confirmPassword
+      formControlName="confirmPassword"
+      placeholder="●●●●●●●●●●●●●●●●●"
+    >
+      <ng-template kendoTextBoxPrefixTemplate>
+        <span class="material-symbols-outlined">key</span>
+        <kendo-textbox-separator></kendo-textbox-separator>
+      </ng-template>
+      <ng-template kendoTextBoxSuffixTemplate>
+        <span
+          class="material-symbols-outlined toggle-password"
+          (click)="toggleConfirmPassword()"
+          >{{ confirmPasswordVisible ? "visibility" : "visibility_off" }}</span
+        >
+      </ng-template>
+    </kendo-textbox>
+    <kendo-formerror>Kötelező mező</kendo-formerror>
+  </kendo-formfield>
+  <button
+    type="submit"
+    kendoButton
+    themeColor="primary"
+    fillMode="solid"
+    size="large"
+    class="loader-button"
+    [disabled]="(isBusy | async)!"
+  >
+    <loading-button
+      [showIndicator]="(isBusy | async)!"
+      [buttonText]="'Jelszó mentése'"
+    ></loading-button>
+  </button>
+</form>

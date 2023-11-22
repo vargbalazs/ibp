@@ -8,9 +8,10 @@ import {
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
-import { BehaviorSubject, catchError, of, switchMap } from 'rxjs';
+import { BehaviorSubject, catchError, map, of, switchMap } from 'rxjs';
 import { UserLogin } from 'src/app/core/models/user-login.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { AdminService } from 'src/app/features/admin/services/admin.service';
 import { UserService } from 'src/app/features/admin/services/user.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   constructor(
     private authService: AuthService,
     private userService: UserService,
+    private adminService: AdminService,
     private renderer2: Renderer2,
     private router: Router,
     private loaderService: LoaderService,
@@ -94,9 +96,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
         .login(user)
         .pipe(
           switchMap((tokens) => {
-            return this.userService.getUserWithRoleGroups({
-              userId: tokens.userId,
-            });
+            this.authService.saveTokens(tokens);
+            return this.userService
+              .getUserWithRoleGroups({
+                userId: tokens.userId,
+              })
+              .pipe(
+                map((user) => {
+                  return { tokens, user };
+                })
+              );
           }),
           catchError((err) => {
             this.customNotifyService.showNotification(
@@ -109,16 +118,22 @@ export class LoginComponent implements OnInit, AfterViewInit {
             return of();
           })
         )
-        .subscribe((tokens) => {
-          this.customNotifyService.showNotification(
-            'normal',
-            5000,
-            'success',
-            'Bejelentkezés',
-            'A bejelentkezés sikeres.'
-          );
-          this.authService.saveTokens(tokens);
-          this.router.navigate(['/home'], { skipLocationChange: true });
+        .subscribe(({ tokens, user }) => {
+          if (user.firstLogin) {
+            this.adminService.setUser(user);
+            this.router.navigate(['auth/changepwd'], {
+              skipLocationChange: true,
+            });
+          } else {
+            this.customNotifyService.showNotification(
+              'normal',
+              5000,
+              'success',
+              'Bejelentkezés',
+              'A bejelentkezés sikeres.'
+            );
+            this.router.navigate(['/home'], { skipLocationChange: true });
+          }
         });
     }
   }

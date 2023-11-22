@@ -6,6 +6,7 @@ import { LayoutModule } from '@progress/kendo-angular-layout';
 import { LoginModule } from '../login/login.module';
 import { ForgotpwdModule } from '../forgotpwd/forgotpwd.module';
 import { SignupModule } from '../signup/signup.module';
+import { FirstLoginModule } from '../firstlogin/firstlogin.module';
 
 @NgModule({
   declarations: [AuthrootComponent],
@@ -16,6 +17,7 @@ import { SignupModule } from '../signup/signup.module';
     ForgotpwdModule,
     SignupModule,
     LayoutModule,
+    FirstLoginModule,
   ],
   exports: [AuthrootComponent],
 })
