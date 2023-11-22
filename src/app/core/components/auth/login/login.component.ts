@@ -11,6 +11,7 @@ import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { BehaviorSubject, catchError, of, switchMap } from 'rxjs';
 import { UserLogin } from 'src/app/core/models/user-login.model';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UserService } from 'src/app/features/admin/services/user.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 
@@ -28,6 +29,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   constructor(
     private authService: AuthService,
+    private userService: UserService,
     private renderer2: Renderer2,
     private router: Router,
     private loaderService: LoaderService,
@@ -91,6 +93,11 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.authService
         .login(user)
         .pipe(
+          switchMap((tokens) => {
+            return this.userService.getUserWithRoleGroups({
+              userId: tokens.userId,
+            });
+          }),
           catchError((err) => {
             this.customNotifyService.showNotification(
               'normal',

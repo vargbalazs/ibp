@@ -12,6 +12,7 @@ import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { UserLogin } from '../models/user-login.model';
 import { AuthToken } from '../interfaces/auth-token.interface';
+import { ChangePwdModel } from '../models/change-pwd.model';
 
 @Injectable()
 export class AuthService {
@@ -119,5 +120,9 @@ export class AuthService {
     return this.http.get<AuthToken>(`${API_URL}/auth/refresh`, {
       headers: header,
     });
+  }
+
+  changePwd(body: ChangePwdModel) {
+    return this.http.post<string>(`${API_URL}/users/changepwd`, body);
   }
 }
