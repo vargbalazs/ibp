@@ -49,7 +49,9 @@ export class UserListComponent extends Crud<User> implements OnInit {
   showDetails({ dataItem }: { dataItem: User }) {
     forkJoin({
       user: this.userService.getUserWithRoleGroups(dataItem).pipe(first()),
-      roleGroups: this.roleGroupService.getRoleGroups().pipe(first()),
+      roleGroups: this.roleGroupService
+        .getRoleGroupsWithPermissions()
+        .pipe(first()),
     }).subscribe(({ user, roleGroups }) => {
       this.userDetails = dataItem;
       user.allRoleGroups = roleGroups;

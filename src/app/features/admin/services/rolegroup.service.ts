@@ -30,6 +30,12 @@ export class RoleGroupService implements Repository<RoleGroup> {
     return this.http.get<RoleGroup[]>(`${API_URL}/role-groups`);
   }
 
+  getRoleGroupsWithPermissions() {
+    return this.http.get<RoleGroup[]>(
+      `${API_URL}/role-groups/rolegroups-with-permissions`
+    );
+  }
+
   assignRoleGroupToUser(
     roleGroupId: number,
     userId: string,
