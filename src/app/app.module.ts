@@ -15,6 +15,7 @@ import { FeaturesModule } from './features/features.module';
 import { CustomDialogModule } from './shared/components/custom-dialog/custom-dialog.module';
 import { DatabaseErrorInterceptor } from './core/interceptors/database-error.interceptor';
 import { CustomNofityCompactModule } from './shared/components/custom-notify-compact/custom-notify-compact.module';
+import { GlobalHttpErrorInterceptor } from './core/interceptors/globar-http-error.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,6 +38,11 @@ import { CustomNofityCompactModule } from './shared/components/custom-notify-com
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DatabaseErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalHttpErrorInterceptor,
       multi: true,
     },
   ],
