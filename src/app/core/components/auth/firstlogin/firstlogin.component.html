@@ -56,6 +56,9 @@
     </kendo-textbox>
     <kendo-formerror>Kötelező mező</kendo-formerror>
   </kendo-formfield>
+  <kendo-formerror *ngIf="firstLoginForm.errors?.['notMatching']"
+    >A két jelszó nem egyezik</kendo-formerror
+  >
   <button
     type="submit"
     kendoButton

@@ -5,7 +5,13 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { TextBoxComponent } from '@progress/kendo-angular-inputs';
 import { BehaviorSubject, catchError, of } from 'rxjs';
@@ -13,6 +19,7 @@ import { ChangePwdModel } from 'src/app/core/models/change-pwd.model';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AdminService } from 'src/app/features/admin/services/admin.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 
 @Component({
   selector: 'app-firstlogin',
@@ -36,7 +43,8 @@ export class FirstLoginComponent implements OnInit, AfterViewInit {
     private loaderService: LoaderService,
     private adminService: AdminService,
     private authService: AuthService,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private notifyService: CustomNotificationService
   ) {
     this.isBusy = this.loaderService.isLoading;
   }
@@ -61,17 +69,20 @@ export class FirstLoginComponent implements OnInit, AfterViewInit {
   }
 
   initFirstLoginForm() {
-    return new FormGroup({
-      userId: new FormControl('', { validators: [Validators.required] }),
-      password: new FormControl('', {
-        validators: [Validators.required],
-        updateOn: 'submit',
-      }),
-      confirmPassword: new FormControl('', {
-        validators: [Validators.required],
-        updateOn: 'submit',
-      }),
-    });
+    return new FormGroup(
+      {
+        userId: new FormControl('', { validators: [Validators.required] }),
+        password: new FormControl('', {
+          validators: [Validators.required],
+          updateOn: 'submit',
+        }),
+        confirmPassword: new FormControl('', {
+          validators: [Validators.required],
+          updateOn: 'submit',
+        }),
+      },
+      { validators: [this.match('password', 'confirmPassword')] }
+    );
   }
 
   submitForm() {
@@ -81,6 +92,16 @@ export class FirstLoginComponent implements OnInit, AfterViewInit {
     );
     if (this.firstLoginForm.valid) {
       const formData = this.firstLoginForm.value as ChangePwdModel;
+      this.authService.changePwd(formData).subscribe((res) => {
+        this.router.navigate(['/home']);
+        this.notifyService.showNotification(
+          'normal',
+          5000,
+          'success',
+          'Jelszó megváltoztatása',
+          'A jelszó sikeresen megváltoztatásra került.'
+        );
+      });
     }
   }
 
@@ -94,5 +115,22 @@ export class FirstLoginComponent implements OnInit, AfterViewInit {
     this.authService.togglePass(this.confirmPasswordInput);
     this.confirmPasswordVisible = !this.confirmPasswordVisible;
     return false;
+  }
+
+  match(controlName: string, checkControlName: string): ValidatorFn {
+    return (controls: AbstractControl) => {
+      const control = controls.get(controlName);
+      const checkControl = controls.get(checkControlName);
+
+      if (checkControl?.errors && !checkControl.errors['notMatching']) {
+        return null;
+      }
+
+      if (control?.value !== checkControl?.value) {
+        return { notMatching: true };
+      } else {
+        return null;
+      }
+    };
   }
 }
