@@ -119,8 +119,8 @@ export class LoginComponent implements OnInit, AfterViewInit {
           })
         )
         .subscribe(({ tokens, user }) => {
+          this.adminService.setUser(user);
           if (user.firstLogin) {
-            this.adminService.setUser(user);
             this.router.navigate(['auth/changepwd'], {
               skipLocationChange: true,
             });

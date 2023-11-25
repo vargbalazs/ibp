@@ -17,4 +17,10 @@ export class AdminService {
   public getUser(): User {
     return this.currentUser.getValue();
   }
+
+  public isAdmin(): boolean {
+    return !!this.currentUser
+      .getValue()
+      .roleGroups?.find((roleGroup) => roleGroup.name === 'ADMIN');
+  }
 }

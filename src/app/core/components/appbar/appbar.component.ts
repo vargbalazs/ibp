@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LayoutService } from '../../services/layout.service';
 import { AuthService } from '../../services/auth.service';
+import { AdminService } from 'src/app/features/admin/services/admin.service';
 
 @Component({
   selector: 'app-bar',
   templateUrl: './appbar.component.html',
   styleUrls: ['./appbar.component.css'],
 })
-export class AppbarComponent {
+export class AppbarComponent implements OnInit {
+  isAdmin: boolean = false;
+
   constructor(
     private layoutService: LayoutService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private adminService: AdminService
   ) {}
+
+  ngOnInit(): void {
+    this.isAdmin = this.adminService.isAdmin();
+  }
 
   toggleNavbar() {
     this.layoutService.toggleNavBarPanel();
