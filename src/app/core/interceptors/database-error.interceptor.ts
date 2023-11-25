@@ -6,7 +6,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { DatabaseError } from '../interfaces/database-error.interface';
 import { CustomHttpErrorResponse } from '../interfaces/custom-http-error-response.interface';

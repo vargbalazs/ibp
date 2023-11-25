@@ -11,6 +11,7 @@ import { catchError } from 'rxjs/operators';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { NOTIFICATION_TYPE } from '../constants/app.constants';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import { CustomHttpErrorResponse } from '../interfaces/custom-http-error-response.interface';
 
 @Injectable()
 export class GlobalHttpErrorInterceptor implements HttpInterceptor {
@@ -26,7 +27,10 @@ export class GlobalHttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (!(error.error instanceof ErrorEvent)) {
-          if (error.status != 401) {
+          if (
+            error.status != 401 &&
+            (error.error as CustomHttpErrorResponse).message != 'Database error'
+          ) {
             this.notifyService.showNotification(
               request.context.get(NOTIFICATION_TYPE).type,
               5000,

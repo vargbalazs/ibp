@@ -37,12 +37,12 @@ import { GlobalHttpErrorInterceptor } from './core/interceptors/globar-http-erro
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: DatabaseErrorInterceptor,
+      useClass: GlobalHttpErrorInterceptor,
       multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: GlobalHttpErrorInterceptor,
+      useClass: DatabaseErrorInterceptor,
       multi: true,
     },
   ],
