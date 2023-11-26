@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouteListComponent } from './list.component';
 import { GridModule } from '@progress/kendo-angular-grid';
 import { DialogModule } from '@progress/kendo-angular-dialog';
-//import { CreateModule } from '../create/create.module';
+import { CreateModule } from '../create/create.module';
 import { LoadingOverlayModule } from 'src/app/shared/components/loading-overlay/loading-overlay.module';
 import { RouteService } from '../../../services/route.service';
 
@@ -13,7 +13,7 @@ import { RouteService } from '../../../services/route.service';
     CommonModule,
     GridModule,
     DialogModule,
-    //CreateModule,
+    CreateModule,
     LoadingOverlayModule,
   ],
   exports: [RouteListComponent],

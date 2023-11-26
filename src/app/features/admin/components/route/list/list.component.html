@@ -38,13 +38,13 @@
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
-<!-- <create-action
+<create-route
   *ngIf="editDataItem"
   [model]="editDataItem"
   [isNew]="isNew"
   (save)="saveHandler($event, 'default')"
   (cancel)="cancelHandler()"
-></create-action> -->
+></create-route>
 <div kendoDialogContainer></div>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"
