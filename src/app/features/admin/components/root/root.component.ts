@@ -36,6 +36,7 @@ export class RootComponent {
         });
         break;
       case 'route':
+        this.router.navigate(['admin/routes'], { skipLocationChange: true });
         break;
     }
   }

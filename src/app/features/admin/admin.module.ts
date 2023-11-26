@@ -8,6 +8,7 @@ import { PermissionsModule } from './components/permission/permission.module';
 import { RoleModule } from './components/role/role.module';
 import { UserModule } from './components/user/user.module';
 import { AdminService } from './services/admin.service';
+import { RouteModule } from './components/route/route.module';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { AdminService } from './services/admin.service';
     PermissionsModule,
     RoleModule,
     UserModule,
+    RouteModule,
   ],
   providers: [AdminService],
   exports: [],

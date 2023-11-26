@@ -8,6 +8,7 @@ import { ModuleRootComponent } from './components/module/root/root.component';
 import { OperationRootComponent } from './components/operation/root/root.component';
 import { PermissionListComponent } from './components/permission/list/list.component';
 import { RoleRootComponent } from './components/role/root/root.component';
+import { RouteListComponent } from './components/route/list/list.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       {
         path: 'admin/roles',
         component: RoleRootComponent,
+      },
+      {
+        path: 'admin/routes',
+        component: RouteListComponent,
       },
     ],
   },
