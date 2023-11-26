@@ -2,11 +2,12 @@ import { MenuItem } from '../../interfaces/menu-item.interface';
 
 export const menuItems: MenuItem[] = [
   {
-    text: 'Dashboard',
-    icon: 'home',
+    text: 'Törzsadatok',
+    icon: 'dataset',
     items: [
       {
-        text: 'subitem 11',
+        text: 'Projektek',
+        routePath: 'masterdata/projects',
       },
       {
         text: 'subitem 12',

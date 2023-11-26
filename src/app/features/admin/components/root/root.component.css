@@ -51,3 +51,8 @@ kendo-card {
   background-color: var(--pink-solid-color);
   color: var(--pink-color);
 }
+
+.route-icon {
+  background-color: var(--blue-grey-solid-color);
+  color: var(--blue-grey-color);
+}

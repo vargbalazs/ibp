@@ -35,6 +35,8 @@ export class RootComponent {
           skipLocationChange: true,
         });
         break;
+      case 'route':
+        break;
     }
   }
 }

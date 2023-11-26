@@ -157,4 +157,31 @@
       </kendo-card-body>
     </kendo-card>
   </div>
+  <div
+    class="card"
+    #route
+    [attr.data-function]="'route'"
+    (click)="navigateToFunction(route)"
+  >
+    <kendo-card width="360px">
+      <kendo-card-header class="k-hstack card-header">
+        <div>
+          <h1 kendoCardTitle>Elérési útvonalak</h1>
+        </div>
+        <div class="icon route-icon">
+          <span class="material-symbols-outlined"
+            ><span class="material-symbols-outlined">
+              <span class="material-symbols-outlined">route</span>
+            </span></span
+          >
+        </div>
+      </kendo-card-header>
+      <kendo-card-body>
+        <p>
+          Az almodulok elérési útvonalainak definiálása, szerepcsoportokhoz
+          történő hozzárendelése
+        </p>
+      </kendo-card-body>
+    </kendo-card>
+  </div>
 </div>
