@@ -1,0 +1,42 @@
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [filterable]="true"
+  [style.maxHeight.%]="100"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button
+      kendoGridAddCommand
+      themeColor="primary"
+      fillMode="solid"
+      size="small"
+    >
+      Szerepcsoport hozzárendelése
+    </button>
+  </ng-template>
+  <kendo-grid-column
+    field="id"
+    title="Id"
+    [hidden]="true"
+    filter="numeric"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="routeName"
+    title="Elérési útvonal"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="roleGroupName"
+    title="Szerepcsoport"
+  ></kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem> </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<div kendoDialogContainer></div>
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>

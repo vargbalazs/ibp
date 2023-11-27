@@ -75,4 +75,18 @@ export class RoleGroupService implements Repository<RoleGroup> {
       }
     );
   }
+
+  assignRoleGroupToRoute(roleGroupId: number, routeId: number) {
+    return this.http.post<boolean>(`${API_URL}/role-groups/assign-to-route`, {
+      roleGroupId: roleGroupId,
+      routeId: routeId,
+    });
+  }
+
+  removeRoleGroupFromRoute(roleGroupId: number, routeId: number) {
+    return this.http.post<boolean>(`${API_URL}/role-groups/remove-from-route`, {
+      roleGroupId: roleGroupId,
+      routeId: routeId,
+    });
+  }
 }
