@@ -10,6 +10,7 @@
       themeColor="primary"
       fillMode="solid"
       size="small"
+      (click)="openAssignDialog()"
     >
       Szerepcsoport hozzárendelése
     </button>
@@ -28,14 +29,27 @@
     field="roleGroupName"
     title="Szerepcsoport"
   ></kendo-grid-column>
-  <kendo-grid-command-column [width]="70">
-    <ng-template kendoGridCellTemplate let-dataItem> </ng-template>
+  <kendo-grid-command-column [width]="35">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span
+        class="material-symbols-outlined"
+        (click)="removeHandler(dataItem, 'default')"
+        >delete</span
+      >
+    </ng-template>
   </kendo-grid-command-column>
   <ng-template kendoGridNoRecordsTemplate>
     Nincs megjelenítendő adat
   </ng-template>
 </kendo-grid>
 <div kendoDialogContainer></div>
+<assign-to-route
+  *ngIf="active"
+  [routes]="routes"
+  [roleGroups]="roleGroups"
+  (save)="saveHandler($event, 'default')"
+  (cancel)="cancelHandler()"
+></assign-to-route>
 <loading-overlay
   [visible]="(loadingOverlayVisible | async) && !dialogOpened"
   loadingText=""
