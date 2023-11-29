@@ -136,5 +136,33 @@ export class RouteRoleGroupListComponent implements OnInit {
     this.dialogOpened = false;
   }
 
-  remove(entity: AssignRoute) {}
+  remove(entity: AssignRoute) {
+    this.roleGroupService
+      .removeRoleGroupFromRoute(entity.roleGroupId!, entity.routeId!)
+      .pipe(
+        catchError((err) => {
+          this.closeDialog();
+          return of();
+        })
+      )
+      .subscribe((res) => {
+        this.closeDialog();
+        this.routesWithRoleGroups = this.routesWithRoleGroups.filter(
+          (item: AssignRoleGroupToRoute) => {
+            const deletedId =
+              entity.roleGroupId!.toString() + entity.routeId!.toString();
+            const id = item.roleGroupId!.toString() + item.routeId!.toString();
+            return id !== deletedId;
+          }
+        );
+        this.gridData.data = this.routesWithRoleGroups;
+        this.notifyService.showNotification(
+          'normal',
+          5000,
+          'success',
+          'Sikeres törlés!',
+          'A kiválasztott elem eltávolításra került a listából.'
+        );
+      });
+  }
 }
