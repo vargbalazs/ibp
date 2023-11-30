@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { MenuItem } from '../../interfaces/menu-item.interface';
 import { LayoutService } from '../../services/layout.service';
 import { menuItems } from './sidemenu-items';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidemenu',
@@ -25,7 +26,7 @@ export class SidemenuComponent implements OnInit, OnDestroy {
 
   toggleNavbar$: Subscription;
 
-  constructor(private layoutService: LayoutService) {
+  constructor(private layoutService: LayoutService, private router: Router) {
     this.toggleNavbar$ = this.layoutService.toggleNavbar$.subscribe(() => {
       if (this.layoutService.navbarIsOpen) {
         this.expandedKeys = [];
@@ -40,7 +41,7 @@ export class SidemenuComponent implements OnInit, OnDestroy {
   }
 
   nodeClick(e: any) {
-    const item = e.item.dataItem;
+    const item = e.item.dataItem as MenuItem;
     const index = e.item.index;
     if (this.isItemExpanded(item, index)) {
       this.treeview.collapseNode(item, index);
@@ -51,6 +52,8 @@ export class SidemenuComponent implements OnInit, OnDestroy {
         this.treeview.expandNode(item, index);
       }
     }
+    if (item.routePath)
+      this.router.navigate([item.routePath], { skipLocationChange: true });
   }
 
   searchBoxClicked() {

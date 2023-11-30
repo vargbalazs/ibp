@@ -10,6 +10,10 @@ export const menuItems: MenuItem[] = [
         routePath: 'masterdata/projects',
       },
       {
+        text: 'Business units',
+        routePath: 'masterdata/bus',
+      },
+      {
         text: 'subitem 12',
         items: [
           {
