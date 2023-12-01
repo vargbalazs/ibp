@@ -1,1 +1,52 @@
-bu list works
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [filterable]="true"
+  [style.maxHeight.%]="100"
+  (add)="addHandler()"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button
+      kendoGridAddCommand
+      themeColor="primary"
+      fillMode="solid"
+      size="small"
+    >
+      Új BU
+    </button>
+  </ng-template>
+  <kendo-grid-column
+    field="id"
+    title="Id"
+    [hidden]="true"
+    filter="numeric"
+  ></kendo-grid-column>
+  <kendo-grid-column field="name" title="BU"></kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span class="material-symbols-outlined" (click)="editHandler(dataItem)"
+        >edit</span
+      >
+      <span
+        class="material-symbols-outlined"
+        (click)="removeHandler(dataItem, 'default')"
+        >delete</span
+      >
+    </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<create-bu
+  *ngIf="editDataItem"
+  [model]="editDataItem"
+  [isNew]="isNew"
+  (save)="saveHandler($event, 'default')"
+  (cancel)="cancelHandler()"
+></create-bu>
+<div kendoDialogContainer></div>
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>
