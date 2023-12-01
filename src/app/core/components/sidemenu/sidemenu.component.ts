@@ -52,8 +52,10 @@ export class SidemenuComponent implements OnInit, OnDestroy {
         this.treeview.expandNode(item, index);
       }
     }
-    if (item.routePath)
+    if (item.routePath) {
       this.router.navigate([item.routePath], { skipLocationChange: true });
+      this.layoutService.toggleNavBarPanel();
+    }
   }
 
   searchBoxClicked() {
