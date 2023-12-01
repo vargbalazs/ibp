@@ -11,6 +11,7 @@ import { AdminService } from 'src/app/features/admin/services/admin.service';
 })
 export class AppbarComponent implements OnInit {
   isAdmin: boolean = false;
+  initials = '';
 
   constructor(
     private layoutService: LayoutService,
@@ -21,6 +22,10 @@ export class AppbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.isAdmin = this.adminService.isAdmin();
+    const user = this.adminService.getUser();
+    this.initials =
+      user.firstName!.charAt(0).toUpperCase() +
+      user.lastName!.charAt(0).toUpperCase();
   }
 
   toggleNavbar() {
