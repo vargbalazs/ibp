@@ -23,4 +23,12 @@ export class AdminService {
       .getValue()
       .roleGroups?.find((roleGroup) => roleGroup.name === 'ADMIN');
   }
+
+  public hasRoute(routePath: string): boolean {
+    let found = false;
+    this.currentUser.getValue().roleGroups?.forEach((roleGroup) => {
+      found = !!roleGroup.routes?.find((route) => route.name === routePath);
+    });
+    return found;
+  }
 }
