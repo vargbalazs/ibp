@@ -11,7 +11,8 @@ export function routeGuard(): CanActivateFn {
   return (route: ActivatedRouteSnapshot, state: RouterStateSnapshot) => {
     const adminService = inject(AdminService);
     const notifyService = inject(CustomNotificationService);
-    const allowed = adminService.hasRoute(route.url.join('/'));
+    const allowed =
+      adminService.hasRoute(route.url.join('/')) || adminService.isAdmin();
 
     if (!allowed)
       notifyService.showNotification(
