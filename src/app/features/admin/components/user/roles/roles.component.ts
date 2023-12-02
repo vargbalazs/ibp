@@ -5,7 +5,6 @@ import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { UserService } from '../../../services/user.service';
-import { AdminService } from '../../../services/admin.service';
 import { AssignRoleGroupToUser } from '../../../interfaces/assign-rolegroup-to-user.interface';
 import { AssignRoleGroup } from '../../../models/assign-rolegroup.model';
 import { RoleGroupService } from '../../../services/rolegroup.service';
@@ -31,7 +30,6 @@ export class UserRolesComponent
 
   constructor(
     private userService: UserService,
-    private adminService: AdminService,
     private roleGroupService: RoleGroupService,
     loaderService: LoaderService,
     notifyService: CustomNotificationService,

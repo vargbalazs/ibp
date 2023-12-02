@@ -8,7 +8,9 @@ import { DialogActionsEnum } from '../components/custom-dialog/dialog-actions.en
 import { DialogAction } from '../interfaces/dialog-action.interface';
 import { DialogRef } from '@progress/kendo-angular-dialog';
 import { AlternativeId } from '../interfaces/alternative-id.interface';
-import { ViewContainerRef } from '@angular/core';
+import { ViewContainerRef, inject } from '@angular/core';
+import { AdminService } from 'src/app/features/admin/services/admin.service';
+import { CrudOptions } from '../interfaces/crud-options.interface';
 
 export abstract class Crud<T extends { id?: number }> {
   gridData!: GridDataResult;
@@ -20,6 +22,7 @@ export abstract class Crud<T extends { id?: number }> {
   customRemoveFn!: (dataItem: T) => void;
   customSaveFn!: (dataItem: T) => void;
   dialogContainer!: ViewContainerRef;
+  adminService: AdminService;
 
   constructor(
     private repositoryService: Repository<T>,
@@ -30,15 +33,22 @@ export abstract class Crud<T extends { id?: number }> {
     this.isNew = false;
     this.dialogOpened = false;
     this.loadingOverlayVisible = this.loaderService.isLoading;
+    this.adminService = inject(AdminService);
   }
 
-  addHandler() {
+  addHandler(options?: CrudOptions) {
+    if (options && options.permission) {
+      if (!this.adminService.hasPermission(options.permission)) return;
+    }
     this.editDataItem = <T>{};
     this.isNew = true;
     this.dialogOpened = true;
   }
 
-  editHandler(dataItem: T) {
+  editHandler(dataItem: T, options?: CrudOptions) {
+    if (options && options.permission) {
+      if (!this.adminService.hasPermission(options.permission)) return;
+    }
     this.editDataItem = dataItem;
     this.dialogOpened = true;
     this.isNew = false;
@@ -64,8 +74,11 @@ export abstract class Crud<T extends { id?: number }> {
   removeHandler(
     dataItem: T,
     type: 'default' | 'custom',
-    alternativeId?: AlternativeId
+    options?: CrudOptions
   ) {
+    if (options && options.permission) {
+      if (!this.adminService.hasPermission(options.permission)) return;
+    }
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(
       this.dialogContainer,
@@ -81,7 +94,7 @@ export abstract class Crud<T extends { id?: number }> {
       }
       if ((result as DialogAction).action === DialogActionsEnum.Yes) {
         if (type === 'default') {
-          this.defaultRemove(dataItem, alternativeId);
+          this.defaultRemove(dataItem, options?.alternativeId);
         } else this.customRemove(dataItem);
       }
     });

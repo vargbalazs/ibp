@@ -5,7 +5,6 @@ import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { LoaderService } from 'src/app/shared/services/loader.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { UserService } from '../../../services/user.service';
-import { AdminService } from '../../../services/admin.service';
 import { first, forkJoin } from 'rxjs';
 import { RoleGroupService } from '../../../services/rolegroup.service';
 
@@ -19,7 +18,6 @@ export class UserListComponent extends Crud<User> implements OnInit {
 
   constructor(
     private userService: UserService,
-    private adminService: AdminService,
     private roleGroupService: RoleGroupService,
     loaderService: LoaderService,
     notifyService: CustomNotificationService,

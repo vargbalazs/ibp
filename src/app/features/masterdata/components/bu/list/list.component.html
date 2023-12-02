@@ -3,7 +3,7 @@
   [sortable]="true"
   [filterable]="true"
   [style.maxHeight.%]="100"
-  (add)="addHandler()"
+  (add)="addHandler({ permission: 'CREATE_BU' })"
 >
   <ng-template kendoGridToolbarTemplate>
     <button
@@ -24,12 +24,16 @@
   <kendo-grid-column field="name" title="BU"></kendo-grid-column>
   <kendo-grid-command-column [width]="70">
     <ng-template kendoGridCellTemplate let-dataItem>
-      <span class="material-symbols-outlined" (click)="editHandler(dataItem)"
+      <span
+        class="material-symbols-outlined"
+        (click)="editHandler(dataItem, { permission: 'EDIT_BU' })"
         >edit</span
       >
       <span
         class="material-symbols-outlined"
-        (click)="removeHandler(dataItem, 'default')"
+        (click)="
+          removeHandler(dataItem, 'default', { permission: 'DELETE_BU' })
+        "
         >delete</span
       >
     </ng-template>

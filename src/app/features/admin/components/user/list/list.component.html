@@ -52,8 +52,10 @@
         class="material-symbols-outlined"
         (click)="
           removeHandler(dataItem, 'default', {
-            columnName: 'userId',
-            value: dataItem.userId
+            alternativeId: {
+              columnName: 'userId',
+              value: dataItem.userId
+            }
           })
         "
         >delete</span
