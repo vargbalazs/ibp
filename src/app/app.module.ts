@@ -16,6 +16,7 @@ import { CustomDialogModule } from './shared/components/custom-dialog/custom-dia
 import { DatabaseErrorInterceptor } from './core/interceptors/database-error.interceptor';
 import { CustomNofityCompactModule } from './shared/components/custom-notify-compact/custom-notify-compact.module';
 import { GlobalHttpErrorInterceptor } from './core/interceptors/globar-http-error.interceptor';
+import { PermissionInterceptor } from './core/interceptors/permission.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
@@ -43,6 +44,11 @@ import { GlobalHttpErrorInterceptor } from './core/interceptors/globar-http-erro
     {
       provide: HTTP_INTERCEPTORS,
       useClass: DatabaseErrorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: PermissionInterceptor,
       multi: true,
     },
   ],

@@ -6,6 +6,7 @@ export const USE_LOADING_SPINNER = new HttpContextToken<boolean>(() => true);
 export const NOTIFICATION_TYPE = new HttpContextToken<CustomNotification>(
   () => <CustomNotification>{ type: 'normal', container: null }
 );
+export const PERMISSION = new HttpContextToken<string>(() => '');
 export const PUBLIC_URLS = [
   '/auth/login',
   '/auth/forgotpwd',

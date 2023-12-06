@@ -23,6 +23,7 @@ export abstract class Crud<T extends { id?: number }> {
   customSaveFn!: (dataItem: T) => void;
   dialogContainer!: ViewContainerRef;
   adminService: AdminService;
+  permission!: string;
 
   constructor(
     private repositoryService: Repository<T>,
@@ -39,6 +40,7 @@ export abstract class Crud<T extends { id?: number }> {
   addHandler(options?: CrudOptions) {
     if (options && options.permission) {
       if (!this.adminService.hasPermission(options.permission)) return;
+      this.permission = options.permission;
     }
     this.editDataItem = <T>{};
     this.isNew = true;
@@ -108,7 +110,7 @@ export abstract class Crud<T extends { id?: number }> {
   defaultSave(entity: T) {
     if (this.isNew) {
       const { id, ...newEntity } = entity;
-      this.repositoryService.add!(newEntity)
+      this.repositoryService.add!(newEntity, this.permission)
         .pipe(
           catchError((err) => {
             this.closeDialog();
