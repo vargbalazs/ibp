@@ -9,11 +9,13 @@ import { OperationRootComponent } from './components/operation/root/root.compone
 import { PermissionListComponent } from './components/permission/list/list.component';
 import { RoleRootComponent } from './components/role/root/root.component';
 import { RouteRootComponent } from './components/route/root/root.component';
+import { routeGuard } from 'src/app/core/guards/route.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    canActivateChild: [routeGuard()],
     children: [
       {
         path: 'admin/root',
