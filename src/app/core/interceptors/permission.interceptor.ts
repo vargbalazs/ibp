@@ -19,7 +19,6 @@ export class PermissionInterceptor implements HttpInterceptor {
       req = req.clone({
         headers: req.headers.set('Ibp-Permission', req.context.get(PERMISSION)),
       });
-      console.log('belép');
     }
 
     return next.handle(req);

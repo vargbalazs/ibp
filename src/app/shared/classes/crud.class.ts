@@ -50,6 +50,7 @@ export abstract class Crud<T extends { id?: number }> {
   editHandler(dataItem: T, options?: CrudOptions) {
     if (options && options.permission) {
       if (!this.adminService.hasPermission(options.permission)) return;
+      this.permission = options.permission;
     }
     this.editDataItem = dataItem;
     this.dialogOpened = true;
@@ -80,6 +81,7 @@ export abstract class Crud<T extends { id?: number }> {
   ) {
     if (options && options.permission) {
       if (!this.adminService.hasPermission(options.permission)) return;
+      this.permission = options.permission;
     }
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(
@@ -129,7 +131,7 @@ export abstract class Crud<T extends { id?: number }> {
           );
         });
     } else {
-      this.repositoryService.update!(entity)
+      this.repositoryService.update!(entity, this.permission)
         .pipe(
           catchError((err) => {
             this.closeDialog();
@@ -154,7 +156,7 @@ export abstract class Crud<T extends { id?: number }> {
 
   defaultRemove(entity: T, alternativeId?: AlternativeId) {
     const id = alternativeId ? alternativeId.value : entity.id;
-    this.repositoryService.delete!(id!)
+    this.repositoryService.delete!(id!, this.permission)
       .pipe(
         catchError((err) => {
           this.closeDialog();

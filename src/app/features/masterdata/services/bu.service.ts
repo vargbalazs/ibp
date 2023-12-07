@@ -14,15 +14,21 @@ export class BuService implements Repository<Bu> {
     });
   }
 
-  update(bu: Bu) {
-    return this.http.put<Bu>(`${API_URL}/bus/${bu.id}`, bu);
+  update(bu: Bu, permission: string) {
+    return this.http.put<Bu>(`${API_URL}/bus/${bu.id}`, bu, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  delete(id: number) {
-    return this.http.delete<number>(`${API_URL}/bus/${id}`);
+  delete(id: number, permission: string) {
+    return this.http.delete<number>(`${API_URL}/bus/${id}`, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  getBus() {
-    return this.http.get<Bu[]>(`${API_URL}/bus`);
+  getBus(permission: string) {
+    return this.http.get<Bu[]>(`${API_URL}/bus`, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 }

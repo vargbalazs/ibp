@@ -23,7 +23,7 @@ export class BuListComponent extends Crud<Bu> implements OnInit {
 
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
-    this.buService.getBus().subscribe((bus) => {
+    this.buService.getBus('VIEW_BU').subscribe((bus) => {
       if (bus) {
         this.gridData = { data: bus, total: bus.length };
       }

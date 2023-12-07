@@ -27,6 +27,19 @@ export class GlobalHttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (!(error.error instanceof ErrorEvent)) {
+          if (error.status === 403) {
+            this.notifyService.showNotification(
+              request.context.get(NOTIFICATION_TYPE).type,
+              5000,
+              'error',
+              'Hiba',
+              'Nincs jogosultságod a kért művelet elvégzéséhez.',
+              request.context.get(NOTIFICATION_TYPE).container
+            );
+            this.loaderService.hide();
+            //return of();
+            return throwError(() => error);
+          }
           if (
             error.status != 401 &&
             (error.error as CustomHttpErrorResponse).message != 'Database error'
@@ -40,7 +53,8 @@ export class GlobalHttpErrorInterceptor implements HttpInterceptor {
               request.context.get(NOTIFICATION_TYPE).container
             );
             this.loaderService.hide();
-            return of();
+            //return of();
+            return throwError(() => error);
           }
         }
         return throwError(() => error);
