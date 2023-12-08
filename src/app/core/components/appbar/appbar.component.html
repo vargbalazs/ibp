@@ -14,7 +14,7 @@
   <kendo-appbar-section>
     <div class="appbar-btn" (click)="goHome()">Home</div>
   </kendo-appbar-section>
-  <kendo-appbar-section>
+  <kendo-appbar-section *ngIf="isAdmin">
     <div class="appbar-btn" (click)="showAdminArea()">Admin</div>
   </kendo-appbar-section>
   <kendo-appbar-spacer></kendo-appbar-spacer>
