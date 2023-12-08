@@ -13,6 +13,7 @@ import { OperationService } from '../../../services/operation.service';
 import { ActionService } from '../../../services/action.service';
 import { PermissionService } from '../../../services/permission.service';
 import { first, forkJoin } from 'rxjs';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'permissions-list',
@@ -42,12 +43,15 @@ export class PermissionListComponent
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
     forkJoin({
       permissions: this.permissionService
         .getPermissionsWithDetails()
         .pipe(first()),
-      modules: this.moduleService.getModulesWithSubModules().pipe(first()),
+      modules: this.moduleService
+        .getModulesWithSubModules(AdminPermissions.ADMIN)
+        .pipe(first()),
       operations: this.operationService.getOperations().pipe(first()),
       actions: this.actionService.getActions('ADMIN').pipe(first()),
     }).subscribe(({ permissions, modules, operations, actions }) => {

@@ -8,6 +8,7 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
 import { first, forkJoin } from 'rxjs';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'submodule-list',
@@ -28,10 +29,15 @@ export class SubmoduleListComponent extends Crud<SubModule> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
     forkJoin({
-      subModules: this.subModuleService.getSubModules().pipe(first()),
-      modules: this.moduleService.getModules().pipe(first()),
+      subModules: this.subModuleService
+        .getSubModules(AdminPermissions.ADMIN)
+        .pipe(first()),
+      modules: this.moduleService
+        .getModules(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ subModules, modules }) => {
       if (subModules) {
         this.gridData = { data: subModules, total: subModules.length };

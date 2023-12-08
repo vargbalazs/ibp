@@ -12,6 +12,7 @@ import { ModuleService } from '../../../services/module.service';
 import { SubModule } from '../../../models/submodule.model';
 import { catchError, first, forkJoin, of } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'operation-hierarchy',
@@ -56,6 +57,7 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.loadTreeview();
   }
 
@@ -84,7 +86,9 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
 
   loadTreeview() {
     forkJoin({
-      modules: this.moduleService.getModulesWithSubModules().pipe(first()),
+      modules: this.moduleService
+        .getModulesWithSubModules(AdminPermissions.ADMIN)
+        .pipe(first()),
       operations: this.operationService.getOperations().pipe(first()),
     }).subscribe(({ modules, operations }) => {
       for (let i = 0; i <= modules.length - 1; i++) {

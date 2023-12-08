@@ -5,6 +5,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ModuleService } from '../../../services/module.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'module-list',
@@ -22,9 +23,12 @@ export class ModuleListComponent extends Crud<Module> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
-    this.moduleService.getModules().subscribe((modules) => {
-      if (modules) this.gridData = { data: modules, total: modules.length };
-    });
+    this.moduleService
+      .getModules(AdminPermissions.ADMIN)
+      .subscribe((modules) => {
+        if (modules) this.gridData = { data: modules, total: modules.length };
+      });
   }
 }

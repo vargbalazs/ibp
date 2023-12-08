@@ -11,6 +11,7 @@ import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { ModuleService } from '../../../services/module.service';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 import { catchError, of } from 'rxjs';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'module-hierarchy',
@@ -55,12 +56,15 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
 
   ngOnInit(): void {
     this.loadTreeview();
+    this.permission = AdminPermissions.ADMIN;
   }
 
   loadTreeview() {
-    this.moduleService.getModulesWithSubModules().subscribe((modules) => {
-      this.modules = modules;
-    });
+    this.moduleService
+      .getModulesWithSubModules(AdminPermissions.ADMIN)
+      .subscribe((modules) => {
+        this.modules = modules;
+      });
   }
 
   removeSubModule() {
@@ -100,7 +104,7 @@ export class HierarchyComponent extends Crud<SubModule> implements OnInit {
 
   onContextMenuItemSelect({ item }: { item: any }): void {
     this.subModuleService
-      .delete(this.contextItem.id!)
+      .delete(this.contextItem.id!, AdminPermissions.ADMIN)
       .pipe(
         catchError(() => {
           return of();
