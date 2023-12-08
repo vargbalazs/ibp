@@ -194,7 +194,7 @@ export abstract class Crud<T extends { id?: number }> {
   }
 
   public closeDialog() {
-    this.dialogRef.close();
+    if (this.dialogRef) this.dialogRef.close();
     this.dialogOpened = false;
   }
 }

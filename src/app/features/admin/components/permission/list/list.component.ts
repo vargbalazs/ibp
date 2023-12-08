@@ -49,7 +49,7 @@ export class PermissionListComponent
         .pipe(first()),
       modules: this.moduleService.getModulesWithSubModules().pipe(first()),
       operations: this.operationService.getOperations().pipe(first()),
-      actions: this.actionService.getActions().pipe(first()),
+      actions: this.actionService.getActions('ADMIN').pipe(first()),
     }).subscribe(({ permissions, modules, operations, actions }) => {
       if (permissions) {
         this.gridData = { data: permissions, total: permissions.length };

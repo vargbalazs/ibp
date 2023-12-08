@@ -5,6 +5,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { ActionService } from '../../../services/action.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'action-list',
@@ -22,11 +23,14 @@ export class ActionListComponent extends Crud<Action> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
-    this.actionService.getActions().subscribe((actions) => {
-      if (actions) {
-        this.gridData = { data: actions, total: actions.length };
-      }
-    });
+    this.actionService
+      .getActions(AdminPermissions.ADMIN)
+      .subscribe((actions) => {
+        if (actions) {
+          this.gridData = { data: actions, total: actions.length };
+        }
+      });
   }
 }
