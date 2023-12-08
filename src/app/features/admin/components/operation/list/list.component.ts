@@ -35,7 +35,9 @@ export class ListComponent extends Crud<Operation> implements OnInit {
       modules: this.moduleService
         .getModulesWithSubModules(AdminPermissions.ADMIN)
         .pipe(first()),
-      operations: this.operationService.getOperations().pipe(first()),
+      operations: this.operationService
+        .getOperations(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ modules, operations }) => {
       this.modules = modules;
       if (operations) {

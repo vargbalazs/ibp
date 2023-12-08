@@ -5,6 +5,7 @@ import { LoaderService } from 'src/app/shared/services/loader.service';
 import { RoleService } from '../../../services/role.service';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
 import { MsgDialogService } from 'src/app/shared/services/dialog.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'role-list',
@@ -22,8 +23,9 @@ export class RoleListComponent extends Crud<Role> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
-    this.roleService.getRoles().subscribe((roles) => {
+    this.roleService.getRoles(AdminPermissions.ADMIN).subscribe((roles) => {
       if (roles) this.gridData = { data: roles, total: roles.length };
     });
   }

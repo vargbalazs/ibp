@@ -47,13 +47,17 @@ export class PermissionListComponent
     this.gridData = { data: [], total: 0 };
     forkJoin({
       permissions: this.permissionService
-        .getPermissionsWithDetails()
+        .getPermissionsWithDetails(AdminPermissions.ADMIN)
         .pipe(first()),
       modules: this.moduleService
         .getModulesWithSubModules(AdminPermissions.ADMIN)
         .pipe(first()),
-      operations: this.operationService.getOperations().pipe(first()),
-      actions: this.actionService.getActions('ADMIN').pipe(first()),
+      operations: this.operationService
+        .getOperations(AdminPermissions.ADMIN)
+        .pipe(first()),
+      actions: this.actionService
+        .getActions(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ permissions, modules, operations, actions }) => {
       if (permissions) {
         this.gridData = { data: permissions, total: permissions.length };

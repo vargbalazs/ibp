@@ -1,8 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/features/admin/models/user.model';
 import { of } from 'rxjs';
-import { API_URL } from 'src/app/core/constants/app.constants';
+import { API_URL, PERMISSION } from 'src/app/core/constants/app.constants';
 
 @Injectable()
 export class UserService {
@@ -16,18 +16,23 @@ export class UserService {
     return of(user);
   }
 
-  delete(id: string) {
+  delete(id: string, permission: string) {
     return this.http.delete<number>(`${API_URL}/users`, {
       params: new HttpParams().set('userId', id),
+      context: new HttpContext().set(PERMISSION, permission),
     });
   }
 
-  getUsers() {
-    return this.http.get<User[]>(`${API_URL}/users`);
+  getUsers(permission: string) {
+    return this.http.get<User[]>(`${API_URL}/users`, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  updateAsAdmin(user: User) {
-    return this.http.put<User>(`${API_URL}/users/${user.userId}`, user);
+  updateAsAdmin(user: User, permission: string) {
+    return this.http.put<User>(`${API_URL}/users/${user.userId}`, user, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
   getUserWithRoleGroups(user: User) {

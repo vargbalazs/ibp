@@ -8,6 +8,7 @@ import { AdminService } from '../../../services/admin.service';
 import { UserService } from '../../../services/user.service';
 import { BehaviorSubject } from 'rxjs';
 import { LoaderService } from 'src/app/shared/services/loader.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'basic-data',
@@ -107,15 +108,17 @@ export class BasicDataComponent implements OnInit {
   updateUser() {
     const user = <User>this.userForm.value;
     user.currentUserName = this.currentUserName;
-    this.userService.updateAsAdmin(user).subscribe((resp: User) => {
-      this.notifyService.showNotification(
-        'normal',
-        5000,
-        'success',
-        'Sikeres módosítás!',
-        'A listábana már a módosított adatok szerepelnek.'
-      );
-    });
+    this.userService
+      .updateAsAdmin(user, AdminPermissions.ADMIN)
+      .subscribe((resp: User) => {
+        this.notifyService.showNotification(
+          'normal',
+          5000,
+          'success',
+          'Sikeres módosítás!',
+          'A listábana már a módosított adatok szerepelnek.'
+        );
+      });
     this.currentUserName = user.userName!;
     this.edit = false;
     this.successfullyUpdated.emit(user);

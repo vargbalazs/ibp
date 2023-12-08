@@ -12,6 +12,7 @@ import { MsgDialogService } from 'src/app/shared/services/dialog.service';
 import { RoleGroupService } from '../../../services/rolegroup.service';
 import { catchError, first, forkJoin, of } from 'rxjs';
 import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'hierarchy',
@@ -56,7 +57,11 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
 
     this.customSaveFn = function customSave(assignRole: AssignRole) {
       this.roleService
-        .assignToRoleGroup(assignRole.roleGroupId!, assignRole.roleId!)
+        .assignToRoleGroup(
+          assignRole.roleGroupId!,
+          assignRole.roleId!,
+          AdminPermissions.ADMIN
+        )
         .pipe(
           catchError((err) => {
             this.cancelHandler();
@@ -79,6 +84,7 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
 
   ngOnInit(): void {
     this.loadTreeview();
+    this.permission = AdminPermissions.ADMIN;
   }
 
   nodeClick(e: any) {
@@ -111,8 +117,10 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
 
   loadTreeview() {
     forkJoin({
-      roles: this.roleService.getRoles().pipe(first()),
-      roleGroups: this.roleGroupService.getRoleGroups().pipe(first()),
+      roles: this.roleService.getRoles(AdminPermissions.ADMIN).pipe(first()),
+      roleGroups: this.roleGroupService
+        .getRoleGroups(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ roles, roleGroups }) => {
       this.roles = roles;
       this.roleGroups = roleGroups;
@@ -121,7 +129,11 @@ export class AssignToGroupComponent extends Crud<AssignRole> implements OnInit {
 
   onContextMenuItemSelect({ item }: { item: any }): void {
     this.roleService
-      .removeFromRoleGroup(this.contextItem.roleGroupId!, this.contextItem.id!)
+      .removeFromRoleGroup(
+        this.contextItem.roleGroupId!,
+        this.contextItem.id!,
+        AdminPermissions.ADMIN
+      )
       .subscribe((roleId) => {
         this.notifyService.showNotification(
           'normal',

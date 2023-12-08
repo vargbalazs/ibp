@@ -13,6 +13,7 @@ import { SVGIcon, trashIcon } from '@progress/kendo-svg-icons';
 import { AssignPermission } from '../../../models/assign-permission.model';
 import { Permission } from '../../../models/permission.model';
 import { PermissionService } from '../../../services/permission.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'roles-and-permissions',
@@ -62,7 +63,11 @@ export class RolesAndPermissionsComponent
       assignPermission: AssignPermission
     ) {
       this.permissionService
-        .assignToRole(assignPermission.roleId!, assignPermission.permissionId!)
+        .assignToRole(
+          assignPermission.roleId!,
+          assignPermission.permissionId!,
+          AdminPermissions.ADMIN
+        )
         .pipe(
           catchError((err) => {
             this.cancelHandler();
@@ -85,6 +90,7 @@ export class RolesAndPermissionsComponent
 
   ngOnInit(): void {
     this.loadTreeview();
+    this.permission = AdminPermissions.ADMIN;
   }
 
   nodeClick(e: any) {
@@ -117,8 +123,12 @@ export class RolesAndPermissionsComponent
 
   loadTreeview() {
     forkJoin({
-      roles: this.roleService.getRolesWithPermissions().pipe(first()),
-      permissions: this.permissionService.getPermissions().pipe(first()),
+      roles: this.roleService
+        .getRolesWithPermissions(AdminPermissions.ADMIN)
+        .pipe(first()),
+      permissions: this.permissionService
+        .getPermissions(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ roles, permissions }) => {
       this.roles = roles;
       this.permissions = permissions;
@@ -127,7 +137,11 @@ export class RolesAndPermissionsComponent
 
   onContextMenuItemSelect({ item }: { item: any }): void {
     this.permissionService
-      .removeFromRole(this.contextItem.roleId!, this.contextItem.id!)
+      .removeFromRole(
+        this.contextItem.roleId!,
+        this.contextItem.id!,
+        AdminPermissions.ADMIN
+      )
       .subscribe((res) => {
         this.notifyService.showNotification(
           'normal',

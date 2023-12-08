@@ -5,41 +5,55 @@ import { RoleGroup } from '../models/rolegroup.model';
 import {
   API_URL,
   NOTIFICATION_TYPE,
+  PERMISSION,
 } from 'src/app/core/constants/app.constants';
 
 @Injectable()
 export class RoleGroupService implements Repository<RoleGroup> {
   constructor(private http: HttpClient) {}
 
-  add(roleGroup: RoleGroup) {
-    return this.http.post<RoleGroup>(`${API_URL}/role-groups`, roleGroup);
+  add(roleGroup: RoleGroup, permission: string) {
+    return this.http.post<RoleGroup>(`${API_URL}/role-groups`, roleGroup, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  update(roleGroup: RoleGroup) {
+  update(roleGroup: RoleGroup, permission: string) {
     return this.http.put<RoleGroup>(
       `${API_URL}/role-groups/${roleGroup.id}`,
-      roleGroup
+      roleGroup,
+      {
+        context: new HttpContext().set(PERMISSION, permission),
+      }
     );
   }
 
-  delete(id: number) {
-    return this.http.delete<number>(`${API_URL}/role-groups/${id}`);
+  delete(id: number, permission: string) {
+    return this.http.delete<number>(`${API_URL}/role-groups/${id}`, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  getRoleGroups() {
-    return this.http.get<RoleGroup[]>(`${API_URL}/role-groups`);
+  getRoleGroups(permission: string) {
+    return this.http.get<RoleGroup[]>(`${API_URL}/role-groups`, {
+      context: new HttpContext().set(PERMISSION, permission),
+    });
   }
 
-  getRoleGroupsWithPermissions() {
+  getRoleGroupsWithPermissions(permission: string) {
     return this.http.get<RoleGroup[]>(
-      `${API_URL}/role-groups/rolegroups-with-permissions`
+      `${API_URL}/role-groups/rolegroups-with-permissions`,
+      {
+        context: new HttpContext().set(PERMISSION, permission),
+      }
     );
   }
 
   assignRoleGroupToUser(
     roleGroupId: number,
     userId: string,
-    container: ViewContainerRef
+    container: ViewContainerRef,
+    permission: string
   ) {
     return this.http.post<boolean>(
       `${API_URL}/role-groups/assign-to-user`,
@@ -48,10 +62,12 @@ export class RoleGroupService implements Repository<RoleGroup> {
         userId: userId,
       },
       {
-        context: new HttpContext().set(NOTIFICATION_TYPE, {
-          type: 'compact',
-          container: container,
-        }),
+        context: new HttpContext()
+          .set(NOTIFICATION_TYPE, {
+            type: 'compact',
+            container: container,
+          })
+          .set(PERMISSION, permission),
       }
     );
   }
@@ -59,7 +75,8 @@ export class RoleGroupService implements Repository<RoleGroup> {
   removeRoleGroupFromUser(
     roleGroupId: number,
     userId: string,
-    container: ViewContainerRef
+    container: ViewContainerRef,
+    permission: string
   ) {
     return this.http.post<boolean>(
       `${API_URL}/role-groups/remove-from-user`,
@@ -68,25 +85,47 @@ export class RoleGroupService implements Repository<RoleGroup> {
         userId: userId,
       },
       {
-        context: new HttpContext().set(NOTIFICATION_TYPE, {
-          type: 'compact',
-          container: container,
-        }),
+        context: new HttpContext()
+          .set(NOTIFICATION_TYPE, {
+            type: 'compact',
+            container: container,
+          })
+          .set(PERMISSION, permission),
       }
     );
   }
 
-  assignRoleGroupToRoute(roleGroupId: number, routeId: number) {
-    return this.http.post<boolean>(`${API_URL}/role-groups/assign-to-route`, {
-      roleGroupId: roleGroupId,
-      routeId: routeId,
-    });
+  assignRoleGroupToRoute(
+    roleGroupId: number,
+    routeId: number,
+    permission: string
+  ) {
+    return this.http.post<boolean>(
+      `${API_URL}/role-groups/assign-to-route`,
+      {
+        roleGroupId: roleGroupId,
+        routeId: routeId,
+      },
+      {
+        context: new HttpContext().set(PERMISSION, permission),
+      }
+    );
   }
 
-  removeRoleGroupFromRoute(roleGroupId: number, routeId: number) {
-    return this.http.post<boolean>(`${API_URL}/role-groups/remove-from-route`, {
-      roleGroupId: roleGroupId,
-      routeId: routeId,
-    });
+  removeRoleGroupFromRoute(
+    roleGroupId: number,
+    routeId: number,
+    permission: string
+  ) {
+    return this.http.post<boolean>(
+      `${API_URL}/role-groups/remove-from-route`,
+      {
+        roleGroupId: roleGroupId,
+        routeId: routeId,
+      },
+      {
+        context: new HttpContext().set(PERMISSION, permission),
+      }
+    );
   }
 }

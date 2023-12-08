@@ -10,6 +10,7 @@ import { AssignRoleGroup } from '../../../models/assign-rolegroup.model';
 import { RoleGroupService } from '../../../services/rolegroup.service';
 import { RoleGroup } from '../../../models/rolegroup.model';
 import { catchError, of } from 'rxjs';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'user-roles',
@@ -42,7 +43,8 @@ export class UserRolesComponent
         .assignRoleGroupToUser(
           dataItem.roleGroupId!,
           this.user.userId!,
-          this.container
+          this.container,
+          AdminPermissions.ADMIN
         )
         .pipe(
           catchError((err) => {
@@ -70,7 +72,8 @@ export class UserRolesComponent
         .removeRoleGroupFromUser(
           dataItem.roleGroupId!,
           this.user.userId!,
-          this.container
+          this.container,
+          AdminPermissions.ADMIN
         )
         .pipe(
           catchError((err) => {
@@ -101,6 +104,7 @@ export class UserRolesComponent
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
     this.user = this.adminService.getUser();
 

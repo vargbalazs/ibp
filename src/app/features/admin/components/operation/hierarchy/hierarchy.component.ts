@@ -89,7 +89,9 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
       modules: this.moduleService
         .getModulesWithSubModules(AdminPermissions.ADMIN)
         .pipe(first()),
-      operations: this.operationService.getOperations().pipe(first()),
+      operations: this.operationService
+        .getOperations(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ modules, operations }) => {
       for (let i = 0; i <= modules.length - 1; i++) {
         modules[i].subModules?.forEach((sm) => (sm.subModules = []));
@@ -111,7 +113,7 @@ export class HierarchyComponent extends Crud<Operation> implements OnInit {
 
   onContextMenuItemSelect({ item }: { item: any }): void {
     this.operationService
-      .delete(this.contextItem.id!)
+      .delete(this.contextItem.id!, AdminPermissions.ADMIN)
       .pipe(
         catchError(() => {
           return of();

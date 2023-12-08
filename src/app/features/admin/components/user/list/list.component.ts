@@ -7,6 +7,7 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 import { UserService } from '../../../services/user.service';
 import { first, forkJoin } from 'rxjs';
 import { RoleGroupService } from '../../../services/rolegroup.service';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'user-list',
@@ -27,8 +28,9 @@ export class UserListComponent extends Crud<User> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
-    this.userService.getUsers().subscribe((users) => {
+    this.userService.getUsers(AdminPermissions.ADMIN).subscribe((users) => {
       if (users) this.gridData = { data: users, total: users.length };
     });
   }
@@ -48,7 +50,7 @@ export class UserListComponent extends Crud<User> implements OnInit {
     forkJoin({
       user: this.userService.getUserWithRoleGroups(dataItem).pipe(first()),
       roleGroups: this.roleGroupService
-        .getRoleGroupsWithPermissions()
+        .getRoleGroupsWithPermissions(AdminPermissions.ADMIN)
         .pipe(first()),
     }).subscribe(({ user, roleGroups }) => {
       this.userDetails = dataItem;

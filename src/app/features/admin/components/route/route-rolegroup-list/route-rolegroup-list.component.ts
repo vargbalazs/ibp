@@ -13,6 +13,7 @@ import { AssignRoute } from '../../../models/assign-route.model';
 import { DialogRef } from '@progress/kendo-angular-dialog';
 import { DialogAction } from 'src/app/shared/interfaces/dialog-action.interface';
 import { DialogActionsEnum } from 'src/app/shared/components/custom-dialog/dialog-actions.enum';
+import AdminPermissions from 'src/app/core/enums/permissions/admin-perm.enum';
 
 @Component({
   selector: 'route-rolegroup-list',
@@ -43,8 +44,10 @@ export class RouteRoleGroupListComponent implements OnInit {
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
     forkJoin({
-      routes: this.routeService.getRoutes().pipe(first()),
-      roleGroups: this.roleGroupService.getRoleGroups().pipe(first()),
+      routes: this.routeService.getRoutes(AdminPermissions.ADMIN).pipe(first()),
+      roleGroups: this.roleGroupService
+        .getRoleGroups(AdminPermissions.ADMIN)
+        .pipe(first()),
     }).subscribe(({ routes, roleGroups }) => {
       if (routes) {
         this.routes = routes;
@@ -78,7 +81,11 @@ export class RouteRoleGroupListComponent implements OnInit {
 
   saveHandler(entity: AssignRoute, type: string) {
     this.roleGroupService
-      .assignRoleGroupToRoute(entity.roleGroupId!, entity.routeId!)
+      .assignRoleGroupToRoute(
+        entity.roleGroupId!,
+        entity.routeId!,
+        AdminPermissions.ADMIN
+      )
       .pipe(
         catchError((err) => {
           this.active = false;
@@ -138,7 +145,11 @@ export class RouteRoleGroupListComponent implements OnInit {
 
   remove(entity: AssignRoute) {
     this.roleGroupService
-      .removeRoleGroupFromRoute(entity.roleGroupId!, entity.routeId!)
+      .removeRoleGroupFromRoute(
+        entity.roleGroupId!,
+        entity.routeId!,
+        AdminPermissions.ADMIN
+      )
       .pipe(
         catchError((err) => {
           this.closeDialog();
