@@ -6,5 +6,8 @@ export const BU: Table = {
     {
       name: 'name',
     },
+    {
+      name: 'id',
+    },
   ],
 };
