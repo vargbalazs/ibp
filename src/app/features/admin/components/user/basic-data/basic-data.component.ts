@@ -56,7 +56,7 @@ export class BasicDataComponent implements OnInit {
   }
 
   initForm() {
-    this.formData = this.adminService.getUser();
+    this.formData = this.adminService.getEditedUser();
     this.currentUserName = this.formData.userName!;
     return new FormGroup({
       userName: new FormControl(this.formData.userName, {

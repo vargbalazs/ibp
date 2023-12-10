@@ -35,10 +35,13 @@ export class AssignConstraintComponent
     super();
     this.form = this.initForm();
     this.isBusy = this.loaderService.isLoading;
-    this.adminService.getUser().roleGroups?.forEach((roleGroup) => {
+    this.adminService.getEditedUser().roleGroups?.forEach((roleGroup) => {
       roleGroup.roles?.forEach((role) => {
-        if (!this.roles.some((r) => r.name === role.name))
-          this.roles.push(role);
+        if (!this.roles.some((r) => r.name === role.name)) {
+          const copiedRole: Role = {};
+          Object.assign(copiedRole, role);
+          this.roles.push(copiedRole);
+        }
       });
     });
   }
@@ -46,19 +49,27 @@ export class AssignConstraintComponent
   ngOnInit(): void {
     this.utilityService.changeControlState(
       this.form,
-      ['objectField', 'objectValue'],
+      ['field', 'objectValue'],
       false
     );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (this.editMode) {
-      this.comboBoxValueChange = true;
-      this.objectChange(
-        TABLES.filter(
+      this.form.controls.object.setValue(
+        this.objects.find(
           (table) => table.name === this.form.controls.objectName.value
-        ).at(0)!
+        )
       );
+      this.fields = this.form.controls.object.value?.fields!;
+      this.form.controls.field.setValue(
+        this.fields.find(
+          (field) => field.name === this.form.controls.objectField.value
+        )
+      );
+      this.comboBoxValueChange = true;
+      this.objectChange(this.form.controls.object.value!);
+      this.fieldChange(this.form.controls.field.value!);
       this.comboBoxValueChange = false;
     }
   }
@@ -77,33 +88,34 @@ export class AssignConstraintComponent
         Validators.required,
       ]),
       role: new FormControl(this.formData.role, [Validators.required]),
+      object: new FormControl(this.formData.object, [Validators.required]),
+      field: new FormControl(this.formData.field, [Validators.required]),
     });
   }
 
   objectChange(value: Table) {
     if (value) {
       this.fields = value.fields;
+      this.form.controls.objectName.setValue(value.name);
       setTimeout(() => {
-        this.utilityService.changeControlState(
-          this.form,
-          ['objectField'],
-          true
-        );
+        this.utilityService.changeControlState(this.form, ['field'], true);
       });
     } else {
       this.utilityService.changeControlState(
         this.form,
-        ['objectField', 'objectValue'],
+        ['field', 'objectValue'],
         false
       );
+      this.form.patchValue({ field: undefined });
     }
     if (!this.comboBoxValueChange) {
-      this.form.patchValue({ objectField: undefined });
+      this.form.patchValue({ objectField: '' });
       this.form.patchValue({ objectValue: '' });
     }
   }
 
   fieldChange(value: Field) {
+    if (value) this.form.controls.objectField.setValue(value.name);
     setTimeout(() => {
       this.utilityService.changeControlState(
         this.form,

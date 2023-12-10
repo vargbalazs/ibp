@@ -106,7 +106,7 @@ export class UserRolesComponent
   ngOnInit(): void {
     this.permission = AdminPermissions.ADMIN;
     this.gridData = { data: [], total: 0 };
-    this.user = this.adminService.getUser();
+    this.user = this.adminService.getEditedUser();
 
     this.user.roleGroups?.map((roleGroup) => {
       this.addRoles(roleGroup);

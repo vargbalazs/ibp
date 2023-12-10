@@ -26,7 +26,7 @@ export class AssignRoleGroupComponent extends CreateEditComponent<AssignRoleGrou
     super();
     this.form = this.initForm();
     this.isBusy = this.loaderService.isLoading;
-    this.roleGroups = this.adminService.getUser().allRoleGroups!;
+    this.roleGroups = this.adminService.getEditedUser().allRoleGroups!;
   }
 
   initForm() {
@@ -44,7 +44,9 @@ export class AssignRoleGroupComponent extends CreateEditComponent<AssignRoleGrou
   roleGroupChange(value: RoleGroup) {
     if (value) {
       this.form.patchValue({ roleGroupId: value.id });
-      this.form.patchValue({ userId: this.adminService.getUser().userId });
+      this.form.patchValue({
+        userId: this.adminService.getEditedUser().userId,
+      });
     }
   }
 }

@@ -55,7 +55,7 @@ export class UserListComponent extends Crud<User> implements OnInit {
     }).subscribe(({ user, roleGroups }) => {
       this.userDetails = dataItem;
       user.allRoleGroups = roleGroups;
-      this.adminService.setUser(user);
+      this.adminService.setEditedUser(user);
       this.dialogOpened = true;
     });
   }

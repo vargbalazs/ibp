@@ -1,4 +1,6 @@
+import { Table } from 'src/app/core/interfaces/table.interface';
 import { Role } from './role.model';
+import { Field } from 'src/app/core/interfaces/field.interface';
 
 export class Constraint {
   constructor(
@@ -8,6 +10,8 @@ export class Constraint {
     public objectField?: string,
     public objectValue?: string,
     public role?: Role,
-    public userId?: string
+    public userId?: string,
+    public object?: Table,
+    public field?: Field
   ) {}
 }

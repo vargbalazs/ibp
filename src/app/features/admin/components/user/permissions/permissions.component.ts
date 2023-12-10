@@ -19,7 +19,7 @@ export class UserPermissionsComponent implements OnInit {
 
   ngOnInit(): void {
     this.gridData = { data: [], total: 0 };
-    this.user = this.adminService.getUser();
+    this.user = this.adminService.getEditedUser();
 
     this.user.roleGroups?.map((roleGroup) => {
       this.addPermissions(roleGroup);

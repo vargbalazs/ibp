@@ -6,10 +6,12 @@ import { CustomNotificationService } from 'src/app/shared/services/notification.
 @Injectable()
 export class AdminService {
   private currentUser: BehaviorSubject<User>;
+  private editedUser: BehaviorSubject<User>;
   private notifyService: CustomNotificationService;
 
   constructor() {
     this.currentUser = new BehaviorSubject<User>(new User());
+    this.editedUser = new BehaviorSubject<User>(new User());
     this.notifyService = inject(CustomNotificationService);
   }
 
@@ -19,6 +21,14 @@ export class AdminService {
 
   public getUser(): User {
     return this.currentUser.getValue();
+  }
+
+  public setEditedUser(user: User) {
+    this.editedUser.next(user);
+  }
+
+  public getEditedUser(): User {
+    return this.editedUser.getValue();
   }
 
   public isAdmin(): boolean {

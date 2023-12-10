@@ -44,15 +44,15 @@
     </kendo-formfield>
     <kendo-formfield>
       <kendo-label
-        [for]="objectName"
+        [for]="object"
         text="Objektum"
         class="label-input-md"
       ></kendo-label>
       <kendo-combobox
-        #objectName
+        #object
         size="small"
         fillMode="solid"
-        formControlName="objectName"
+        formControlName="object"
         [data]="objects"
         textField="name"
         valueField="name"
@@ -64,15 +64,15 @@
     </kendo-formfield>
     <kendo-formfield>
       <kendo-label
-        [for]="objectField"
+        [for]="field"
         text="Mező"
         class="label-input-md"
       ></kendo-label>
       <kendo-combobox
-        #objectField
+        #field
         size="small"
         fillMode="solid"
-        formControlName="objectField"
+        formControlName="field"
         [data]="fields"
         textField="name"
         valueField="name"
@@ -99,7 +99,6 @@
         >Kötelező mező</kendo-formerror
       >
     </kendo-formfield>
-
     <button type="submit" hidden></button>
   </form>
   <kendo-dialog-actions>

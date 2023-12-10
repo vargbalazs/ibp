@@ -32,14 +32,24 @@ export class ConstraintService implements Repository<Constraint> {
       `${API_URL}/constraints/${constraint.id}`,
       constraint,
       {
-        context: new HttpContext().set(PERMISSION, permission),
+        context: new HttpContext()
+          .set(PERMISSION, permission)
+          .set(NOTIFICATION_TYPE, {
+            type: 'compact',
+            container: this.containerService.getContainer(),
+          }),
       }
     );
   }
 
   delete(id: number, permission: string) {
     return this.http.delete<number>(`${API_URL}/constraints/${id}`, {
-      context: new HttpContext().set(PERMISSION, permission),
+      context: new HttpContext()
+        .set(PERMISSION, permission)
+        .set(NOTIFICATION_TYPE, {
+          type: 'compact',
+          container: this.containerService.getContainer(),
+        }),
     });
   }
 
