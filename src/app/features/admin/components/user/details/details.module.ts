@@ -8,6 +8,7 @@ import { BasicDataModule } from '../basic-data/basic-data.module';
 import { RolesModule } from '../roles/roles.module';
 import { PermissionsModule } from '../permissions/permissions.module';
 import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.module';
+import { ConstraintsModule } from '../constraints/constraints.module';
 
 @NgModule({
   declarations: [DetailsComponent],
@@ -20,6 +21,7 @@ import { DraggableModule } from 'src/app/shared/directives/draggable/draggable.m
     RolesModule,
     PermissionsModule,
     DraggableModule,
+    ConstraintsModule,
   ],
   exports: [DetailsComponent],
 })

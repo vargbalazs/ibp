@@ -1,3 +1,4 @@
+import { Constraint } from './constraint.model';
 import { RoleGroup } from './rolegroup.model';
 
 export class User {
@@ -16,6 +17,7 @@ export class User {
     public notLocked?: boolean,
     public firstLogin?: boolean,
     public roleGroups?: RoleGroup[],
-    public allRoleGroups?: RoleGroup[]
+    public allRoleGroups?: RoleGroup[],
+    public constraints?: Constraint[]
   ) {}
 }
