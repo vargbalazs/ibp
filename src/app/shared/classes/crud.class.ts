@@ -52,6 +52,9 @@ export abstract class Crud<T extends { id?: number }> {
       if (!this.adminService.hasPermission(options.permission)) return;
       this.permission = options.permission;
     }
+    if (options && options.constraint) {
+      if (!this.adminService.hasConstraint(options.constraint)) return;
+    }
     this.editDataItem = dataItem;
     this.dialogOpened = true;
     this.isNew = false;
@@ -82,6 +85,9 @@ export abstract class Crud<T extends { id?: number }> {
     if (options && options.permission) {
       if (!this.adminService.hasPermission(options.permission)) return;
       this.permission = options.permission;
+    }
+    if (options && options.constraint) {
+      if (!this.adminService.hasConstraint(options.constraint)) return;
     }
     this.dialogOpened = true;
     this.dialogRef = this.msgDialogService.showDialog(

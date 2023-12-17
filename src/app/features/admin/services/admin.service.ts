@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../models/user.model';
 import { CustomNotificationService } from 'src/app/shared/services/notification.service';
+import { Constraint } from 'src/app/shared/interfaces/constraint.interface';
 
 @Injectable()
 export class AdminService {
@@ -64,5 +65,36 @@ export class AdminService {
     }
 
     return found || this.isAdmin();
+  }
+
+  public hasConstraint(constraint: Constraint): boolean {
+    const constraints = this.currentUser.getValue().constraints;
+    if (constraints) {
+      let value = constraints.find(
+        (userConstr) =>
+          userConstr.objectField === constraint.objectField &&
+          userConstr.objectName === constraint.objectName
+      )?.objectValue;
+
+      let accessedValue = constraint.dataItem[constraint.objectField];
+
+      if (value) {
+        let hasAccess = value === accessedValue.toString();
+
+        if (!hasAccess) {
+          this.notifyService.showNotification(
+            'normal',
+            5000,
+            'error',
+            'Hiba',
+            'Nincs jogosultságod a kért művelet elvégzéséhez.'
+          );
+        }
+
+        return hasAccess;
+      }
+    }
+
+    return true;
   }
 }

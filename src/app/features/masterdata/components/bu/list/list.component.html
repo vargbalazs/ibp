@@ -26,13 +26,29 @@
     <ng-template kendoGridCellTemplate let-dataItem>
       <span
         class="material-symbols-outlined"
-        (click)="editHandler(dataItem, { permission: buPerm.EDIT_BU })"
+        (click)="
+          editHandler(dataItem, {
+            permission: buPerm.EDIT_BU,
+            constraint: {
+              objectName: 'bu',
+              objectField: 'id',
+              dataItem: dataItem
+            }
+          })
+        "
         >edit</span
       >
       <span
         class="material-symbols-outlined"
         (click)="
-          removeHandler(dataItem, 'default', { permission: buPerm.DELETE_BU })
+          removeHandler(dataItem, 'default', {
+            permission: buPerm.DELETE_BU,
+            constraint: {
+              objectName: 'bu',
+              objectField: 'id',
+              dataItem: dataItem
+            }
+          })
         "
         >delete</span
       >
