@@ -1,0 +1,57 @@
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [style.maxHeight.%]="100"
+  [filterable]="true"
+  (add)="addHandler({ permission: customerPerm.CREATE_CUSTOMER })"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button
+      kendoGridAddCommand
+      themeColor="primary"
+      fillMode="solid"
+      size="small"
+    >
+      Új vevő
+    </button>
+  </ng-template>
+  <kendo-grid-column field="id" title="Id" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column field="name" title="Vevő"></kendo-grid-column>
+  <kendo-grid-column field="bu.name" title="BU"></kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span
+        class="material-symbols-outlined"
+        (click)="
+          editHandler(dataItem, { permission: customerPerm.EDIT_CUSTOMER })
+        "
+        >edit</span
+      >
+      <span
+        class="material-symbols-outlined"
+        (click)="
+          removeHandler(dataItem, 'default', {
+            permission: customerPerm.DELETE_CUSTOMER
+          })
+        "
+        >delete</span
+      >
+    </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<create-customer
+  *ngIf="editDataItem"
+  [model]="editDataItem"
+  [isNew]="isNew"
+  (save)="saveHandler($event, 'default')"
+  (cancel)="cancelHandler()"
+  [bus]="bus"
+></create-customer>
+<div kendoDialogContainer></div>
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>

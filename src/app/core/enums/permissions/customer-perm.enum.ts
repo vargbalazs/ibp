@@ -1,0 +1,8 @@
+enum CustomerPermissions {
+  CREATE_CUSTOMER = 'CREATE_CUSTOMER',
+  DELETE_CUSTOMER = 'DELETE_CUSTOMER',
+  EDIT_CUSTOMER = 'EDIT_CUSTOMER',
+  VIEW_CUSTOMER = 'VIEW_CUSTOMER',
+}
+
+export default CustomerPermissions;

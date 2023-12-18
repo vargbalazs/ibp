@@ -14,6 +14,10 @@ export const menuItems: MenuItem[] = [
         routePath: 'masterdata/bus',
       },
       {
+        text: 'Vevők',
+        routePath: 'masterdata/customers',
+      },
+      {
         text: 'subitem 12',
         items: [
           {
