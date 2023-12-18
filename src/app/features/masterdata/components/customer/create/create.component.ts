@@ -28,6 +28,7 @@ export class CreateComponent extends CreateEditComponent<Customer> {
     return new FormGroup({
       id: new FormControl(this.formData.id),
       name: new FormControl(this.formData.name, [Validators.required]),
+      code: new FormControl(this.formData.code, [Validators.required]),
       bu: new FormControl(this.formData.bu, [Validators.required]),
     });
   }

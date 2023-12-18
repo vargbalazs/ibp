@@ -1,6 +1,6 @@
 <kendo-dialog
   [width]="400"
-  [height]="300"
+  [height]="390"
   (close)="closeForm()"
   class="form-dialog"
 >
@@ -33,6 +33,18 @@
         class="label-input-md"
       ></kendo-label>
       <kendo-textbox size="small" fillMode="solid" formControlName="name" #name>
+      </kendo-textbox>
+      <kendo-formerror *ngIf="form.controls.name.errors?.['required']"
+        >Kötelező mező</kendo-formerror
+      >
+    </kendo-formfield>
+    <kendo-formfield>
+      <kendo-label
+        [for]="code"
+        text="Vevői kód"
+        class="label-input-md"
+      ></kendo-label>
+      <kendo-textbox size="small" fillMode="solid" formControlName="code" #code>
       </kendo-textbox>
       <kendo-formerror *ngIf="form.controls.name.errors?.['required']"
         >Kötelező mező</kendo-formerror
