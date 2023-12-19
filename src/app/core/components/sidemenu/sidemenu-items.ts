@@ -17,25 +17,14 @@ export const menuItems: MenuItem[] = [
         text: 'Vevők',
         routePath: 'masterdata/customers',
       },
-      {
-        text: 'subitem 12',
-        items: [
-          {
-            text: 'subitem 121',
-          },
-          {
-            text: 'subitem 122',
-          },
-        ],
-      },
     ],
   },
   {
-    text: 'Content',
+    text: 'Tervezés',
     icon: 'settings',
     items: [
       {
-        text: 'Courses',
+        text: 'Tervkészítés',
       },
       {
         text: 'Categories',
