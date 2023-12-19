@@ -47,6 +47,7 @@
     "@progress/kendo-licensing": "^1.0.2",
     "@progress/kendo-svg-icons": "^1.0.0",
     "@progress/kendo-theme-default": "^6.7.0",
+    "@syncfusion/ej2-angular-spreadsheet": "^24.1.41",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
