@@ -25,6 +25,7 @@ export const menuItems: MenuItem[] = [
     items: [
       {
         text: 'Tervkészítés',
+        routePath: 'planning/planning-sheet',
       },
       {
         text: 'Categories',
