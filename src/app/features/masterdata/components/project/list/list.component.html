@@ -1,0 +1,57 @@
+<kendo-grid
+  [kendoGridBinding]="gridData.data"
+  [sortable]="true"
+  [style.maxHeight.%]="100"
+  [filterable]="true"
+  (add)="addHandler({ permission: projectPerm.CREATE_PROJECT })"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button
+      kendoGridAddCommand
+      themeColor="primary"
+      fillMode="solid"
+      size="small"
+    >
+      Új projekt
+    </button>
+  </ng-template>
+  <kendo-grid-column field="id" title="Id" [hidden]="true"></kendo-grid-column>
+  <kendo-grid-column field="name" title="Project"></kendo-grid-column>
+  <kendo-grid-column field="project.name" title="Vevő"></kendo-grid-column>
+  <kendo-grid-command-column [width]="70">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <span
+        class="material-symbols-outlined"
+        (click)="
+          editHandler(dataItem, { permission: projectPerm.EDIT_PROJECT })
+        "
+        >edit</span
+      >
+      <span
+        class="material-symbols-outlined"
+        (click)="
+          removeHandler(dataItem, 'default', {
+            permission: projectPerm.DELETE_PROJECT
+          })
+        "
+        >delete</span
+      >
+    </ng-template>
+  </kendo-grid-command-column>
+  <ng-template kendoGridNoRecordsTemplate>
+    Nincs megjelenítendő adat
+  </ng-template>
+</kendo-grid>
+<create-project
+  *ngIf="editDataItem"
+  [model]="editDataItem"
+  [isNew]="isNew"
+  (save)="saveHandler($event, 'default')"
+  (cancel)="cancelHandler()"
+  [customers]="customers"
+></create-project>
+<div kendoDialogContainer></div>
+<loading-overlay
+  [visible]="(loadingOverlayVisible | async) && !dialogOpened"
+  loadingText=""
+></loading-overlay>

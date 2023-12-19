@@ -4,6 +4,7 @@ import { LayoutComponent } from 'src/app/core/components/layout/layout.component
 import { BuListComponent } from './components/bu/list/list.component';
 import { routeGuard } from 'src/app/core/guards/route.guard';
 import { CustomerListComponent } from './components/customer/list/list.component';
+import { ProjectListComponent } from './components/project/list/list.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'masterdata/customers',
         component: CustomerListComponent,
+      },
+      {
+        path: 'masterdata/projects',
+        component: ProjectListComponent,
       },
     ],
   },

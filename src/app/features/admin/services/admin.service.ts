@@ -42,6 +42,7 @@ export class AdminService {
     let found = false;
     for (let roleGroup of this.currentUser.getValue().roleGroups!) {
       found = !!roleGroup.routes?.find((route) => route.name === routePath);
+      if (found) break;
     }
     return found;
   }
@@ -51,8 +52,9 @@ export class AdminService {
     for (let roleGroup of this.currentUser.getValue().roleGroups!) {
       for (let role of roleGroup.roles!) {
         found = !!role.permissions?.find((perm) => perm.name === permission);
-        break;
+        if (found) break;
       }
+      if (found) break;
     }
     if (!found && !this.isAdmin()) {
       this.notifyService.showNotification(
