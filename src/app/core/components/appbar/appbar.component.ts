@@ -33,23 +33,30 @@ export class AppbarComponent implements OnInit {
   }
 
   appBarClicked(e: any) {
-    if (e.target.id !== 'toggleBtn')
-      if (this.layoutService.navbarIsOpen)
-        this.layoutService.toggleNavBarPanel();
+    if (e.target.id !== 'toggleBtn') this.checkAndToggleNavbar();
   }
 
   showAdminArea() {
+    this.checkAndToggleNavbar();
     this.router.navigate(['admin/root'], { skipLocationChange: true });
   }
 
   goHome() {
+    this.checkAndToggleNavbar();
     this.router.navigate(['home'], { skipLocationChange: true });
   }
 
   logout() {
+    this.checkAndToggleNavbar();
     this.authService.logout().subscribe(() => {
       this.authService.clearTokens();
       this.router.navigate(['auth/login'], { skipLocationChange: true });
     });
+  }
+
+  checkAndToggleNavbar() {
+    if (this.layoutService.navbarIsOpen) {
+      this.layoutService.toggleNavBarPanel();
+    }
   }
 }
