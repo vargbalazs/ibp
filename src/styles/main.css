@@ -16,6 +16,7 @@
 @import "dialog.css";
 @import "menu.css";
 @import "badges.css";
+@import "enhanced-grid.css";
 
 body {
   margin: 0;
