@@ -1,5 +1,5 @@
 .enhanced.k-grid .k-table-row.k-table-alt-row {
-  background-color: white;
+  background-color: transparent;
 }
 
 .enhanced.k-grid td,
@@ -129,6 +129,46 @@
 .enhanced.k-grid .k-table-tbody > .k-table-row:not(.k-detail-row):hover,
 .enhanced.k-grid .k-table-tbody > .k-table-row:not(.k-detail-row).k-hover {
   background-color: transparent;
+}
+
+.enhanced.k-grid .k-filtercell .k-input-md,
+.enhanced.k-grid .k-filtercell .k-picker-md,
+.enhanced.k-grid .k-button-md {
+  height: 2.5rem;
+}
+
+.enhanced.k-grid .k-dropdown-operator.k-picker-md .k-input-button {
+  padding: 0;
+  height: 2.5rem;
+}
+
+.enhanced.k-grid .k-filtercell-operator .k-button-solid-base {
+  padding-top: 0;
+}
+
+.enhanced.k-grid .k-button-md.k-icon-button {
+  padding: 0;
+  margin-right: 0.5rem;
+}
+
+.enhanced.k-grid td:focus,
+.enhanced.k-grid td.k-focus,
+.enhanced.k-grid .k-table-td:focus,
+.enhanced.k-grid .k-table-td.k-focus {
+  box-shadow: none;
+}
+
+.enhanced.k-grid .k-table-th:focus,
+.enhanced.k-grid .k-table-th.k-focus {
+  box-shadow: none;
+}
+
+.enhanced.k-grid .k-grid-header-wrap {
+  padding-bottom: 0.5rem;
+}
+
+.enhanced.k-grid [kendogridfiltercell] {
+  border-bottom-width: 0px;
 }
 
 .k-popup.k-dropdowngrid-popup {

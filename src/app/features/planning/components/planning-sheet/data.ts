@@ -8,7 +8,7 @@ export const projects: Project[] = generateProjects();
 
 function generateData(): Row[] {
   let rows: Row[] = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 500; i++) {
     rows.push({
       id: i,
       accountNumber: {
@@ -42,7 +42,7 @@ function generateData(): Row[] {
 
 function generateAccountNumbers(): AccountNumber[] {
   let accountNumbers: AccountNumber[] = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 100; i++) {
     accountNumbers.push({
       id: i,
       accNumber: `acc numb ${i}`,
@@ -55,7 +55,7 @@ function generateAccountNumbers(): AccountNumber[] {
 
 function generateProjects(): Project[] {
   let projects: Project[] = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 100; i++) {
     projects.push({
       id: i,
       projNumber: `proj numb ${i}`,

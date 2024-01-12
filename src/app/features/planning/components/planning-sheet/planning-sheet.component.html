@@ -20,8 +20,13 @@
     field="id"
     [editable]="false"
     [class]="'non-editable'"
+    [width]="100"
   ></kendo-grid-column>
-  <kendo-grid-column field="accountNumber.accNumber">
+  <kendo-grid-column
+    field="accountNumber.accNumber"
+    title="acc number"
+    [width]="150"
+  >
     <ng-template kendoGridEditTemplate let-formGroup="formGroup">
       <kendo-combobox
         kendoGridFocusable
@@ -41,8 +46,14 @@
     field="accountNumber.accName"
     [editable]="false"
     [class]="'non-editable'"
+    [width]="150"
+    title="acc name"
   ></kendo-grid-column>
-  <kendo-grid-column field="project.projNumber">
+  <kendo-grid-column
+    field="project.projNumber"
+    [width]="150"
+    title="proj number"
+  >
     <ng-template kendoGridEditTemplate let-formGroup="formGroup">
       <kendo-multicolumncombobox
         kendoGridFocusable
@@ -68,22 +79,72 @@
     field="category"
     [editable]="false"
     [class]="'non-editable'"
+    [width]="150"
   ></kendo-grid-column>
-  <kendo-grid-column field="jan" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="feb" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="mar" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="apr" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="may" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="jun" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="jul" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="aug" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="sep" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="oct" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="nov" [class]="'!k-text-right'"></kendo-grid-column>
-  <kendo-grid-column field="dec" [class]="'!k-text-right'"></kendo-grid-column>
+  <kendo-grid-column
+    field="jan"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="feb"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="mar"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="apr"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="may"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="jun"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="jul"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="aug"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="sep"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="oct"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="nov"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
+  <kendo-grid-column
+    field="dec"
+    [class]="'!k-text-right'"
+    [width]="100"
+  ></kendo-grid-column>
   <kendo-grid-column
     field="total"
     [class]="'!k-text-right'"
+    [width]="100"
   ></kendo-grid-column>
   <ng-template kendoGridStatusBarTemplate>
     sum: {{ aggregates.sum }}, count: {{ aggregates.count }}, avg:
