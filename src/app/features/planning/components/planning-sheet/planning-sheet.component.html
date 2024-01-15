@@ -151,6 +151,3 @@
     {{ aggregates.avg }}, min: {{ aggregates.min }}, max: {{ aggregates.max }}
   </ng-template>
 </kendo-grid>
-<div>selected cells: {{ selectedCells | json }}</div>
-<div *ngIf="checkDuplicates()">no duplicates</div>
-<div *ngIf="!checkDuplicates()">duplicates</div>
