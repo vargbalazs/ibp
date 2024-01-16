@@ -142,6 +142,10 @@
   height: 2.5rem;
 }
 
+.enhanced.k-grid .k-combobox.k-input-sm .k-button-solid-base {
+  margin-top: -0.5rem;
+}
+
 .enhanced.k-grid .k-filtercell-operator .k-button-solid-base {
   padding-top: 0;
 }
