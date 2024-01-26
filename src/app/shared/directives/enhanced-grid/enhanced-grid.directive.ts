@@ -76,7 +76,7 @@ export class EnhancedGridDirective implements OnInit, OnDestroy, AfterViewInit {
     this.config.gridData = (<GridDataResult>this.grid.data).data;
 
     // get the full grid data
-    this.config.gridData = this.kendoGridBinding;
+    this.config.fullGridData = this.kendoGridBinding;
 
     // add a field 'dataRowIndex' to the grid data - this is needed, because if we are filtering, we have to store the 'dataRowIndex'
     // of the data item before filtering
